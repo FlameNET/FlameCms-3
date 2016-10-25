@@ -9,7 +9,8 @@ Class Initiator{
 	function setting_up(){
 		$sys=&get_inst();
 		$sys->load->library(array(
-			'System/Trigger'=>'trigger'
+			'System/Trigger'=>'trigger',
+			'System/helpers/Pps'=>'pps'
 		));
 		/*If config File Does not exists, Trigger Installer*/
 		if(!file_exists(BASEPATH.'/config.php')){
@@ -20,6 +21,9 @@ Class Initiator{
 			require_once(BASEPATH.'/config.php');
 			$this->configs();
 		}
+		
+		/*END*/
+		set_inst($sys);
 	}
 	function configs(){
 		/*Initiate The Configurations*/
