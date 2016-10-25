@@ -19,7 +19,15 @@ Class Initiator{
 	}
 	private function wind_configuration($configs){
 		$confs=System::$configuration;
-		
+		/*
+		**************************************
+		** To Check:
+		**************************************
+		** The System configuration Table
+		** The Servers Table
+		** The Realms Table
+		**************************************
+		*/
 		
 		
 		
