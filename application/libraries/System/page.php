@@ -1,6 +1,6 @@
 <?php
 /*FlameCMS CHECK*/
-defined('FlameCMS') OR exit('No script Cuddies');
+defined('FlameCMS') OR die('No script Cuddies');
 Class Page{
 	function load($page)
 	{
@@ -23,7 +23,7 @@ Class Page{
 		$t=implode('/',$v);
 		if(defined('page_redirect') && ($page!=page_redirect) && ($t!=page_redirect))
 		{
-			
+			 redirect(page_redirect);
 		}
 	}
 }
