@@ -25,6 +25,7 @@ class System {
 	{
 		self::$sys_instance=$instance;
 	}
+	public static $configuration;
 	function __construct(){
 		if(!isset(self::$sys_instance))
 		{
@@ -38,6 +39,7 @@ class System {
 					'email',
 					'encryption',
 					'upload',
+					'System/initiator'=>'init',
 				)
 			);
 			$CI->load->helper(
