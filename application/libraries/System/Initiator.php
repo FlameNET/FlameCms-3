@@ -20,5 +20,9 @@ Class Initiator{
 	private function wind_configuration($configs){
 		$confs=System::$configuration;
 		
+		
+		
+		
+		System::$configuration=$confs;
 	}
 }
