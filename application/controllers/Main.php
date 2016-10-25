@@ -16,8 +16,7 @@ class Main extends CI_Controller {
 		$sys=&get_inst();
 	}
 	function page(){
-		$args=func_get_args();
-		print_r('loaded');
-		print_r($args);
+		$args=implode('/',func_get_args());
+		get_inst()->page->load($args);
 	}
 }
