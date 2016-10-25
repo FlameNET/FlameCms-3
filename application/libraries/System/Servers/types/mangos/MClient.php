@@ -1,7 +1,7 @@
 <?php
 defined('FlameCMS') or die('No Script Cuddies');
 class MClient{
-	function command($command='',$server_id,$config=array()){
+	private function command($command='',$server_id,$config=array()){
 		$sys=&get_inst();
 		if(empty($config)){			
 			$soapUsername = '';
