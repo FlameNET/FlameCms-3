@@ -1,3 +1,9 @@
+#ATTENTION
+## ON THE INIT OF THE Repo
+### IT WONT WORK YET
+#### THANKS FOR YOUR PACIENCE
+##### ADOMASALCORE3
+
 # ![logo](http://i.imgur.com/Tignp9F.png) FlameNET
 
 [![Coverity Scan Build Status](https://scan.coverity.com/projects/3899/badge.svg)](https://scan.coverity.com/projects/3899/) 
