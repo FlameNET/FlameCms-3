@@ -3,6 +3,6 @@
 defined('FlameCMS') OR exit('No script Cuddies');
 Class Trigger{
 	function install(){
-		define('redirect','admin/install');
+		define('page_redirect','admin/install');
 	}
 }
