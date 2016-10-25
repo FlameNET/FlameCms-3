@@ -2,7 +2,7 @@
 /*FlameCMS CHECK*/
 defined('FlameCMS') OR exit('No script Cuddies');
 Class Initiator{
-	function checkup(){
+	function init(){
 		/*If config File Does not exists, Trigger Installer*/
 		if(!file_exists(BASEPATH.'/config.php')){
 			get_inst()->trigger->install();
