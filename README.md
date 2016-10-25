@@ -27,14 +27,13 @@ website at [FlameCMS](http://flamenet.github.io/FlameCMS).
 + Platform: Linux, Windows (Have not tested on MAC)
 + Processor with SSE2 support
 + PHP = 5.5.1
-+ MySQL = 5.1.0
++ MySQL = 5.5.0
 + Apache HTTP server
 
 
 ## Install
 
-You can install the CMS super easily as you access it. Remember to delete the "install" folder after installing everything successfully.
-###if you are having trouble with the admin account, try the install_test (3.3.5a only) it creates the admin account too.
+You can install the CMS super easily as you access it.
 
 ## * IIS 8.0:
 http://www.iis.net/downloads/microsoft/url-rewrite
