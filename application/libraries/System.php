@@ -39,7 +39,7 @@ class System {
 					'email',
 					'encryption',
 					'upload',
-					'System/initiator'=>'init',
+					'System/initiator'=>'pre',
 				)
 			);
 			$CI->load->helper(
@@ -48,7 +48,7 @@ class System {
 					'url'
 				)
 			);
-			$this->set_inst($CI);
+			set_inst($CI);
 			$sys=&get_inst();
 			$sys->pre->init();
 		}

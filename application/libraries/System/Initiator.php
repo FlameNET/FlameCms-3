@@ -3,6 +3,14 @@
 defined('FlameCMS') OR exit('No script Cuddies');
 Class Initiator{
 	function init(){
+		//$this->system();
+		$this->setting_up();
+	}
+	function setting_up(){
+		$sys=&get_inst();
+		$sys->load->library(array(
+			'System/Trigger'=>'trigger'
+		));
 		/*If config File Does not exists, Trigger Installer*/
 		if(!file_exists(BASEPATH.'/config.php')){
 			get_inst()->trigger->install();
