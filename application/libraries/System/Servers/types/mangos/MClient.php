@@ -1,6 +1,9 @@
 <?php
 defined('FlameCMS') or die('No Script Cuddies');
 class MClient{
+	function server_info($server_id){
+		return $this->command('',$server_id);
+	}
 	private function command($command='',$server_id,$config=array()){
 		$sys=&get_inst();
 		if(empty($config)){			
