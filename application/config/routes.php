@@ -52,7 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /*This will tell to every request to be redirected to main class*/
 $route['(.+)'] = 'main/page/$1';
 /*This tells that the default controller is: main*/
-$route['default_controller'] = 'main';
+$route['default_controller'] = 'main/page';
 /*ignore this line, not used*/
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
