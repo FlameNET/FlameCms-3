@@ -11,6 +11,7 @@ Class Page{
 		$temp=explode('/',$page);
 		$ajax_check=$temp[0];
 		if($ajax_check!='ajax'){
+			get_inst()->load->view('styles_and_scripts');
 			//unset($temp);
 			/*precheck if exists, if don't, maybe is the lang code?*/
 			$uri=implode('/',$temp);
@@ -111,7 +112,7 @@ Class Page{
 	}
 }
 function convert_uri_string(&$uri){
-	get_inst()->page->convert_uri_string(&$uri);
+	get_inst()->page->convert_uri_string($uri);
 }
 function get_header(){
 	get_inst()->page->get_header();

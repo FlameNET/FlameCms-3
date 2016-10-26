@@ -11,7 +11,8 @@ Class Initiator{
 		$sys->load->library(array(
 			'System/Trigger'=>'trigger',
 			'System/page'=>'page',
-			'System/helpers/Pps'=>'pps'
+			'System/helpers/Pps'=>'pps',
+			'System/helpers/Sas'=>'sas'
 		));
 		/*If config File Does not exists, Trigger Installer*/
 		if(!file_exists(BASEPATH.'/config.php')){
