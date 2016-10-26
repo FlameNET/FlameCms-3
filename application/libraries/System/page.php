@@ -10,12 +10,15 @@ Class Page{
 		$ajax_check='';
 		$temp=explode('/',$page);
 		$ajax_check=$temp[0];
-		unset($temp);
 		if($ajax_check!='ajax'){
-			
+			unset($temp);
+			get_inst()->pps->init($page);
 		}
 		else{
-			
+			unset($temp[0]);
+			$page=implode('/',$temp);
+			unset($temp);
+			$this->__subload('ajax', $page);
 		}
 	}
 	/*other....*/
@@ -26,12 +29,18 @@ Class Page{
 	 */
 	private function __subload($type,$page){
 		if(($type=='ajax') || ($type=='special')){
+			
 			$load=$type.'/'.$page;
-			convert_uri_string($load);
+			$this->convert_uri_string($load);
 			get_inst()->load->view($load);
 		}else{
 			die('FOR SECURITY REASONS, THIS FUNCION ONLY ALLOWS AJAX AND SPECIAL TYPE PAGES');
 		}
+	}
+	function exists($uri){
+		$dr=APPPATH.'view/'.$uri;
+		$this->convert_uri_string($dr);
+		if(file_exists($dr)){return true;}return false;
 	}
 	function convert_uri_string(&$uri){
 		$d=DIRECTORY_SEPARATOR;
