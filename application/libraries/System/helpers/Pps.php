@@ -33,7 +33,35 @@ defined('FlameCMS') OR die('No script Cuddies');
  *  
  * Problems of this implementation: (3.*)
  * 	Depend from browser to Browser
+ * ********************************
+ * any of this are applied on install
  */
 Class Pps{
- 	
+ 	function init($page){
+ 		/*if install*/
+ 		$sys=&get_inst();
+ 		if(defined('page_redirect') && (page_redirect=='admin/install'))
+ 		{
+ 			$this->impl3($page);
+			return;
+ 		}
+		elseif(isset($sys->configuration->platform->pps) && ($sys->configuration->platform->pps=='1')){$this->impl1($page);return;}
+		elseif(sset($sys->configuration->platform->pps) && ($sys->configuration->platform->pps=='2')){$this->impl2($page);return;}
+		else{$this->impl3($page);return;}
+ 	}
+	function impl3($page){
+		$uri='pages/'.$page;
+		get_inst()->page->convert_uri_string($uri);
+		get_inst()->load->view($uri);
+	}
+	function impl2($page){
+		$uri='pages/'.$page;
+		get_inst()->page->convert_uri_string($uri);
+		$html = $this->load->view($uri, '', true);
+	}
+	function impl1($page){
+		$uri='pages/'.$page;
+		get_inst()->page->convert_uri_string($uri);
+		$html = $this->load->view($uri, '', true);
+	}
 }
