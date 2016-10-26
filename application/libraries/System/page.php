@@ -26,15 +26,17 @@ Class Page{
 		 * if isn't 404
 		 * */
 		$v=explode('/', $page);
+		$type=$v[0];
 		unset($v[0]);
 		$t=implode('/',$v);
 		if(defined('page_redirect'))
 		{
-			if($page!='404')
-				if($t!='404')
-					if($page!=page_redirect)
-						if($t!=page_redirect)
-			 				redirect(page_redirect);
+			if($type!='ajax')
+				if($page!='404')
+					if($t!='404')
+						if($page!=page_redirect)
+							if($t!=page_redirect)
+			 					redirect(page_redirect);
 		}
 	}
 }
