@@ -7,16 +7,53 @@ Class Page{
 		$this->args_to_string($page);
 		/*if triggered an redirect, cancel everything and go to page*/
 		$this->validade_page_redirect($page);
+		$ajax_check='';
+		$temp=explode('/',$page);
+		$ajax_check=$temp[0];
+		unset($temp);
+		if($ajax_check!='ajax'){
+			
+		}
+		else{
+			
+		}
 	}
-	
 	/*other....*/
-	function args_to_string(&$page)
+	/*
+	 * ****************************
+	 * Function __subload : This is only for ajax, header, footer, 404 and other special pages
+	 * **************************** 
+	 */
+	private function __subload($type,$page){
+		if(($type=='ajax') || ($type=='special')){
+			$load=$type.'/'.$page;
+			convert_uri_string($load);
+			get_inst()->load->view($load);
+		}else{
+			die('FOR SECURITY REASONS, THIS FUNCION ONLY ALLOWS AJAX AND SPECIAL TYPE PAGES');
+		}
+	}
+	function convert_uri_string(&$uri){
+		$d=DIRECTORY_SEPARATOR;
+		if($d=='/'){
+			/*Linux*/
+			if(strpos($uri,'\\')){
+				$uri=str_replace('\\', $d, $uri);
+			}
+		}else{
+			/*Windows*/
+			if(strpos($uri,'/')){
+				$uri=str_replace('/', $d, $uri);
+			}
+		}
+	}
+	private function args_to_string(&$page)
 	{
 		if(is_array($page)){
 			$page=implode('/',$page);
 		}
 	}
-	function validade_page_redirect($page){
+	private function validade_page_redirect($page){
 		/*
 		 * ********************************
 		 * Cases of test:
