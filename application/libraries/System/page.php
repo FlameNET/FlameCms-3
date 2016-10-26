@@ -35,6 +35,12 @@ Class Page{
 		else
 			return $this->__subload('special','the_404',true);
 	}
+	function get_header(){
+		return $this->__subload('special','header');
+	}
+	function gt_footer(){
+		return $this->__subload('special','footer');
+	}
 	/*other....*/
 	/*
 	 * ****************************
@@ -103,4 +109,13 @@ Class Page{
 			 					redirect(page_redirect);
 		}
 	}
+}
+function convert_uri_string(&$uri){
+	get_inst()->page->convert_uri_string(&$uri);
+}
+function get_header(){
+	get_inst()->page->get_header();
+}
+function get_footer(){
+	get_inst()->page->get_header();
 }
