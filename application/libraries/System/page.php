@@ -21,18 +21,28 @@ Class Page{
 			$this->__subload('ajax', $page);
 		}
 	}
+	function load_404($special_call=false){
+		if($special_call==false)
+			$this->__subload('special','the_404');
+		else
+			return $this->__subload('special','the_404',true);
+	}
 	/*other....*/
 	/*
 	 * ****************************
 	 * Function __subload : This is only for ajax, header, footer, 404 and other special pages
 	 * **************************** 
 	 */
-	private function __subload($type,$page){
+	private function __subload($type,$page,$special_call=false){
 		if(($type=='ajax') || ($type=='special')){
 			
 			$load=$type.'/'.$page;
 			$this->convert_uri_string($load);
-			get_inst()->load->view($load);
+			if($special_call==false)
+				get_inst()->load->view($load);
+			else{
+				return get_inst()->load->view($load, '', true);
+			}
 		}else{
 			die('FOR SECURITY REASONS, THIS FUNCION ONLY ALLOWS AJAX AND SPECIAL TYPE PAGES');
 		}
