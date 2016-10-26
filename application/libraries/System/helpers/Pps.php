@@ -49,19 +49,40 @@ Class Pps{
 		elseif(sset($sys->configuration->platform->pps) && ($sys->configuration->platform->pps=='2')){$this->impl2($page);return;}
 		else{$this->impl3($page);return;}
  	}
+	/*Implementation 3: OK*/
 	function impl3($page){
 		$uri='pages/'.$page;
 		get_inst()->page->convert_uri_string($uri);
-		get_inst()->load->view($uri);
+		if(get_inst()->page->exists($uri)){
+			get_inst()->load->view($uri);
+			
+			return true;
+		}
+		get_inst()->page->load_404();
+		return false;
 	}
 	function impl2($page){
 		$uri='pages/'.$page;
 		get_inst()->page->convert_uri_string($uri);
-		$html = $this->load->view($uri, '', true);
+		if(get_inst()->page->exists($uri)){
+			$html = get_inst()->load->view($uri, '', true);
+			
+		}
+		$html = get_inst()->page->load_404(true);
+		/* ********************************
+		 * To Be continued....
+		 * ********************************/
 	}
 	function impl1($page){
 		$uri='pages/'.$page;
 		get_inst()->page->convert_uri_string($uri);
-		$html = $this->load->view($uri, '', true);
+		if(get_inst()->page->exists($uri)){
+			$html = get_inst()->load->view($uri, '', true);
+			
+		}
+		$html = get_inst()->page->load_404(true);
+		/* ********************************
+		 * To Be continued....
+		 * ********************************/
 	}
 }
