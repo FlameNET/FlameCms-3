@@ -11,8 +11,16 @@ Class Page{
 		$temp=explode('/',$page);
 		$ajax_check=$temp[0];
 		if($ajax_check!='ajax'){
+			//unset($temp);
+			/*precheck if exists, if don't, maybe is the lang code?*/
+			$uri=implode('/',$temp);
 			unset($temp);
-			get_inst()->pps->init($page);
+			/* Check to see if it is an language::: disabled because Languages Class don't exist yet*/
+			if(($this->exists($uri)==true)/* && ($sys->lang->is_language_code($ajax_check)==true)*/)
+				get_inst()->pps->init($uri);
+			else
+				/*here, it does not matter if is exists or not... the pps will automaticly see it*/
+				get_inst()->pps->init($page);
 		}
 		else{
 			unset($temp[0]);
@@ -48,9 +56,9 @@ Class Page{
 		}
 	}
 	function exists($uri){
-		$dr=APPPATH.'view/'.$uri;
+		$dr=APPPATH.'views/'.$uri;
 		$this->convert_uri_string($dr);
-		if(file_exists($dr)){return true;}return false;
+		if(file_exists($dr.'.php')){return true;}return false;
 	}
 	function convert_uri_string(&$uri){
 		$d=DIRECTORY_SEPARATOR;
