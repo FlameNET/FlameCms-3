@@ -54,5 +54,5 @@ $route['(.+)'] = 'main/page/$1';
 /*This tells that the default controller is: main*/
 $route['default_controller'] = 'main/page';
 /*ignore this line, not used*/
-$route['404_override'] = '';
+$route['404_override'] = 'main/page/404';
 $route['translate_uri_dashes'] = FALSE;
