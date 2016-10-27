@@ -46,7 +46,7 @@ Class Pps{
 			return;
  		}
 		elseif(isset($sys->configuration->platform->pps) && ($sys->configuration->platform->pps=='1')){$this->impl1($page);return;}
-		elseif(sset($sys->configuration->platform->pps) && ($sys->configuration->platform->pps=='2')){$this->impl2($page);return;}
+		elseif(isset($sys->configuration->platform->pps) && ($sys->configuration->platform->pps=='2')){$this->impl2($page);return;}
 		else{$this->impl3($page);return;}
  	}
 	/*Implementation 3: OK*/
@@ -65,8 +65,12 @@ Class Pps{
 		$uri='pages/'.$page;
 		get_inst()->page->convert_uri_string($uri);
 		if(get_inst()->page->exists($uri)){
+			define('preload',true,false);
 			$html = get_inst()->load->view($uri, '', true);
+			define('preload',false,false);
 			
+			/*end*/
+			return;
 		}
 		$html = get_inst()->page->load_404(true);
 		/* ********************************
@@ -77,12 +81,27 @@ Class Pps{
 		$uri='pages/'.$page;
 		get_inst()->page->convert_uri_string($uri);
 		if(get_inst()->page->exists($uri)){
+			define('preload',true,false);
 			$html = get_inst()->load->view($uri, '', true);
+			define('preload',false,false);
 			
+			/*end*/
+			return;
 		}
 		$html = get_inst()->page->load_404(true);
+		
 		/* ********************************
 		 * To Be continued....
 		 * ********************************/
+	}
+	static $scripts;
+	function pre_load_scripts($scripts){
+		$scr=self::$scripts;
+		if(!is_array($src)){$src=array();}
+		foreach($scripts as $script){
+			if(!isset($src[$script['slug']])){
+				$src[$script['slug']]=$script;
+			}
+		}
 	}
 }
