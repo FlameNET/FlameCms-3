@@ -7,3 +7,6 @@ die('Ups.... you shouldn\'t be here...');
 get_header();
 ?>
 hi? this should be the installer
+<?php 
+get_footer();
+?>

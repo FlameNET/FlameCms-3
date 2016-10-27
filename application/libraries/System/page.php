@@ -39,7 +39,7 @@ Class Page{
 	function get_header(){
 		return $this->__subload('special','header');
 	}
-	function gt_footer(){
+	function get_footer(){
 		return $this->__subload('special','footer');
 	}
 	/*other....*/
@@ -118,5 +118,5 @@ function get_header(){
 	get_inst()->page->get_header();
 }
 function get_footer(){
-	get_inst()->page->get_header();
+	get_inst()->page->get_footer();
 }

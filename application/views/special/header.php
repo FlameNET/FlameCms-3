@@ -3,6 +3,11 @@
 <html>
 	<head>
 		<title>/*the site title*/</title>
-		<?=styles();?>
+		<?php head();?>
 	</head>
 	<body>
+		<header>
+			
+		</header>
+		<content>
+			
