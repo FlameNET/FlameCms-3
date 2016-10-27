@@ -119,7 +119,7 @@ class Sas{
 				if(!empty($requires))
 				{
 					foreach($requires as $requriement){
-						if($loaded[$requriement]){
+						if(isset($loaded[$requriement]) && ($loaded[$requriement]==true)){
 							continue;
 						}
 						elseif(!isset($scripts[$requriement])){
@@ -143,7 +143,7 @@ class Sas{
 		self::$loaded=$loaded;
 		if(count($temp)>0)
 		{
-			$this->scripts_helper($temp);
+			$this->scripts_head_helper($temp);
 		}
 		$scripts_header_return=self::$scripts_header_return;
 		return $scripts_header_return;
@@ -169,7 +169,7 @@ class Sas{
 				if(!empty($requires))
 				{
 					foreach($requires as $requriement){
-						if($loaded[$requriement]){
+						if(isset($loaded[$requriement]) && ($loaded[$requriement]==true)){
 							continue;
 						}
 						elseif(!isset($scripts[$requriement])){
@@ -179,12 +179,12 @@ class Sas{
 						break;
 					}
 				}
-				if(!$temp[$script['slug']])
+				if(!isset($temp[$script['slug']]))
 				{
 					ob_start();
 					?>
 					<script type="text/javascript" src="<?=(($script['ext']==false)?base_url('assets/'):'').$script['path'].'?v='.$script['version'];?>"></script><?php
-					$scripts_footer_return=ob_get_clean();
+					$scripts_footer_return.=ob_get_clean();
 				}
 				$loaded[$script['slug']]=true;
 			}
@@ -193,7 +193,7 @@ class Sas{
 		self::$scripts_footer_return=$scripts_footer_return;
 		if(count($temp)>0)
 		{
-			$this->scripts_helper($temp);
+			$this->scripts_footer_helper($temp);
 		}
 		$scripts_footer_return=self::$scripts_footer_return;
 		return $scripts_footer_return;
