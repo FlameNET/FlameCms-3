@@ -129,12 +129,12 @@ class Sas{
 						break;
 					}
 				}
-				if(!$temp[$script['slug']])
+				if(!isset($temp[$script['slug']]))
 				{
 					ob_start();
 					?>
-					<script type="text/javascript" src="<?=(($scripts['ext']==false)?base_url('assets/'):'').$scripts['path'].'?v='.$scripts['version'];?>"></script><?php
-					$scripts_head_return=ob_get_clean();
+					<script type="text/javascript" src="<?=(($script['ext']==false)?base_url('assets/'):'').$script['path'].'?v='.$script['version'];?>"></script><?php
+					$scripts_header_return.=ob_get_clean();
 				}
 				$loaded[$script['slug']]=true;
 			}
@@ -183,7 +183,7 @@ class Sas{
 				{
 					ob_start();
 					?>
-					<script type="text/javascript" src="<?=(($scripts['ext']==false)?base_url('assets/'):'').$scripts['path'].'?v='.$scripts['version'];?>"></script><?php
+					<script type="text/javascript" src="<?=(($script['ext']==false)?base_url('assets/'):'').$script['path'].'?v='.$script['version'];?>"></script><?php
 					$scripts_footer_return=ob_get_clean();
 				}
 				$loaded[$script['slug']]=true;

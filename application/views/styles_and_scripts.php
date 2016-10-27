@@ -5,3 +5,4 @@ defined('FlameCMS') OR die('No script Cuddies');
 add_style('foundation/min','css/foundation/foundation.min.css',false,'0.0.1');
 add_style('foundation/icons','css/foundation/foundation-icons.css',false,'0.0.1');
 add_style('font-awesome/min','css/font-awesome/font-awesome.min.css',false,'0.0.1');
+add_script('jquery','js/jquery/jquery-2.2.2.js',false,true,array(),'0.0.1');
