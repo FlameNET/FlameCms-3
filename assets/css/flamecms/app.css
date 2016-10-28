@@ -12,3 +12,2451 @@ footer.flame_cms_installer>.flamecms_preset.row>.title>p {
     line-height: 12px;
     margin-bottom: 0px !important;
 }
+.hidden_presets{
+	display:none !important;
+}
+/*flame loader*/
+
+
+.container {
+    position: relative;
+    perspective: 300;
+    display: block;
+    position: relative;
+    width: 50px;
+    height: 100%;
+    left: 50%;
+}
+
+@-webkit-keyframes ascending {
+  100% {
+    top: 20vh;
+  }
+}
+@-moz-keyframes ascending {
+  100% {
+    top: 20vh;
+  }
+}
+@keyframes ascending {
+  100% {
+    top: 20vh;
+  }
+}
+@-webkit-keyframes fading {
+  0% {
+    opactity: 1.0;
+  }
+  70% {
+    width: 20px;
+  }
+  100% {
+    opacity: 0;
+    width: 0;
+  }
+}
+@-moz-keyframes fading {
+  0% {
+    opactity: 1.0;
+  }
+  70% {
+    width: 20px;
+  }
+  100% {
+    opacity: 0;
+    width: 0;
+  }
+}
+@keyframes fading {
+  0% {
+    opactity: 1.0;
+  }
+  70% {
+    width: 20px;
+  }
+  100% {
+    opacity: 0;
+    width: 0;
+  }
+}
+@-webkit-keyframes glowing {
+  50% {
+    box-shadow: #ff2020 0 0 30px;
+  }
+}
+@-moz-keyframes glowing {
+  50% {
+    box-shadow: #ff202f 0 0 30px;
+  }
+}
+@keyframes glowing {
+  50% {
+    box-shadow: #ff2020 0 0 30px;
+  }
+}
+.particle {
+  z-index: 2;
+  left: 0% !important;
+  top: 70% !important;
+}
+.particle.light {
+  background-color: #ff2021;
+  width: 20px;
+  height: 20px;
+  display: block;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 70vh;
+  box-shadow: #ff2020 0 0 20px;
+  -webkit-animation-name: fading, ascending, glowing;
+  -moz-animation-name: fading, ascending, glowing;
+  animation-name: fading, ascending, glowing;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-duration: 1.5s;
+  -moz-animation-duration: 1.5s;
+  animation-duration: 1.5s;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+}
+.particle.lighter {
+  background-color: #ff8686;
+  width: 20px;
+  height: 20px;
+  display: block;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 70vh;
+  box-shadow: #ff8686 0 0 20px;
+  -webkit-animation-name: fading, ascending, glowing;
+  -moz-animation-name: fading, ascending, glowing;
+  animation-name: fading, ascending, glowing;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-duration: 1.5s;
+  -moz-animation-duration: 1.5s;
+  animation-duration: 1.5s;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  z-index: 3;
+}
+.particle.dark {
+  background-color: #ec0000;
+  width: 20px;
+  height: 20px;
+  display: block;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 70vh;
+  box-shadow: #ec0000 0 0 20px;
+  -webkit-animation-name: fading, ascending, glowing;
+  -moz-animation-name: fading, ascending, glowing;
+  animation-name: fading, ascending, glowing;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-duration: 1.5s;
+  -moz-animation-duration: 1.5s;
+  animation-duration: 1.5s;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+}
+.particle:nth-child(1) {
+  -webkit-animation-delay: 0.1s;
+  -moz-animation-delay: 0.1s;
+  animation-delay: 0.1s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-right-1";
+  -moz-animation-name: fading, ascending, glowing, "moving-right-1";
+  animation-name: fading, ascending, glowing, "moving-right-1";
+}
+@-webkit-keyframes moving-right-1 {
+  55% {
+    left: 50.1%;
+  }
+  100% {
+    left: -48.1%;
+  }
+}
+@-moz-keyframes moving-right-1 {
+  55% {
+    left: 50.1%;
+  }
+  100% {
+    left: -48.1%;
+  }
+}
+@keyframes moving-right-1 {
+  55% {
+    left: 50.1%;
+  }
+  100% {
+    left: -48.1%;
+  }
+}
+.particle:nth-child(2) {
+  -webkit-animation-delay: 0.2s;
+  -moz-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+}
+.particle:nth-child(3) {
+  -webkit-animation-delay: 0.3s;
+  -moz-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-left-3";
+  -moz-animation-name: fading, ascending, glowing, "moving-left-3";
+  animation-name: fading, ascending, glowing, "moving-left-3";
+}
+@-webkit-keyframes moving-left-3 {
+  55% {
+    left: -49.7%;
+  }
+  100% {
+    left: 51.7%;
+  }
+}
+@-moz-keyframes moving-left-3 {
+  55% {
+    left: -49.7%;
+  }
+  100% {
+    left: 51.7%;
+  }
+}
+@keyframes moving-left-3 {
+  55% {
+    left: -49.7%;
+  }
+  100% {
+    left: 51.7%;
+  }
+}
+.particle:nth-child(4) {
+  -webkit-animation-delay: 0.4s;
+  -moz-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+.particle:nth-child(5) {
+  -webkit-animation-delay: 0.5s;
+  -moz-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-right-5";
+  -moz-animation-name: fading, ascending, glowing, "moving-right-5";
+  animation-name: fading, ascending, glowing, "moving-right-5";
+}
+@-webkit-keyframes moving-right-5 {
+  55% {
+    left: 50.5%;
+  }
+  100% {
+    left: -48.5%;
+  }
+}
+@-moz-keyframes moving-right-5 {
+  55% {
+    left: 50.5%;
+  }
+  100% {
+    left: -48.5%;
+  }
+}
+@keyframes moving-right-5 {
+  55% {
+    left: 50.5%;
+  }
+  100% {
+    left: -48.5%;
+  }
+}
+.particle:nth-child(6) {
+  -webkit-animation-delay: 0.6s;
+  -moz-animation-delay: 0.6s;
+  animation-delay: 0.6s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-left-6";
+  -moz-animation-name: fading, ascending, glowing, "moving-left-6";
+  animation-name: fading, ascending, glowing, "moving-left-6";
+}
+@-webkit-keyframes moving-left-6 {
+  55% {
+    left: -49.4%;
+  }
+  100% {
+    left: 51.4%;
+  }
+}
+@-moz-keyframes moving-left-6 {
+  55% {
+    left: -49.4%;
+  }
+  100% {
+    left: 51.4%;
+  }
+}
+@keyframes moving-left-6 {
+  55% {
+    left: -49.4%;
+  }
+  100% {
+    left: 51.4%;
+  }
+}
+.particle:nth-child(7) {
+  -webkit-animation-delay: 0.7s;
+  -moz-animation-delay: 0.7s;
+  animation-delay: 0.7s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-right-7";
+  -moz-animation-name: fading, ascending, glowing, "moving-right-7";
+  animation-name: fading, ascending, glowing, "moving-right-7";
+}
+@-webkit-keyframes moving-right-7 {
+  55% {
+    left: 50.7%;
+  }
+  100% {
+    left: -48.7%;
+  }
+}
+@-moz-keyframes moving-right-7 {
+  55% {
+    left: 50.7%;
+  }
+  100% {
+    left: -48.7%;
+  }
+}
+@keyframes moving-right-7 {
+  55% {
+    left: 50.7%;
+  }
+  100% {
+    left: -48.7%;
+  }
+}
+.particle:nth-child(8) {
+  -webkit-animation-delay: 0.8s;
+  -moz-animation-delay: 0.8s;
+  animation-delay: 0.8s;
+}
+.particle:nth-child(9) {
+  -webkit-animation-delay: 0.9s;
+  -moz-animation-delay: 0.9s;
+  animation-delay: 0.9s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-left-9";
+  -moz-animation-name: fading, ascending, glowing, "moving-left-9";
+  animation-name: fading, ascending, glowing, "moving-left-9";
+}
+@-webkit-keyframes moving-left-9 {
+  55% {
+    left: -49.1%;
+  }
+  100% {
+    left: 51.1%;
+  }
+}
+@-moz-keyframes moving-left-9 {
+  55% {
+    left: -49.1%;
+  }
+  100% {
+    left: 51.1%;
+  }
+}
+@keyframes moving-left-9 {
+  55% {
+    left: -49.1%;
+  }
+  100% {
+    left: 51.1%;
+  }
+}
+.particle:nth-child(10) {
+  -webkit-animation-delay: 1s;
+  -moz-animation-delay: 1s;
+  animation-delay: 1s;
+}
+.particle:nth-child(11) {
+  -webkit-animation-delay: 1.1s;
+  -moz-animation-delay: 1.1s;
+  animation-delay: 1.1s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-right-11";
+  -moz-animation-name: fading, ascending, glowing, "moving-right-11";
+  animation-name: fading, ascending, glowing, "moving-right-11";
+}
+@-webkit-keyframes moving-right-11 {
+  55% {
+    left: 51.1%;
+  }
+  100% {
+    left: -49.1%;
+  }
+}
+@-moz-keyframes moving-right-11 {
+  55% {
+    left: 51.1%;
+  }
+  100% {
+    left: -49.1%;
+  }
+}
+@keyframes moving-right-11 {
+  55% {
+    left: 51.1%;
+  }
+  100% {
+    left: -49.1%;
+  }
+}
+.particle:nth-child(12) {
+  -webkit-animation-delay: 1.2s;
+  -moz-animation-delay: 1.2s;
+  animation-delay: 1.2s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-left-12";
+  -moz-animation-name: fading, ascending, glowing, "moving-left-12";
+  animation-name: fading, ascending, glowing, "moving-left-12";
+}
+@-webkit-keyframes moving-left-12 {
+  55% {
+    left: -48.8%;
+  }
+  100% {
+    left: 50.8%;
+  }
+}
+@-moz-keyframes moving-left-12 {
+  55% {
+    left: -48.8%;
+  }
+  100% {
+    left: 50.8%;
+  }
+}
+@keyframes moving-left-12 {
+  55% {
+    left: -48.8%;
+  }
+  100% {
+    left: 50.8%;
+  }
+}
+.particle:nth-child(13) {
+  -webkit-animation-delay: 1.3s;
+  -moz-animation-delay: 1.3s;
+  animation-delay: 1.3s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-right-13";
+  -moz-animation-name: fading, ascending, glowing, "moving-right-13";
+  animation-name: fading, ascending, glowing, "moving-right-13";
+}
+@-webkit-keyframes moving-right-13 {
+  55% {
+    left: 51.3%;
+  }
+  100% {
+    left: -49.3%;
+  }
+}
+@-moz-keyframes moving-right-13 {
+  55% {
+    left: 51.3%;
+  }
+  100% {
+    left: -49.3%;
+  }
+}
+@keyframes moving-right-13 {
+  55% {
+    left: 51.3%;
+  }
+  100% {
+    left: -49.3%;
+  }
+}
+.particle:nth-child(14) {
+  -webkit-animation-delay: 1.4s;
+  -moz-animation-delay: 1.4s;
+  animation-delay: 1.4s;
+}
+.particle:nth-child(15) {
+  -webkit-animation-delay: 1.5s;
+  -moz-animation-delay: 1.5s;
+  animation-delay: 1.5s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-left-15";
+  -moz-animation-name: fading, ascending, glowing, "moving-left-15";
+  animation-name: fading, ascending, glowing, "moving-left-15";
+}
+@-webkit-keyframes moving-left-15 {
+  55% {
+    left: -48.5%;
+  }
+  100% {
+    left: 50.5%;
+  }
+}
+@-moz-keyframes moving-left-15 {
+  55% {
+    left: -48.5%;
+  }
+  100% {
+    left: 50.5%;
+  }
+}
+@keyframes moving-left-15 {
+  55% {
+    left: -48.5%;
+  }
+  100% {
+    left: 50.5%;
+  }
+}
+.particle:nth-child(16) {
+  -webkit-animation-delay: 1.6s;
+  -moz-animation-delay: 1.6s;
+  animation-delay: 1.6s;
+}
+.particle:nth-child(17) {
+  -webkit-animation-delay: 1.7s;
+  -moz-animation-delay: 1.7s;
+  animation-delay: 1.7s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-right-17";
+  -moz-animation-name: fading, ascending, glowing, "moving-right-17";
+  animation-name: fading, ascending, glowing, "moving-right-17";
+}
+@-webkit-keyframes moving-right-17 {
+  55% {
+    left: 51.7%;
+  }
+  100% {
+    left: -49.7%;
+  }
+}
+@-moz-keyframes moving-right-17 {
+  55% {
+    left: 51.7%;
+  }
+  100% {
+    left: -49.7%;
+  }
+}
+@keyframes moving-right-17 {
+  55% {
+    left: 51.7%;
+  }
+  100% {
+    left: -49.7%;
+  }
+}
+.particle:nth-child(18) {
+  -webkit-animation-delay: 1.8s;
+  -moz-animation-delay: 1.8s;
+  animation-delay: 1.8s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-left-18";
+  -moz-animation-name: fading, ascending, glowing, "moving-left-18";
+  animation-name: fading, ascending, glowing, "moving-left-18";
+}
+@-webkit-keyframes moving-left-18 {
+  55% {
+    left: -48.2%;
+  }
+  100% {
+    left: 50.2%;
+  }
+}
+@-moz-keyframes moving-left-18 {
+  55% {
+    left: -48.2%;
+  }
+  100% {
+    left: 50.2%;
+  }
+}
+@keyframes moving-left-18 {
+  55% {
+    left: -48.2%;
+  }
+  100% {
+    left: 50.2%;
+  }
+}
+.particle:nth-child(19) {
+  -webkit-animation-delay: 1.9s;
+  -moz-animation-delay: 1.9s;
+  animation-delay: 1.9s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-right-19";
+  -moz-animation-name: fading, ascending, glowing, "moving-right-19";
+  animation-name: fading, ascending, glowing, "moving-right-19";
+}
+@-webkit-keyframes moving-right-19 {
+  55% {
+    left: 51.9%;
+  }
+  100% {
+    left: -49.9%;
+  }
+}
+@-moz-keyframes moving-right-19 {
+  55% {
+    left: 51.9%;
+  }
+  100% {
+    left: -49.9%;
+  }
+}
+@keyframes moving-right-19 {
+  55% {
+    left: 51.9%;
+  }
+  100% {
+    left: -49.9%;
+  }
+}
+.particle:nth-child(20) {
+  -webkit-animation-delay: 2s;
+  -moz-animation-delay: 2s;
+  animation-delay: 2s;
+}
+.particle:nth-child(21) {
+  -webkit-animation-delay: 2.1s;
+  -moz-animation-delay: 2.1s;
+  animation-delay: 2.1s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-left-21";
+  -moz-animation-name: fading, ascending, glowing, "moving-left-21";
+  animation-name: fading, ascending, glowing, "moving-left-21";
+}
+@-webkit-keyframes moving-left-21 {
+  55% {
+    left: -47.9%;
+  }
+  100% {
+    left: 49.9%;
+  }
+}
+@-moz-keyframes moving-left-21 {
+  55% {
+    left: -47.9%;
+  }
+  100% {
+    left: 49.9%;
+  }
+}
+@keyframes moving-left-21 {
+  55% {
+    left: -47.9%;
+  }
+  100% {
+    left: 49.9%;
+  }
+}
+.particle:nth-child(22) {
+  -webkit-animation-delay: 2.2s;
+  -moz-animation-delay: 2.2s;
+  animation-delay: 2.2s;
+}
+.particle:nth-child(23) {
+  -webkit-animation-delay: 2.3s;
+  -moz-animation-delay: 2.3s;
+  animation-delay: 2.3s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-right-23";
+  -moz-animation-name: fading, ascending, glowing, "moving-right-23";
+  animation-name: fading, ascending, glowing, "moving-right-23";
+}
+@-webkit-keyframes moving-right-23 {
+  55% {
+    left: 52.3%;
+  }
+  100% {
+    left: -50.3%;
+  }
+}
+@-moz-keyframes moving-right-23 {
+  55% {
+    left: 52.3%;
+  }
+  100% {
+    left: -50.3%;
+  }
+}
+@keyframes moving-right-23 {
+  55% {
+    left: 52.3%;
+  }
+  100% {
+    left: -50.3%;
+  }
+}
+.particle:nth-child(24) {
+  -webkit-animation-delay: 2.4s;
+  -moz-animation-delay: 2.4s;
+  animation-delay: 2.4s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-left-24";
+  -moz-animation-name: fading, ascending, glowing, "moving-left-24";
+  animation-name: fading, ascending, glowing, "moving-left-24";
+}
+@-webkit-keyframes moving-left-24 {
+  55% {
+    left: -47.6%;
+  }
+  100% {
+    left: 49.6%;
+  }
+}
+@-moz-keyframes moving-left-24 {
+  55% {
+    left: -47.6%;
+  }
+  100% {
+    left: 49.6%;
+  }
+}
+@keyframes moving-left-24 {
+  55% {
+    left: -47.6%;
+  }
+  100% {
+    left: 49.6%;
+  }
+}
+.particle:nth-child(25) {
+  -webkit-animation-delay: 2.5s;
+  -moz-animation-delay: 2.5s;
+  animation-delay: 2.5s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-right-25";
+  -moz-animation-name: fading, ascending, glowing, "moving-right-25";
+  animation-name: fading, ascending, glowing, "moving-right-25";
+}
+@-webkit-keyframes moving-right-25 {
+  55% {
+    left: 52.5%;
+  }
+  100% {
+    left: -50.5%;
+  }
+}
+@-moz-keyframes moving-right-25 {
+  55% {
+    left: 52.5%;
+  }
+  100% {
+    left: -50.5%;
+  }
+}
+@keyframes moving-right-25 {
+  55% {
+    left: 52.5%;
+  }
+  100% {
+    left: -50.5%;
+  }
+}
+.particle:nth-child(26) {
+  -webkit-animation-delay: 2.6s;
+  -moz-animation-delay: 2.6s;
+  animation-delay: 2.6s;
+}
+.particle:nth-child(27) {
+  -webkit-animation-delay: 2.7s;
+  -moz-animation-delay: 2.7s;
+  animation-delay: 2.7s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-left-27";
+  -moz-animation-name: fading, ascending, glowing, "moving-left-27";
+  animation-name: fading, ascending, glowing, "moving-left-27";
+}
+@-webkit-keyframes moving-left-27 {
+  55% {
+    left: -47.3%;
+  }
+  100% {
+    left: 49.3%;
+  }
+}
+@-moz-keyframes moving-left-27 {
+  55% {
+    left: -47.3%;
+  }
+  100% {
+    left: 49.3%;
+  }
+}
+@keyframes moving-left-27 {
+  55% {
+    left: -47.3%;
+  }
+  100% {
+    left: 49.3%;
+  }
+}
+.particle:nth-child(28) {
+  -webkit-animation-delay: 2.8s;
+  -moz-animation-delay: 2.8s;
+  animation-delay: 2.8s;
+}
+.particle:nth-child(29) {
+  -webkit-animation-delay: 2.9s;
+  -moz-animation-delay: 2.9s;
+  animation-delay: 2.9s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-right-29";
+  -moz-animation-name: fading, ascending, glowing, "moving-right-29";
+  animation-name: fading, ascending, glowing, "moving-right-29";
+}
+@-webkit-keyframes moving-right-29 {
+  55% {
+    left: 52.9%;
+  }
+  100% {
+    left: -50.9%;
+  }
+}
+@-moz-keyframes moving-right-29 {
+  55% {
+    left: 52.9%;
+  }
+  100% {
+    left: -50.9%;
+  }
+}
+@keyframes moving-right-29 {
+  55% {
+    left: 52.9%;
+  }
+  100% {
+    left: -50.9%;
+  }
+}
+.particle:nth-child(30) {
+  -webkit-animation-delay: 3s;
+  -moz-animation-delay: 3s;
+  animation-delay: 3s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-left-30";
+  -moz-animation-name: fading, ascending, glowing, "moving-left-30";
+  animation-name: fading, ascending, glowing, "moving-left-30";
+}
+@-webkit-keyframes moving-left-30 {
+  55% {
+    left: -47%;
+  }
+  100% {
+    left: 49%;
+  }
+}
+@-moz-keyframes moving-left-30 {
+  55% {
+    left: -47%;
+  }
+  100% {
+    left: 49%;
+  }
+}
+@keyframes moving-left-30 {
+  55% {
+    left: -47%;
+  }
+  100% {
+    left: 49%;
+  }
+}
+.particle:nth-child(31) {
+  -webkit-animation-delay: 3.1s;
+  -moz-animation-delay: 3.1s;
+  animation-delay: 3.1s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-right-31";
+  -moz-animation-name: fading, ascending, glowing, "moving-right-31";
+  animation-name: fading, ascending, glowing, "moving-right-31";
+}
+@-webkit-keyframes moving-right-31 {
+  55% {
+    left: 53.1%;
+  }
+  100% {
+    left: -51.1%;
+  }
+}
+@-moz-keyframes moving-right-31 {
+  55% {
+    left: 53.1%;
+  }
+  100% {
+    left: -51.1%;
+  }
+}
+@keyframes moving-right-31 {
+  55% {
+    left: 53.1%;
+  }
+  100% {
+    left: -51.1%;
+  }
+}
+.particle:nth-child(32) {
+  -webkit-animation-delay: 3.2s;
+  -moz-animation-delay: 3.2s;
+  animation-delay: 3.2s;
+}
+.particle:nth-child(33) {
+  -webkit-animation-delay: 3.3s;
+  -moz-animation-delay: 3.3s;
+  animation-delay: 3.3s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-left-33";
+  -moz-animation-name: fading, ascending, glowing, "moving-left-33";
+  animation-name: fading, ascending, glowing, "moving-left-33";
+}
+@-webkit-keyframes moving-left-33 {
+  55% {
+    left: -46.7%;
+  }
+  100% {
+    left: 48.7%;
+  }
+}
+@-moz-keyframes moving-left-33 {
+  55% {
+    left: -46.7%;
+  }
+  100% {
+    left: 48.7%;
+  }
+}
+@keyframes moving-left-33 {
+  55% {
+    left: -46.7%;
+  }
+  100% {
+    left: 48.7%;
+  }
+}
+.particle:nth-child(34) {
+  -webkit-animation-delay: 3.4s;
+  -moz-animation-delay: 3.4s;
+  animation-delay: 3.4s;
+}
+.particle:nth-child(35) {
+  -webkit-animation-delay: 3.5s;
+  -moz-animation-delay: 3.5s;
+  animation-delay: 3.5s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-right-35";
+  -moz-animation-name: fading, ascending, glowing, "moving-right-35";
+  animation-name: fading, ascending, glowing, "moving-right-35";
+}
+@-webkit-keyframes moving-right-35 {
+  55% {
+    left: 53.5%;
+  }
+  100% {
+    left: -51.5%;
+  }
+}
+@-moz-keyframes moving-right-35 {
+  55% {
+    left: 53.5%;
+  }
+  100% {
+    left: -51.5%;
+  }
+}
+@keyframes moving-right-35 {
+  55% {
+    left: 53.5%;
+  }
+  100% {
+    left: -51.5%;
+  }
+}
+.particle:nth-child(36) {
+  -webkit-animation-delay: 3.6s;
+  -moz-animation-delay: 3.6s;
+  animation-delay: 3.6s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-left-36";
+  -moz-animation-name: fading, ascending, glowing, "moving-left-36";
+  animation-name: fading, ascending, glowing, "moving-left-36";
+}
+@-webkit-keyframes moving-left-36 {
+  55% {
+    left: -46.4%;
+  }
+  100% {
+    left: 48.4%;
+  }
+}
+@-moz-keyframes moving-left-36 {
+  55% {
+    left: -46.4%;
+  }
+  100% {
+    left: 48.4%;
+  }
+}
+@keyframes moving-left-36 {
+  55% {
+    left: -46.4%;
+  }
+  100% {
+    left: 48.4%;
+  }
+}
+.particle:nth-child(37) {
+  -webkit-animation-delay: 3.7s;
+  -moz-animation-delay: 3.7s;
+  animation-delay: 3.7s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-right-37";
+  -moz-animation-name: fading, ascending, glowing, "moving-right-37";
+  animation-name: fading, ascending, glowing, "moving-right-37";
+}
+@-webkit-keyframes moving-right-37 {
+  55% {
+    left: 53.7%;
+  }
+  100% {
+    left: -51.7%;
+  }
+}
+@-moz-keyframes moving-right-37 {
+  55% {
+    left: 53.7%;
+  }
+  100% {
+    left: -51.7%;
+  }
+}
+@keyframes moving-right-37 {
+  55% {
+    left: 53.7%;
+  }
+  100% {
+    left: -51.7%;
+  }
+}
+.particle:nth-child(38) {
+  -webkit-animation-delay: 3.8s;
+  -moz-animation-delay: 3.8s;
+  animation-delay: 3.8s;
+}
+.particle:nth-child(39) {
+  -webkit-animation-delay: 3.9s;
+  -moz-animation-delay: 3.9s;
+  animation-delay: 3.9s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-left-39";
+  -moz-animation-name: fading, ascending, glowing, "moving-left-39";
+  animation-name: fading, ascending, glowing, "moving-left-39";
+}
+@-webkit-keyframes moving-left-39 {
+  55% {
+    left: -46.1%;
+  }
+  100% {
+    left: 48.1%;
+  }
+}
+@-moz-keyframes moving-left-39 {
+  55% {
+    left: -46.1%;
+  }
+  100% {
+    left: 48.1%;
+  }
+}
+@keyframes moving-left-39 {
+  55% {
+    left: -46.1%;
+  }
+  100% {
+    left: 48.1%;
+  }
+}
+.particle:nth-child(40) {
+  -webkit-animation-delay: 4s;
+  -moz-animation-delay: 4s;
+  animation-delay: 4s;
+}
+.particle:nth-child(41) {
+  -webkit-animation-delay: 4.1s;
+  -moz-animation-delay: 4.1s;
+  animation-delay: 4.1s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-right-41";
+  -moz-animation-name: fading, ascending, glowing, "moving-right-41";
+  animation-name: fading, ascending, glowing, "moving-right-41";
+}
+@-webkit-keyframes moving-right-41 {
+  55% {
+    left: 54.1%;
+  }
+  100% {
+    left: -52.1%;
+  }
+}
+@-moz-keyframes moving-right-41 {
+  55% {
+    left: 54.1%;
+  }
+  100% {
+    left: -52.1%;
+  }
+}
+@keyframes moving-right-41 {
+  55% {
+    left: 54.1%;
+  }
+  100% {
+    left: -52.1%;
+  }
+}
+.particle:nth-child(42) {
+  -webkit-animation-delay: 4.2s;
+  -moz-animation-delay: 4.2s;
+  animation-delay: 4.2s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-left-42";
+  -moz-animation-name: fading, ascending, glowing, "moving-left-42";
+  animation-name: fading, ascending, glowing, "moving-left-42";
+}
+@-webkit-keyframes moving-left-42 {
+  55% {
+    left: -45.8%;
+  }
+  100% {
+    left: 47.8%;
+  }
+}
+@-moz-keyframes moving-left-42 {
+  55% {
+    left: -45.8%;
+  }
+  100% {
+    left: 47.8%;
+  }
+}
+@keyframes moving-left-42 {
+  55% {
+    left: -45.8%;
+  }
+  100% {
+    left: 47.8%;
+  }
+}
+.particle:nth-child(43) {
+  -webkit-animation-delay: 4.3s;
+  -moz-animation-delay: 4.3s;
+  animation-delay: 4.3s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-right-43";
+  -moz-animation-name: fading, ascending, glowing, "moving-right-43";
+  animation-name: fading, ascending, glowing, "moving-right-43";
+}
+@-webkit-keyframes moving-right-43 {
+  55% {
+    left: 54.3%;
+  }
+  100% {
+    left: -52.3%;
+  }
+}
+@-moz-keyframes moving-right-43 {
+  55% {
+    left: 54.3%;
+  }
+  100% {
+    left: -52.3%;
+  }
+}
+@keyframes moving-right-43 {
+  55% {
+    left: 54.3%;
+  }
+  100% {
+    left: -52.3%;
+  }
+}
+.particle:nth-child(44) {
+  -webkit-animation-delay: 4.4s;
+  -moz-animation-delay: 4.4s;
+  animation-delay: 4.4s;
+}
+.particle:nth-child(45) {
+  -webkit-animation-delay: 4.5s;
+  -moz-animation-delay: 4.5s;
+  animation-delay: 4.5s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-left-45";
+  -moz-animation-name: fading, ascending, glowing, "moving-left-45";
+  animation-name: fading, ascending, glowing, "moving-left-45";
+}
+@-webkit-keyframes moving-left-45 {
+  55% {
+    left: -45.5%;
+  }
+  100% {
+    left: 47.5%;
+  }
+}
+@-moz-keyframes moving-left-45 {
+  55% {
+    left: -45.5%;
+  }
+  100% {
+    left: 47.5%;
+  }
+}
+@keyframes moving-left-45 {
+  55% {
+    left: -45.5%;
+  }
+  100% {
+    left: 47.5%;
+  }
+}
+.particle:nth-child(46) {
+  -webkit-animation-delay: 4.6s;
+  -moz-animation-delay: 4.6s;
+  animation-delay: 4.6s;
+}
+.particle:nth-child(47) {
+  -webkit-animation-delay: 4.7s;
+  -moz-animation-delay: 4.7s;
+  animation-delay: 4.7s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-right-47";
+  -moz-animation-name: fading, ascending, glowing, "moving-right-47";
+  animation-name: fading, ascending, glowing, "moving-right-47";
+}
+@-webkit-keyframes moving-right-47 {
+  55% {
+    left: 54.7%;
+  }
+  100% {
+    left: -52.7%;
+  }
+}
+@-moz-keyframes moving-right-47 {
+  55% {
+    left: 54.7%;
+  }
+  100% {
+    left: -52.7%;
+  }
+}
+@keyframes moving-right-47 {
+  55% {
+    left: 54.7%;
+  }
+  100% {
+    left: -52.7%;
+  }
+}
+.particle:nth-child(48) {
+  -webkit-animation-delay: 4.8s;
+  -moz-animation-delay: 4.8s;
+  animation-delay: 4.8s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-left-48";
+  -moz-animation-name: fading, ascending, glowing, "moving-left-48";
+  animation-name: fading, ascending, glowing, "moving-left-48";
+}
+@-webkit-keyframes moving-left-48 {
+  55% {
+    left: 45.2%;
+  }
+  100% {
+    left: 47.2%;
+  }
+}
+@-moz-keyframes moving-left-48 {
+  55% {
+    left: 45.2%;
+  }
+  100% {
+    left: 47.2%;
+  }
+}
+@keyframes moving-left-48 {
+  55% {
+    left: 45.2%;
+  }
+  100% {
+    left: 47.2%;
+  }
+}
+.particle:nth-child(49) {
+  -webkit-animation-delay: 4.9s;
+  -moz-animation-delay: 4.9s;
+  animation-delay: 4.9s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-right-49";
+  -moz-animation-name: fading, ascending, glowing, "moving-right-49";
+  animation-name: fading, ascending, glowing, "moving-right-49";
+}
+@-webkit-keyframes moving-right-49 {
+  55% {
+    left: 54.9%;
+  }
+  100% {
+    left: 52.9%;
+  }
+}
+@-moz-keyframes moving-right-49 {
+  55% {
+    left: 54.9%;
+  }
+  100% {
+    left: 52.9%;
+  }
+}
+@keyframes moving-right-49 {
+  55% {
+    left: 54.9%;
+  }
+  100% {
+    left: 52.9%;
+  }
+}
+.particle:nth-child(50) {
+  -webkit-animation-delay: 5s;
+  -moz-animation-delay: 5s;
+  animation-delay: 5s;
+}
+.particle:nth-child(51) {
+  -webkit-animation-delay: 5.1s;
+  -moz-animation-delay: 5.1s;
+  animation-delay: 5.1s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-left-51";
+  -moz-animation-name: fading, ascending, glowing, "moving-left-51";
+  animation-name: fading, ascending, glowing, "moving-left-51";
+}
+@-webkit-keyframes moving-left-51 {
+  55% {
+    left: 44.9%;
+  }
+  100% {
+    left: 46.9%;
+  }
+}
+@-moz-keyframes moving-left-51 {
+  55% {
+    left: 44.9%;
+  }
+  100% {
+    left: 46.9%;
+  }
+}
+@keyframes moving-left-51 {
+  55% {
+    left: 44.9%;
+  }
+  100% {
+    left: 46.9%;
+  }
+}
+.particle:nth-child(52) {
+  -webkit-animation-delay: 5.2s;
+  -moz-animation-delay: 5.2s;
+  animation-delay: 5.2s;
+}
+.particle:nth-child(53) {
+  -webkit-animation-delay: 5.3s;
+  -moz-animation-delay: 5.3s;
+  animation-delay: 5.3s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-right-53";
+  -moz-animation-name: fading, ascending, glowing, "moving-right-53";
+  animation-name: fading, ascending, glowing, "moving-right-53";
+}
+@-webkit-keyframes moving-right-53 {
+  55% {
+    left: 55.3%;
+  }
+  100% {
+    left: 53.3%;
+  }
+}
+@-moz-keyframes moving-right-53 {
+  55% {
+    left: 55.3%;
+  }
+  100% {
+    left: 53.3%;
+  }
+}
+@keyframes moving-right-53 {
+  55% {
+    left: 55.3%;
+  }
+  100% {
+    left: 53.3%;
+  }
+}
+.particle:nth-child(54) {
+  -webkit-animation-delay: 5.4s;
+  -moz-animation-delay: 5.4s;
+  animation-delay: 5.4s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-left-54";
+  -moz-animation-name: fading, ascending, glowing, "moving-left-54";
+  animation-name: fading, ascending, glowing, "moving-left-54";
+}
+@-webkit-keyframes moving-left-54 {
+  55% {
+    left: 44.6%;
+  }
+  100% {
+    left: 46.6%;
+  }
+}
+@-moz-keyframes moving-left-54 {
+  55% {
+    left: 44.6%;
+  }
+  100% {
+    left: 46.6%;
+  }
+}
+@keyframes moving-left-54 {
+  55% {
+    left: 44.6%;
+  }
+  100% {
+    left: 46.6%;
+  }
+}
+.particle:nth-child(55) {
+  -webkit-animation-delay: 5.5s;
+  -moz-animation-delay: 5.5s;
+  animation-delay: 5.5s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-right-55";
+  -moz-animation-name: fading, ascending, glowing, "moving-right-55";
+  animation-name: fading, ascending, glowing, "moving-right-55";
+}
+@-webkit-keyframes moving-right-55 {
+  55% {
+    left: 55.5%;
+  }
+  100% {
+    left: 53.5%;
+  }
+}
+@-moz-keyframes moving-right-55 {
+  55% {
+    left: 55.5%;
+  }
+  100% {
+    left: 53.5%;
+  }
+}
+@keyframes moving-right-55 {
+  55% {
+    left: 55.5%;
+  }
+  100% {
+    left: 53.5%;
+  }
+}
+.particle:nth-child(56) {
+  -webkit-animation-delay: 5.6s;
+  -moz-animation-delay: 5.6s;
+  animation-delay: 5.6s;
+}
+.particle:nth-child(57) {
+  -webkit-animation-delay: 5.7s;
+  -moz-animation-delay: 5.7s;
+  animation-delay: 5.7s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-left-57";
+  -moz-animation-name: fading, ascending, glowing, "moving-left-57";
+  animation-name: fading, ascending, glowing, "moving-left-57";
+}
+@-webkit-keyframes moving-left-57 {
+  55% {
+    left: 44.3%;
+  }
+  100% {
+    left: 46.3%;
+  }
+}
+@-moz-keyframes moving-left-57 {
+  55% {
+    left: 44.3%;
+  }
+  100% {
+    left: 46.3%;
+  }
+}
+@keyframes moving-left-57 {
+  55% {
+    left: 44.3%;
+  }
+  100% {
+    left: 46.3%;
+  }
+}
+.particle:nth-child(58) {
+  -webkit-animation-delay: 5.8s;
+  -moz-animation-delay: 5.8s;
+  animation-delay: 5.8s;
+}
+.particle:nth-child(59) {
+  -webkit-animation-delay: 5.9s;
+  -moz-animation-delay: 5.9s;
+  animation-delay: 5.9s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-right-59";
+  -moz-animation-name: fading, ascending, glowing, "moving-right-59";
+  animation-name: fading, ascending, glowing, "moving-right-59";
+}
+@-webkit-keyframes moving-right-59 {
+  55% {
+    left: 55.9%;
+  }
+  100% {
+    left: 53.9%;
+  }
+}
+@-moz-keyframes moving-right-59 {
+  55% {
+    left: 55.9%;
+  }
+  100% {
+    left: 53.9%;
+  }
+}
+@keyframes moving-right-59 {
+  55% {
+    left: 55.9%;
+  }
+  100% {
+    left: 53.9%;
+  }
+}
+.particle:nth-child(60) {
+  -webkit-animation-delay: 6s;
+  -moz-animation-delay: 6s;
+  animation-delay: 6s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-left-60";
+  -moz-animation-name: fading, ascending, glowing, "moving-left-60";
+  animation-name: fading, ascending, glowing, "moving-left-60";
+}
+@-webkit-keyframes moving-left-60 {
+  55% {
+    left: 44%;
+  }
+  100% {
+    left: 46%;
+  }
+}
+@-moz-keyframes moving-left-60 {
+  55% {
+    left: 44%;
+  }
+  100% {
+    left: 46%;
+  }
+}
+@keyframes moving-left-60 {
+  55% {
+    left: 44%;
+  }
+  100% {
+    left: 46%;
+  }
+}
+.particle:nth-child(61) {
+  -webkit-animation-delay: 6.1s;
+  -moz-animation-delay: 6.1s;
+  animation-delay: 6.1s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-right-61";
+  -moz-animation-name: fading, ascending, glowing, "moving-right-61";
+  animation-name: fading, ascending, glowing, "moving-right-61";
+}
+@-webkit-keyframes moving-right-61 {
+  55% {
+    left: 56.1%;
+  }
+  100% {
+    left: 54.1%;
+  }
+}
+@-moz-keyframes moving-right-61 {
+  55% {
+    left: 56.1%;
+  }
+  100% {
+    left: 54.1%;
+  }
+}
+@keyframes moving-right-61 {
+  55% {
+    left: 56.1%;
+  }
+  100% {
+    left: 54.1%;
+  }
+}
+.particle:nth-child(62) {
+  -webkit-animation-delay: 6.2s;
+  -moz-animation-delay: 6.2s;
+  animation-delay: 6.2s;
+}
+.particle:nth-child(63) {
+  -webkit-animation-delay: 6.3s;
+  -moz-animation-delay: 6.3s;
+  animation-delay: 6.3s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-left-63";
+  -moz-animation-name: fading, ascending, glowing, "moving-left-63";
+  animation-name: fading, ascending, glowing, "moving-left-63";
+}
+@-webkit-keyframes moving-left-63 {
+  55% {
+    left: 43.7%;
+  }
+  100% {
+    left: 45.7%;
+  }
+}
+@-moz-keyframes moving-left-63 {
+  55% {
+    left: 43.7%;
+  }
+  100% {
+    left: 45.7%;
+  }
+}
+@keyframes moving-left-63 {
+  55% {
+    left: 43.7%;
+  }
+  100% {
+    left: 45.7%;
+  }
+}
+.particle:nth-child(64) {
+  -webkit-animation-delay: 6.4s;
+  -moz-animation-delay: 6.4s;
+  animation-delay: 6.4s;
+}
+.particle:nth-child(65) {
+  -webkit-animation-delay: 6.5s;
+  -moz-animation-delay: 6.5s;
+  animation-delay: 6.5s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-right-65";
+  -moz-animation-name: fading, ascending, glowing, "moving-right-65";
+  animation-name: fading, ascending, glowing, "moving-right-65";
+}
+@-webkit-keyframes moving-right-65 {
+  55% {
+    left: 56.5%;
+  }
+  100% {
+    left: 54.5%;
+  }
+}
+@-moz-keyframes moving-right-65 {
+  55% {
+    left: 56.5%;
+  }
+  100% {
+    left: 54.5%;
+  }
+}
+@keyframes moving-right-65 {
+  55% {
+    left: 56.5%;
+  }
+  100% {
+    left: 54.5%;
+  }
+}
+.particle:nth-child(66) {
+  -webkit-animation-delay: 6.6s;
+  -moz-animation-delay: 6.6s;
+  animation-delay: 6.6s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-left-66";
+  -moz-animation-name: fading, ascending, glowing, "moving-left-66";
+  animation-name: fading, ascending, glowing, "moving-left-66";
+}
+@-webkit-keyframes moving-left-66 {
+  55% {
+    left: 43.4%;
+  }
+  100% {
+    left: 45.4%;
+  }
+}
+@-moz-keyframes moving-left-66 {
+  55% {
+    left: 43.4%;
+  }
+  100% {
+    left: 45.4%;
+  }
+}
+@keyframes moving-left-66 {
+  55% {
+    left: 43.4%;
+  }
+  100% {
+    left: 45.4%;
+  }
+}
+.particle:nth-child(67) {
+  -webkit-animation-delay: 6.7s;
+  -moz-animation-delay: 6.7s;
+  animation-delay: 6.7s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-right-67";
+  -moz-animation-name: fading, ascending, glowing, "moving-right-67";
+  animation-name: fading, ascending, glowing, "moving-right-67";
+}
+@-webkit-keyframes moving-right-67 {
+  55% {
+    left: 56.7%;
+  }
+  100% {
+    left: 54.7%;
+  }
+}
+@-moz-keyframes moving-right-67 {
+  55% {
+    left: 56.7%;
+  }
+  100% {
+    left: 54.7%;
+  }
+}
+@keyframes moving-right-67 {
+  55% {
+    left: 56.7%;
+  }
+  100% {
+    left: 54.7%;
+  }
+}
+.particle:nth-child(68) {
+  -webkit-animation-delay: 6.8s;
+  -moz-animation-delay: 6.8s;
+  animation-delay: 6.8s;
+}
+.particle:nth-child(69) {
+  -webkit-animation-delay: 6.9s;
+  -moz-animation-delay: 6.9s;
+  animation-delay: 6.9s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-left-69";
+  -moz-animation-name: fading, ascending, glowing, "moving-left-69";
+  animation-name: fading, ascending, glowing, "moving-left-69";
+}
+@-webkit-keyframes moving-left-69 {
+  55% {
+    left: 43.1%;
+  }
+  100% {
+    left: 45.1%;
+  }
+}
+@-moz-keyframes moving-left-69 {
+  55% {
+    left: 43.1%;
+  }
+  100% {
+    left: 45.1%;
+  }
+}
+@keyframes moving-left-69 {
+  55% {
+    left: 43.1%;
+  }
+  100% {
+    left: 45.1%;
+  }
+}
+.particle:nth-child(70) {
+  -webkit-animation-delay: 7s;
+  -moz-animation-delay: 7s;
+  animation-delay: 7s;
+}
+.particle:nth-child(71) {
+  -webkit-animation-delay: 7.1s;
+  -moz-animation-delay: 7.1s;
+  animation-delay: 7.1s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-right-71";
+  -moz-animation-name: fading, ascending, glowing, "moving-right-71";
+  animation-name: fading, ascending, glowing, "moving-right-71";
+}
+@-webkit-keyframes moving-right-71 {
+  55% {
+    left: 57.1%;
+  }
+  100% {
+    left: 55.1%;
+  }
+}
+@-moz-keyframes moving-right-71 {
+  55% {
+    left: 57.1%;
+  }
+  100% {
+    left: 55.1%;
+  }
+}
+@keyframes moving-right-71 {
+  55% {
+    left: 57.1%;
+  }
+  100% {
+    left: 55.1%;
+  }
+}
+.particle:nth-child(72) {
+  -webkit-animation-delay: 7.2s;
+  -moz-animation-delay: 7.2s;
+  animation-delay: 7.2s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-left-72";
+  -moz-animation-name: fading, ascending, glowing, "moving-left-72";
+  animation-name: fading, ascending, glowing, "moving-left-72";
+}
+@-webkit-keyframes moving-left-72 {
+  55% {
+    left: 42.8%;
+  }
+  100% {
+    left: 44.8%;
+  }
+}
+@-moz-keyframes moving-left-72 {
+  55% {
+    left: 42.8%;
+  }
+  100% {
+    left: 44.8%;
+  }
+}
+@keyframes moving-left-72 {
+  55% {
+    left: 42.8%;
+  }
+  100% {
+    left: 44.8%;
+  }
+}
+.particle:nth-child(73) {
+  -webkit-animation-delay: 7.3s;
+  -moz-animation-delay: 7.3s;
+  animation-delay: 7.3s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-right-73";
+  -moz-animation-name: fading, ascending, glowing, "moving-right-73";
+  animation-name: fading, ascending, glowing, "moving-right-73";
+}
+@-webkit-keyframes moving-right-73 {
+  55% {
+    left: 57.3%;
+  }
+  100% {
+    left: 55.3%;
+  }
+}
+@-moz-keyframes moving-right-73 {
+  55% {
+    left: 57.3%;
+  }
+  100% {
+    left: 55.3%;
+  }
+}
+@keyframes moving-right-73 {
+  55% {
+    left: 57.3%;
+  }
+  100% {
+    left: 55.3%;
+  }
+}
+.particle:nth-child(74) {
+  -webkit-animation-delay: 7.4s;
+  -moz-animation-delay: 7.4s;
+  animation-delay: 7.4s;
+}
+.particle:nth-child(75) {
+  -webkit-animation-delay: 7.5s;
+  -moz-animation-delay: 7.5s;
+  animation-delay: 7.5s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-left-75";
+  -moz-animation-name: fading, ascending, glowing, "moving-left-75";
+  animation-name: fading, ascending, glowing, "moving-left-75";
+}
+@-webkit-keyframes moving-left-75 {
+  55% {
+    left: 42.5%;
+  }
+  100% {
+    left: 44.5%;
+  }
+}
+@-moz-keyframes moving-left-75 {
+  55% {
+    left: 42.5%;
+  }
+  100% {
+    left: 44.5%;
+  }
+}
+@keyframes moving-left-75 {
+  55% {
+    left: 42.5%;
+  }
+  100% {
+    left: 44.5%;
+  }
+}
+.particle:nth-child(76) {
+  -webkit-animation-delay: 7.6s;
+  -moz-animation-delay: 7.6s;
+  animation-delay: 7.6s;
+}
+.particle:nth-child(77) {
+  -webkit-animation-delay: 7.7s;
+  -moz-animation-delay: 7.7s;
+  animation-delay: 7.7s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-right-77";
+  -moz-animation-name: fading, ascending, glowing, "moving-right-77";
+  animation-name: fading, ascending, glowing, "moving-right-77";
+}
+@-webkit-keyframes moving-right-77 {
+  55% {
+    left: 57.7%;
+  }
+  100% {
+    left: 55.7%;
+  }
+}
+@-moz-keyframes moving-right-77 {
+  55% {
+    left: 57.7%;
+  }
+  100% {
+    left: 55.7%;
+  }
+}
+@keyframes moving-right-77 {
+  55% {
+    left: 57.7%;
+  }
+  100% {
+    left: 55.7%;
+  }
+}
+.particle:nth-child(78) {
+  -webkit-animation-delay: 7.8s;
+  -moz-animation-delay: 7.8s;
+  animation-delay: 7.8s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-left-78";
+  -moz-animation-name: fading, ascending, glowing, "moving-left-78";
+  animation-name: fading, ascending, glowing, "moving-left-78";
+}
+@-webkit-keyframes moving-left-78 {
+  55% {
+    left: 42.2%;
+  }
+  100% {
+    left: 44.2%;
+  }
+}
+@-moz-keyframes moving-left-78 {
+  55% {
+    left: 42.2%;
+  }
+  100% {
+    left: 44.2%;
+  }
+}
+@keyframes moving-left-78 {
+  55% {
+    left: 42.2%;
+  }
+  100% {
+    left: 44.2%;
+  }
+}
+.particle:nth-child(79) {
+  -webkit-animation-delay: 7.9s;
+  -moz-animation-delay: 7.9s;
+  animation-delay: 7.9s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-right-79";
+  -moz-animation-name: fading, ascending, glowing, "moving-right-79";
+  animation-name: fading, ascending, glowing, "moving-right-79";
+}
+@-webkit-keyframes moving-right-79 {
+  55% {
+    left: 57.9%;
+  }
+  100% {
+    left: 55.9%;
+  }
+}
+@-moz-keyframes moving-right-79 {
+  55% {
+    left: 57.9%;
+  }
+  100% {
+    left: 55.9%;
+  }
+}
+@keyframes moving-right-79 {
+  55% {
+    left: 57.9%;
+  }
+  100% {
+    left: 55.9%;
+  }
+}
+.particle:nth-child(80) {
+  -webkit-animation-delay: 8s;
+  -moz-animation-delay: 8s;
+  animation-delay: 8s;
+}
+.particle:nth-child(81) {
+  -webkit-animation-delay: 8.1s;
+  -moz-animation-delay: 8.1s;
+  animation-delay: 8.1s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-left-81";
+  -moz-animation-name: fading, ascending, glowing, "moving-left-81";
+  animation-name: fading, ascending, glowing, "moving-left-81";
+}
+@-webkit-keyframes moving-left-81 {
+  55% {
+    left: 41.9%;
+  }
+  100% {
+    left: 43.9%;
+  }
+}
+@-moz-keyframes moving-left-81 {
+  55% {
+    left: 41.9%;
+  }
+  100% {
+    left: 43.9%;
+  }
+}
+@keyframes moving-left-81 {
+  55% {
+    left: 41.9%;
+  }
+  100% {
+    left: 43.9%;
+  }
+}
+.particle:nth-child(82) {
+  -webkit-animation-delay: 8.2s;
+  -moz-animation-delay: 8.2s;
+  animation-delay: 8.2s;
+}
+.particle:nth-child(83) {
+  -webkit-animation-delay: 8.3s;
+  -moz-animation-delay: 8.3s;
+  animation-delay: 8.3s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-right-83";
+  -moz-animation-name: fading, ascending, glowing, "moving-right-83";
+  animation-name: fading, ascending, glowing, "moving-right-83";
+}
+@-webkit-keyframes moving-right-83 {
+  55% {
+    left: 58.3%;
+  }
+  100% {
+    left: 56.3%;
+  }
+}
+@-moz-keyframes moving-right-83 {
+  55% {
+    left: 58.3%;
+  }
+  100% {
+    left: 56.3%;
+  }
+}
+@keyframes moving-right-83 {
+  55% {
+    left: 58.3%;
+  }
+  100% {
+    left: 56.3%;
+  }
+}
+.particle:nth-child(84) {
+  -webkit-animation-delay: 8.4s;
+  -moz-animation-delay: 8.4s;
+  animation-delay: 8.4s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-left-84";
+  -moz-animation-name: fading, ascending, glowing, "moving-left-84";
+  animation-name: fading, ascending, glowing, "moving-left-84";
+}
+@-webkit-keyframes moving-left-84 {
+  55% {
+    left: 41.6%;
+  }
+  100% {
+    left: 43.6%;
+  }
+}
+@-moz-keyframes moving-left-84 {
+  55% {
+    left: 41.6%;
+  }
+  100% {
+    left: 43.6%;
+  }
+}
+@keyframes moving-left-84 {
+  55% {
+    left: 41.6%;
+  }
+  100% {
+    left: 43.6%;
+  }
+}
+.particle:nth-child(85) {
+  -webkit-animation-delay: 8.5s;
+  -moz-animation-delay: 8.5s;
+  animation-delay: 8.5s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-right-85";
+  -moz-animation-name: fading, ascending, glowing, "moving-right-85";
+  animation-name: fading, ascending, glowing, "moving-right-85";
+}
+@-webkit-keyframes moving-right-85 {
+  55% {
+    left: 58.5%;
+  }
+  100% {
+    left: 56.5%;
+  }
+}
+@-moz-keyframes moving-right-85 {
+  55% {
+    left: 58.5%;
+  }
+  100% {
+    left: 56.5%;
+  }
+}
+@keyframes moving-right-85 {
+  55% {
+    left: 58.5%;
+  }
+  100% {
+    left: 56.5%;
+  }
+}
+.particle:nth-child(86) {
+  -webkit-animation-delay: 8.6s;
+  -moz-animation-delay: 8.6s;
+  animation-delay: 8.6s;
+}
+.particle:nth-child(87) {
+  -webkit-animation-delay: 8.7s;
+  -moz-animation-delay: 8.7s;
+  animation-delay: 8.7s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-left-87";
+  -moz-animation-name: fading, ascending, glowing, "moving-left-87";
+  animation-name: fading, ascending, glowing, "moving-left-87";
+}
+@-webkit-keyframes moving-left-87 {
+  55% {
+    left: 41.3%;
+  }
+  100% {
+    left: 43.3%;
+  }
+}
+@-moz-keyframes moving-left-87 {
+  55% {
+    left: 41.3%;
+  }
+  100% {
+    left: 43.3%;
+  }
+}
+@keyframes moving-left-87 {
+  55% {
+    left: 41.3%;
+  }
+  100% {
+    left: 43.3%;
+  }
+}
+.particle:nth-child(88) {
+  -webkit-animation-delay: 8.8s;
+  -moz-animation-delay: 8.8s;
+  animation-delay: 8.8s;
+}
+.particle:nth-child(89) {
+  -webkit-animation-delay: 8.9s;
+  -moz-animation-delay: 8.9s;
+  animation-delay: 8.9s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-right-89";
+  -moz-animation-name: fading, ascending, glowing, "moving-right-89";
+  animation-name: fading, ascending, glowing, "moving-right-89";
+}
+@-webkit-keyframes moving-right-89 {
+  55% {
+    left: 58.9%;
+  }
+  100% {
+    left: 56.9%;
+  }
+}
+@-moz-keyframes moving-right-89 {
+  55% {
+    left: 58.9%;
+  }
+  100% {
+    left: 56.9%;
+  }
+}
+@keyframes moving-right-89 {
+  55% {
+    left: 58.9%;
+  }
+  100% {
+    left: 56.9%;
+  }
+}
+.particle:nth-child(90) {
+  -webkit-animation-delay: 9s;
+  -moz-animation-delay: 9s;
+  animation-delay: 9s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-left-90";
+  -moz-animation-name: fading, ascending, glowing, "moving-left-90";
+  animation-name: fading, ascending, glowing, "moving-left-90";
+}
+@-webkit-keyframes moving-left-90 {
+  55% {
+    left: 41%;
+  }
+  100% {
+    left: 43%;
+  }
+}
+@-moz-keyframes moving-left-90 {
+  55% {
+    left: 41%;
+  }
+  100% {
+    left: 43%;
+  }
+}
+@keyframes moving-left-90 {
+  55% {
+    left: 41%;
+  }
+  100% {
+    left: 43%;
+  }
+}
+.particle:nth-child(91) {
+  -webkit-animation-delay: 9.1s;
+  -moz-animation-delay: 9.1s;
+  animation-delay: 9.1s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-right-91";
+  -moz-animation-name: fading, ascending, glowing, "moving-right-91";
+  animation-name: fading, ascending, glowing, "moving-right-91";
+}
+@-webkit-keyframes moving-right-91 {
+  55% {
+    left: 59.1%;
+  }
+  100% {
+    left: 57.1%;
+  }
+}
+@-moz-keyframes moving-right-91 {
+  55% {
+    left: 59.1%;
+  }
+  100% {
+    left: 57.1%;
+  }
+}
+@keyframes moving-right-91 {
+  55% {
+    left: 59.1%;
+  }
+  100% {
+    left: 57.1%;
+  }
+}
+.particle:nth-child(92) {
+  -webkit-animation-delay: 9.2s;
+  -moz-animation-delay: 9.2s;
+  animation-delay: 9.2s;
+}
+.particle:nth-child(93) {
+  -webkit-animation-delay: 9.3s;
+  -moz-animation-delay: 9.3s;
+  animation-delay: 9.3s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-left-93";
+  -moz-animation-name: fading, ascending, glowing, "moving-left-93";
+  animation-name: fading, ascending, glowing, "moving-left-93";
+}
+@-webkit-keyframes moving-left-93 {
+  55% {
+    left: 40.7%;
+  }
+  100% {
+    left: 42.7%;
+  }
+}
+@-moz-keyframes moving-left-93 {
+  55% {
+    left: 40.7%;
+  }
+  100% {
+    left: 42.7%;
+  }
+}
+@keyframes moving-left-93 {
+  55% {
+    left: 40.7%;
+  }
+  100% {
+    left: 42.7%;
+  }
+}
+.particle:nth-child(94) {
+  -webkit-animation-delay: 9.4s;
+  -moz-animation-delay: 9.4s;
+  animation-delay: 9.4s;
+}
+.particle:nth-child(95) {
+  -webkit-animation-delay: 9.5s;
+  -moz-animation-delay: 9.5s;
+  animation-delay: 9.5s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-right-95";
+  -moz-animation-name: fading, ascending, glowing, "moving-right-95";
+  animation-name: fading, ascending, glowing, "moving-right-95";
+}
+@-webkit-keyframes moving-right-95 {
+  55% {
+    left: 59.5%;
+  }
+  100% {
+    left: 57.5%;
+  }
+}
+@-moz-keyframes moving-right-95 {
+  55% {
+    left: 59.5%;
+  }
+  100% {
+    left: 57.5%;
+  }
+}
+@keyframes moving-right-95 {
+  55% {
+    left: 59.5%;
+  }
+  100% {
+    left: 57.5%;
+  }
+}
+.particle:nth-child(96) {
+  -webkit-animation-delay: 9.6s;
+  -moz-animation-delay: 9.6s;
+  animation-delay: 9.6s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-left-96";
+  -moz-animation-name: fading, ascending, glowing, "moving-left-96";
+  animation-name: fading, ascending, glowing, "moving-left-96";
+}
+@-webkit-keyframes moving-left-96 {
+  55% {
+    left: 40.4%;
+  }
+  100% {
+    left: 42.4%;
+  }
+}
+@-moz-keyframes moving-left-96 {
+  55% {
+    left: 40.4%;
+  }
+  100% {
+    left: 42.4%;
+  }
+}
+@keyframes moving-left-96 {
+  55% {
+    left: 40.4%;
+  }
+  100% {
+    left: 42.4%;
+  }
+}
+.particle:nth-child(97) {
+  -webkit-animation-delay: 9.7s;
+  -moz-animation-delay: 9.7s;
+  animation-delay: 9.7s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-right-97";
+  -moz-animation-name: fading, ascending, glowing, "moving-right-97";
+  animation-name: fading, ascending, glowing, "moving-right-97";
+}
+@-webkit-keyframes moving-right-97 {
+  55% {
+    left: 59.7%;
+  }
+  100% {
+    left: 57.7%;
+  }
+}
+@-moz-keyframes moving-right-97 {
+  55% {
+    left: 59.7%;
+  }
+  100% {
+    left: 57.7%;
+  }
+}
+@keyframes moving-right-97 {
+  55% {
+    left: 59.7%;
+  }
+  100% {
+    left: 57.7%;
+  }
+}
+.particle:nth-child(98) {
+  -webkit-animation-delay: 9.8s;
+  -moz-animation-delay: 9.8s;
+  animation-delay: 9.8s;
+}
+.particle:nth-child(99) {
+  -webkit-animation-delay: 9.9s;
+  -moz-animation-delay: 9.9s;
+  animation-delay: 9.9s;
+  -webkit-animation-name: fading, ascending, glowing, "moving-left-99";
+  -moz-animation-name: fading, ascending, glowing, "moving-left-99";
+  animation-name: fading, ascending, glowing, "moving-left-99";
+}
+@-webkit-keyframes moving-left-99 {
+  55% {
+    left: 40.1%;
+  }
+  100% {
+    left: 42.1%;
+  }
+}
+@-moz-keyframes moving-left-99 {
+  55% {
+    left: 40.1%;
+  }
+  100% {
+    left: 42.1%;
+  }
+}
+@keyframes moving-left-99 {
+  55% {
+    left: 40.1%;
+  }
+  100% {
+    left: 42.1%;
+  }
+}
+#circle {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  left: 43%;
+  top: 67vh;
+  -webkit-filter: drop-shadow(#ff2020 0 0 10px);
+  filter: drop-shadow(#ff2020 0 0 10px);
+  -webkit-transform: rotateX(-70deg);
+  -moz-transform: rotateX(-70deg);
+  -ms-transform: rotateX(-70deg);
+  -o-transform: rotateX(-70deg);
+  transform: rotateX(-70deg);
+}

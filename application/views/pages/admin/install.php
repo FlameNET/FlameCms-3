@@ -6,7 +6,38 @@ if(!defined('page_redirect') || (defined('page_redirect') && (page_redirect!='ad
 die('Ups.... you shouldn\'t be here...');
 get_header();
 ?>
-hi? this should be the installer
+<div class="row">
+	<div class="small-12 columns">
+		<div class="loader_flame row" style="height:500px">
+			<div class="container">
+			   <span class="particle lighter"></span>
+			   <span class="particle light"></span>
+			   <span class="particle light"></span>
+			   <span class="particle lighter"></span>
+			   <span class="particle dark"></span>
+			   <span class="particle dark"></span>
+			   <span class="particle light"></span>
+			   <span class="particle dark"></span>
+			   <span class="particle light"></span>
+			   <span class="particle lighter"></span>
+			   <span class="particle lighter"></span>
+			   <span class="particle light"></span>
+			   <span class="particle dark"></span>
+			   <span class="particle dark"></span>
+			   <span class="particle dark"></span>
+			   <span class="particle dark"></span>
+			   <span class="particle lighter"></span>
+			   <span class="particle light"></span>
+			   <span class="particle light"></span>
+			   <span class="particle lighter"></span>
+			   <span class="particle lighter"></span>
+			   <span class="particle lighter"></span>
+			   <span class="particle light"></span>
+			   <span class="particle dark"></span>
+			</div>
+		</div>
+	</div>
+</div>
 <?php 
 get_footer();
 ?>

@@ -8,6 +8,36 @@ if(!defined('preload') || (preload==false)):
 		<?php head();?>
 	</head>
 	<body>
+		<div class="hidden_presets">
+			<div class="loader_flame">
+				<div class="container">
+				   <span class="particle lighter"></span>
+				   <span class="particle light"></span>
+				   <span class="particle light"></span>
+				   <span class="particle lighter"></span>
+				   <span class="particle dark"></span>
+				   <span class="particle dark"></span>
+				   <span class="particle light"></span>
+				   <span class="particle dark"></span>
+				   <span class="particle light"></span>
+				   <span class="particle lighter"></span>
+				   <span class="particle lighter"></span>
+				   <span class="particle light"></span>
+				   <span class="particle dark"></span>
+				   <span class="particle dark"></span>
+				   <span class="particle dark"></span>
+				   <span class="particle dark"></span>
+				   <span class="particle lighter"></span>
+				   <span class="particle light"></span>
+				   <span class="particle light"></span>
+				   <span class="particle lighter"></span>
+				   <span class="particle lighter"></span>
+				   <span class="particle lighter"></span>
+				   <span class="particle light"></span>
+				   <span class="particle dark"></span>
+				</div>
+			</div>
+		</div>
 		<header class="<?=(defined('page_redirect') && (page_redirect=='admin/install'))?'flame_cms_installer':'';?>">
 			<?php 
 				if(defined('page_redirect') && (page_redirect=='admin/install'))
