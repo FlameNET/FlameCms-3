@@ -1,0 +1,8 @@
+header.flame_cms_installer{
+	padding: 15px 0;
+    border: none;
+    background: #000;
+}
+header.flame_cms_installer>.flamecms_preset.row>.title, header>.flamecms_preset.row>.title>h5 {
+    color: #cdcdcd;
+}

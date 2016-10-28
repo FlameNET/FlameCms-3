@@ -42,7 +42,7 @@ class Sas{
 		ob_start();
 		if(!empty($styles)){
 			foreach($styles as $style){
-				?><link rel="text/css" href="<?=(($style['ext']==false)?base_url('assets/'):'').$style['path'].'?v='.$style['version'];?>">
+				?><link type="text/css" rel="stylesheet" href="<?=(($style['ext']==false)?base_url('assets/'):'').$style['path'].'?v='.$style['version'];?>">
 				<?php
 			}
 		}
