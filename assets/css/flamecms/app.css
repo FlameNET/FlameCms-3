@@ -1,8 +1,14 @@
-header.flame_cms_installer{
+header.flame_cms_installer,footer.flame_cms_installer{
 	padding: 15px 0;
     border: none;
     background: #000;
 }
-header.flame_cms_installer>.flamecms_preset.row>.title, header>.flamecms_preset.row>.title>h5 {
+header.flame_cms_installer>.flamecms_preset.row>.title, header.flame_cms_installer>.flamecms_preset.row>.title>h5,
+footer.flame_cms_installer>.flamecms_preset.row>.title, footer.flame_cms_installer>.flamecms_preset.row>.title>h5 {
     color: #cdcdcd;
+}
+footer.flame_cms_installer>.flamecms_preset.row>.title>p {
+    font-size: 10px;
+    line-height: 12px;
+    margin-bottom: 0px !important;
 }
