@@ -15,12 +15,12 @@ Class Initiator{
 			'System/helpers/Sas'=>'sas'
 		));
 		/*If config File Does not exists, Trigger Installer*/
-		if(!file_exists(BASEPATH.'/config.php')){
+		if(!file_exists(APPPATH.'/flamecms_config/config.php')){
 			get_inst()->trigger->install();
 		}
 		/*Ignore CodeIgnither Configs (the are still Called, but, not used)*/
 		else{
-			require_once(BASEPATH.'/config.php');
+			require_once(APPPATH.'/flamecms_config/config.php');
 			$this->configs();
 			/*END*/
 			set_inst($sys);
