@@ -23,9 +23,13 @@ jQuery(document).ready(function($){
 				return '';
 			}
 		};
-		$.keycript=function(u,successCallback){
-			errorCallback=function(){};
-			completeCallback=function(){};
+		$.keycript=function(u,successCallback,errorCallback,errorCallback){
+			if((typeof completeCallback)=='undefined'){
+				completeCallback=function(){};
+			}
+			if((typeof errorCallback)=='undefined'){
+				errorCallback=function(){};
+			}
 			var data={};
 			var form=$(this);
 			var method='';

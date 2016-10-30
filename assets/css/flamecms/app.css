@@ -24,9 +24,31 @@ div#hidden_containers.hidden {
 .centered>img, .centered {
     text-align: center;
 }
+
+/*titlesets*/
+.titleset{
+	padding-left: 6px;
+    font-size: 16px;
+    line-height: 16px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.titleset.primary{
+    border-left: 3px solid #1FA2D6;
+}
+.titleset.secundary{
+    border-left: 3px solid #ebebeb;
+}
+.titleset.success{
+    border-left: 3px solid #e1faea;
+}
+.titleset.alert{
+    border-left: 3px solid #fce6e2;
+}
+.titleset.warning{
+    border-left: 3px solid #fff3d9;
+}
 /*flame loader*/
-
-
 .container {
     position: relative;
     perspective: 300;

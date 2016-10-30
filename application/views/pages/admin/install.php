@@ -147,15 +147,28 @@ $sys=&get_inst();
 </div>
 <script>
 	$(document).ready(function(){
-		$('a[data-installer],input[data-installer],button[data-installer]').click(function() {
+		$('a[data-installer],input[data-installer],button[data-installer]').click(function(e) {
 			$ths=$(this);
+			console.log('click');
 			if($ths.is('input') || $ths.is('button')){
 				if(($ths.hasAttr('type')) && ($ths.attr('type')=='submit')){
-					
+					$ths.closest("form").keycript('<?=base_url('ajax/admin/install');?>',function(result){
+						
+					});
 				}
 			}
 			else{
 				/*It's a 'A' tag from the init...*/
+				var data={};
+				data['step']=$ths.attr('data-installer');
+				$.ajax({
+				    url:'<?=base_url('ajax/admin/install');?>',
+				    data:data,
+				    method:'POST',
+				    success:function(result){
+				    	$('#body_ajax_loader').html(result);
+				    },
+				});
 			}
 		});
 	});

@@ -36,26 +36,26 @@ class Install{
 		$var=$this->get_var_checks();
 		$check=$var['ch']['php'];
 		$current=$var['cu']['php'];
-		return Array('uv'=>$current,'cv'=>$check,'ok'=>$this->decode_versions($check, $current));
+		return Array('uv'=>$current,'cv'=>$check,'label'=>'PHP Version','ok'=>$this->decode_versions($check, $current));
 	}
 	function checkapa(){
 		$var=$this->get_var_checks();
 		$check=$var['ch']['apa'];
 		$current=$var['cu']['apa'];
-		return Array('uv'=>$current,'cv'=>$check,'ok'=>$this->decode_versions($check, $current));
+		return Array('uv'=>$current,'cv'=>$check,'label'=>'Apache Server Version','ok'=>$this->decode_versions($check, $current));
 	}
 	function checkmsv(){
 		$var=$this->get_var_checks();
 		$check=$var['ch']['msv'];
 		$current=$var['cu']['msv'];
-		return Array('uv'=>$current,'cv'=>$check,'ok'=>$this->decode_versions($check, $current));
+		return Array('uv'=>$current,'cv'=>$check,'label'=>'Mysqli Client API Version','ok'=>$this->decode_versions($check, $current));
 	}
 	function checkops(){
 		$var=$this->get_var_checks();
 		$check=$var['ch']['osv'];
 		$current=$var['cu']['osv'];
 		
-		return Array('uv'=>$current,'cv'=>$check,'ok'=>in_array(strtolower($current),$check));
+		return Array('uv'=>$current,'cv'=>$check,'label'=>'Operating System','ok'=>in_array(strtolower($current),$check));
 	}
 	function decode_versions($v1,$v2){
 		$vch=version_compare($v2,$v1);
