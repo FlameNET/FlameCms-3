@@ -15,6 +15,15 @@ footer.flame_cms_installer>.flamecms_preset.row>.title>p {
 .hidden_presets{
 	display:none !important;
 }
+body.flamecms_installer {
+    background: #252525;
+}
+div#hidden_containers.hidden {
+    display: none;
+}
+.centered>img, .centered {
+    text-align: center;
+}
 /*flame loader*/
 
 
