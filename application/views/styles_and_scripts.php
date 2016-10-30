@@ -11,6 +11,7 @@ add_style('flamecms/app','css/flamecms/app.css',false,'0.0.1');
  
  /*header*/
 add_script('jquery','js/jquery/jquery-2.2.2.js',false,true,array(),'0.0.1');
+add_script('jquery/migrate/min','js/jquery/jquery-migrate-1.4.1.min.js',false,true,array(),'0.0.1');
 add_script('loader/flame','js/flamecms/loader_flame.js',false,true,array(),'0.0.1');
 
 /*footer*/

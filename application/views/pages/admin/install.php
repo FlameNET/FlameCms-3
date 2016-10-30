@@ -147,7 +147,7 @@ $sys=&get_inst();
 </div>
 <script>
 	$(document).ready(function(){
-		$('a[data-installer],input[data-installer],button[data-installer]').click(function(e) {
+		$(document).on('click','a[data-installer],input[data-installer],button[data-installer]',function(e) {
 			$ths=$(this);
 			console.log('click');
 			if($ths.is('input') || $ths.is('button')){
