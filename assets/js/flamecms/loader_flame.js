@@ -27,6 +27,14 @@ jQuery(document).ready(function($){
 			errorCallback=function(){};
 			completeCallback=function(){};
 			var data={};
+			var form=$(this);
+			var method='';
+			if(form.hasAttr('method')){
+				method=form.attr('method');
+			}
+			else{
+				method='POST';
+			}
 			form.find('input,textarea,select').each(function(){
 				var t=$(this);
 				if((t.hasAttr('type')==true) && ((t.attr('type')=='checkbox') || (t.attr('type')=='password')))
@@ -50,7 +58,7 @@ jQuery(document).ready(function($){
 			$.ajax({
 			    url:u,
 			    data:data,
-			    method:'POST',
+			    method:method,
 			    success:successCallback,
 			    complete:completeCallback,
 			    error:errorCallback
