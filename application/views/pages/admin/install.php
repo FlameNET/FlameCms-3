@@ -145,6 +145,21 @@ $sys=&get_inst();
 		</div>
 	</div>
 </div>
+<script>
+	$(document).ready(function(){
+		$('a[data-installer],input[data-installer],button[data-installer]').click(function() {
+			$ths=$(this);
+			if($ths.is('input') || $ths.is('button')){
+				if(($ths.hasAttr('type')) && ($ths.attr('type')=='submit')){
+					
+				}
+			}
+			else{
+				/*It's a 'A' tag from the init...*/
+			}
+		});
+	});
+</script>
 <?php 
 get_footer();
 ?>
