@@ -20,6 +20,9 @@ if(defined('page_redirect') && (page_redirect=='admin/install'))
 		<meta name="msapplication-TileColor" content="#eee">
 		<meta name="msapplication-TileImage" content="<?=base_url('assets/imgs/flamecms/fav_normal.png');?>">
 		<?php head();?>
+		<!--[if lt IE 9]>
+			<script src="<?=base_url('assets/js/maxcdn/html5.js');?>"></script>
+		<![endif]-->
 	</head>
 	<body class="flamecms_installer">
 		<header class="flame_cms_installer">
@@ -45,6 +48,9 @@ else
 		<!-- Enable Mobile View -->
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<?php head();?>
+		<!--[if lt IE 9]>
+			<script src="<?=base_url('assets/js/maxcdn/html5.js');?>"></script>
+		<![endif]-->
 	</head>
 	<body>
 		<header class="">
