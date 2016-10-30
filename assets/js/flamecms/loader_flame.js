@@ -22,14 +22,7 @@ jQuery(document).ready(function($){
 			else{
 				return '';
 			}
-		};/*
-		$.fn.getSelector = function() {
-		        return this.data('selector');
 		};
-		$.live=function (method,callback){
-			$selector=$(this).getSelector();
-			$(document).on(method,$selector,callback);
-		};*/
 		$.keycript=function(u,successCallback,errorCallback,errorCallback){
 			if((typeof completeCallback)=='undefined'){
 				completeCallback=function(){};
