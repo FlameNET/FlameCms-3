@@ -16,6 +16,7 @@ Class Initiator{
 		));
 		/*If config File Does not exists, Trigger Installer*/
 		if(!file_exists(APPPATH.'/flamecms_config/config.php')){
+			$sys->load->library('System/admin/Install');
 			get_inst()->trigger->install();
 		}
 		/*Ignore CodeIgnither Configs (the are still Called, but, not used)*/
