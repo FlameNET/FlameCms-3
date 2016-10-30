@@ -21,7 +21,7 @@ if(defined('page_redirect') && (page_redirect=='admin/install'))
 		<meta name="msapplication-TileImage" content="<?=base_url('assets/imgs/flamecms/fav_normal.png');?>">
 		<?php head();?>
 	</head>
-	<body>
+	<body class="flamecms_installer">
 		<header class="flame_cms_installer">
 			<div class="flamecms_preset row">
 				<div class="logo small-12 medium-4 large-2 columns">
@@ -32,7 +32,7 @@ if(defined('page_redirect') && (page_redirect=='admin/install'))
 				</div>
 			</div>
 		</header>
-		<content>
+		<content class="flamecms_installer">
 <?php
 }
 else
