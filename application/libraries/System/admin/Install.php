@@ -32,6 +32,51 @@ class Install{
 			),'cu'=>$data);
 		return $check;
 	}
+	/*system requirements check*/
+	function check(){
+		$sys=&get_inst();
+		$data=array();
+		$data['apa']=$sys->install->checkapa();
+		$data['php']=$sys->install->checkphp();
+		$data['msv']=$sys->install->checkmsv();
+		$data['ops']=$sys->install->checkops();
+		$data['ico']=$sys->install->check_iconv();
+		$data['soa']=$sys->install->check_soap();
+		$data['cur']=$sys->install->check_curl();
+		$data['has']=$sys->install->check_hash();
+		$data['ope']=$sys->install->check_openssl();
+		return $data;
+	}
+	function check_openssl(){
+		$openssl=function_exists('openssl_free_key');
+		return Array('uv'=>(($openssl==true)?'yes':'no'),'cv'=>'OpenSSL Extension Exists','label'=>'OpenSSL','ok'=>$openssl);
+	}
+	function check_hash(){
+		$hash=function_exists('hash');
+		return Array('uv'=>(($hash==true)?'yes':'no'),'cv'=>'Hash Extension Exists','label'=>'Hash','ok'=>$hash);
+	}
+	function check_curl(){
+		$curl=function_exists('curl_version');
+		return Array('uv'=>(($curl==true)?'yes':'no'),'cv'=>'Curl Extension Exists','label'=>'Curl','ok'=>$curl);
+	}
+	function check_iconv(){
+		if (function_exists('iconv')) {
+		 $iconv=true;
+		}
+		else{
+			$iconv=false;
+		}
+		return Array('uv'=>(($iconv==true)?'yes':'no'),'cv'=>'IconV Extension Exists','label'=>'Iconv','ok'=>$iconv);
+	}
+	function check_soap(){
+		if (extension_loaded('soap')) {
+		  $soap=class_exists("SOAPClient");
+		}
+		else{
+			$soap=class_exists("SOAPClient");
+		}
+		return Array('uv'=>(($soap==true)?'yes':'no'),'cv'=>'Soap Exists and Enabled','label'=>'Soap Client API','ok'=>$soap);
+	}
 	function checkphp(){
 		$var=$this->get_var_checks();
 		$check=$var['ch']['php'];

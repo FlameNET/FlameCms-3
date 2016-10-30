@@ -2,11 +2,7 @@
 defined('FlameCMS') or die('No Script Cuddies');
 defined('ajaxload') or die('No Script Cuddies');
 $sys=&get_inst();
-$data=array();
-$data['apa']=$sys->install->checkapa();
-$data['php']=$sys->install->checkphp();
-$data['msv']=$sys->install->checkmsv();
-$data['ops']=$sys->install->checkops();
+$data=$sys->install->check();
 ?>
 <div class="row callout transparent">
 	<div class="small-12 columns">
