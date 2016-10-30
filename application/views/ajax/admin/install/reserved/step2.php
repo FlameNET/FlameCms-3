@@ -8,7 +8,7 @@ $data['php']=$sys->install->checkphp();
 $data['msv']=$sys->install->checkmsv();
 $data['ops']=$sys->install->checkops();
 ?>
-<div class="row callout">
+<div class="row callout transparent">
 	<div class="small-12 columns">
 		<div class="titleset primary">Application Requirements</div>
 		<table>
@@ -21,10 +21,10 @@ $data['ops']=$sys->install->checkops();
 		  </thead>
 		  <tbody>
 		  	<?php foreach($data as $tc): ?>
-		    <tr>
+		    <tr class="callout <?=(($tc['ok']==false)?'alert':'success')?>">
 		      <td><?=$tc['label']?></td>
 		      <td><?=((is_array($tc['cv']))?implode('/',$tc['cv']):$tc['cv']);?></td>
-		      <td class="<?=(($tc['ok']==false)?'callout alert':'')?>"><?=$tc['uv']?></td>
+		      <td class=""><?=$tc['uv']?></td>
 		    </tr>
 		    <?php endforeach;?>
 		  </tbody>

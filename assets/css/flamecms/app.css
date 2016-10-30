@@ -1,4 +1,18 @@
-header.flame_cms_installer,footer.flame_cms_installer{
+/*!
+ * FLAMECMS 
+ * Copyright 2016-2016
+ * Licensed under GNU (https://github.com/FlameNET/FlameCms-3/blob/master/licence.txt)
+ */
+prefooter.flamecms_installer2footer {
+    background-color: rgba(50,50,50,0.75);
+    display: block;
+    color: white;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-bottom: -135px;
+    margin-top: 100px;
+}
+header.flame_cms_installer, footer.flame_cms_installer{
 	padding: 15px 0;
     border: none;
     background: #000;
@@ -24,7 +38,10 @@ div#hidden_containers.hidden {
 .centered>img, .centered {
     text-align: center;
 }
-
+/*callout foundation addiction*/
+.callout.transparent {
+    background-color: rgba(255,255,255,0.75);
+}
 /*titlesets*/
 .titleset{
 	padding-left: 6px;

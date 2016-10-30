@@ -138,9 +138,9 @@ $sys=&get_inst();
 		<div class="centered">
 			<ul class="tm-subnav uk-subnav">
                 <li><a href="https://github.com/FlameNET/FlameCMS/stargazers"><i class="fa fa-star"></i> <span data-uikit-stargazers="">3700</span> Stargazers</a></li>
-                <li><a href="https://github.com/FlameNET/FlameCMS"><i class="fa fa-github"></i> FlameCMS</a></li>
+                <li><a href="https://github.com/FlameNET/FlameCMS-3"><i class="fa fa-github"></i> FlameCMS</a></li>
                 <li><a href="https://twitter.com/FlameCMS"><i class="fa fa-twitter"></i> @FlameCMS</a></li>
-                <li><a href="https://www.facebook.com/"><i class="uk-icon-facebook"></i> FlameCMS</a></li>
+                <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i> FlameCMS</a></li>
             </ul>
 		</div>
 	</div>

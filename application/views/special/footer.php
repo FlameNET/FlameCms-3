@@ -1,4 +1,23 @@
 <?php if(!defined('preload') || (preload==false)):?>
+	<?php 
+		if(defined('page_redirect') && (page_redirect=='admin/install'))
+		{
+		?>	
+	<prefooter class="flamecms_installer2footer">
+		<div class="flamecms_preset preset2 centered">
+			<ul class="uk-subnav uk-subnav-line">
+				<li><a href="https://github.com/FlameNET/">GitHub</a></li>
+				<li><a href="https://github.com/FlameNET/FlameCMS-3/issues">Issues</a></li>
+				<li><a href="https://twitter.com/FlameCMS">Twitter</a></li>
+			</ul>
+			<div class="uk-panel">
+				<p>Made by <a href="http://flamenet.github.io/FlameCMS/">FlameNET</a> with love and caffeine.<br class="uk-hidden-small">Licensed under <a href="https://github.com/FlameNET/FlameCMS-3/blob/master/licence.txt">GNU license</a>.</p>
+				<a href="http://flamenet.github.io/FlameCMS/">
+				</a>
+			</div>
+		</div>
+	</prefooter>
+	<?php }?>
 		</content>
 	<footer  class="<?=(defined('page_redirect') && (page_redirect=='admin/install'))?'flame_cms_installer':'';?>">
 		<?php 
