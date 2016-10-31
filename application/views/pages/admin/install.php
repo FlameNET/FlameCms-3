@@ -154,6 +154,7 @@ $sys=&get_inst();
 				if(($ths.hasAttr('type')) && ($ths.attr('type')=='submit')){
 					$ths.closest("form").keycript('<?=base_url('ajax/admin/install');?>',function(result){
 						
+						$(document).foundation();
 					});
 				}
 			}
@@ -167,9 +168,11 @@ $sys=&get_inst();
 				    method:'POST',
 				    success:function(result){
 				    	$('#body_ajax_loader').html(result);
+						$(document).foundation();
 				    },
 				});
 			}
+			$(document).foundation();
 		});
 	});
 </script>

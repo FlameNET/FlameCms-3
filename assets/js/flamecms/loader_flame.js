@@ -69,6 +69,7 @@ jQuery(document).ready(function($){
 			});
 		};
 	})(jQuery);
+	$(document).foundation();
 });
 Object.size = function(obj) {
     var size = 0, key;

@@ -3,6 +3,25 @@
  * Copyright 2016-2016
  * Licensed under GNU (https://github.com/FlameNET/FlameCms-3/blob/master/licence.txt)
  */
+.row{
+	/*renew foundation configuration of max row size*/
+	max-width:75rem !important;
+}
+.blank-space {
+    display: block;
+    padding: 10px;
+}
+button[disabled].uk-button.tm-button-download.float-right {
+    border: 1px black solid;
+    background-color: #dedede !important;
+    color: #000000 !important;
+}
+content.flamecms_installer ul.tabs.vertical>li>label {
+    text-align: center;
+    padding: 5px;
+    border-top: 1px solid #a9a8a8;
+    border-bottom: 1px solid #d4d4d4;
+}
 prefooter.flamecms_installer2footer {
     background-color: rgba(50,50,50,0.75);
     display: block;
