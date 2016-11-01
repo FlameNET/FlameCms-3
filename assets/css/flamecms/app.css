@@ -3,6 +3,9 @@
  * Copyright 2016-2016
  * Licensed under GNU (https://github.com/FlameNET/FlameCms-3/blob/master/licence.txt)
  */
+content.flamecms_installer div#body_ajax_loader.ajax_loaded {
+    margin: -115px 0 !important;
+}
 .row{
 	/*renew foundation configuration of max row size*/
 	max-width:75rem !important;

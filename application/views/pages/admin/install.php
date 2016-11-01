@@ -161,6 +161,10 @@ $sys=&get_inst();
 				    method:'POST',
 				    success:function(result){
 				    	$('#body_ajax_loader').html(result);
+				    	if(!$('#body_ajax_loader').hasClass('ajax_loaded'))
+				    	{
+				    		$('#body_ajax_loader').addClass('ajax_loaded');
+				    	}
 						$(document).foundation();
 				    },
 				});

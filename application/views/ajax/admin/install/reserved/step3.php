@@ -113,9 +113,9 @@ $sys=&get_inst();
 										<div class="row" id="languages_selection" style="display:none;">
 											<div class="medium-12 columns">
 												<label>
-													Languages
+													<?=__('Languages');?>
 												</label>
-												<span>Changing the default language will reset the language list (the checkboxes)</span>
+												<span><?=__('Changing the default language will reset the language list (the checkboxes)');?></span>
 											</div>
 											<div class="medium-6 large-4 columns">
 												<label >简体中文
@@ -179,24 +179,23 @@ $sys=&get_inst();
 						</div>
 						<div class="tabs-panel" id="cms_mysql_con">
 							<fieldset class="fieldset flamecms">
-								<legend>[CMS] Mysql Server Configuration</legend>
+								<legend><?=__('[CMS] Mysql Server Configuration');?></legend>
 							</fieldset>
 						</div>
 						<div class="tabs-panel" id="cms_admin_acc">
 							<fieldset class="fieldset flamecms">
-								<legend>[CMS] Mysql Admin Account</legend>
+								<legend><?=__('[CMS] Administrator Account');?></legend>
 							</fieldset>
 						</div>
 						<div class="tabs-panel" id="wow_tab">
 							<div class="callout primary">
-								<i class="fa fa-info-circle"> </i>This is unnecessary, because you can do it on the admin panel
+								<i class="fa fa-info-circle"> </i><?=__('This is unnecessary, because you can do it on the admin panel');?>
 							</div>
 							<fieldset class="fieldset flamecms">
-								<legend>[WOW] Server Configurations and Realms</legend>
+								<legend><?=__('[WOW] Server Configurations and Realms');?></legend>
 							</fieldset>
 						</div>
 					</div>
-				
 			</div>
 		</div>
 		
@@ -206,7 +205,7 @@ $sys=&get_inst();
 				<div class="callout transparent">
 					<div class="row">
 						<div class="small-12 columns">
-							<button data-installer="step-2" class="uk-button tm-button-download float-right" type="submit" disabled="disabled">Send Data</button>
+							<button data-installer="step-2" class="uk-button tm-button-download float-right" type="submit" disabled="disabled"><?=__('Send Data');?></button>
 						</div>
 					</div>
 				</div>

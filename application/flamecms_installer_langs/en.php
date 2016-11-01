@@ -32,15 +32,26 @@ __s('please talk to you host provider in order to install them.','');
 __s('Required','');
 __s('[CMS] Initiation of setup','');
 __s('[CMS] Mysql Server Connection','');
+__s('[CMS] Mysql Server Configuration','');
+__s('[CMS] Mysql Admin Account','');
 __s('[CMS] Administrator Account','');
 __s('Not Required','');
 __s('[WOW] Server Configuration and Realms','');
+__s('[WOW] Server Configurations and Realms','');
 __s('Default CMS Language','');
 __s('Domain of this CMS','');
 __s('CMS Public Name','');
 __s('Multi Language?','');
 __s('Yes','');
 __s('No','');
+__s('Languages','');
+__s('Changing the default language will reset the language list (the checkboxes)','');
+__s('This is unnecessary, because you can do it on the admin panel','');
+__s('Send Data','');
+__s('','');
+__s('','');
+__s('','');
+__s('','');
 /*
 __s('','');
  * */
