@@ -169,7 +169,7 @@ $sys=&get_inst();
 			var data={};
 			data['lang']=$(this).attr('data-install-lang');
 			$.ajax({
-			    url:'<?=base_url('ajax/admin/install');?>',
+			    url:'<?=base_url('ajax/admin/install/reserved/change_lang');?>',
 			    data:data,
 			    method:'POST',
 			    success:function(){
