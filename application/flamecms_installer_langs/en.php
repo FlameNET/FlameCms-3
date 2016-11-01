@@ -1,6 +1,6 @@
 <?php
 $sys=&get_inst();
-$sys->ilang->define_name('en','English');
+$sys->ilang->define_name('en','English',base_url('assets/imgs/flags/en-gb.png'));
 $sys->ilang->lang('en');
 /*Header*/
 __s('FlameCMS Installer','');

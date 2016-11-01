@@ -119,6 +119,25 @@ $sys=&get_inst();
 			<p class="shadow_text"><?=__('Welcome to FlameCMS');?><br />
 				<?=__('Content Management System for World of Warcraft Servers.');?>
 			</p>
+				<?php 
+				$langs=$sys->ilang->get_langs();
+				if(!empty($langs)):
+						?>
+
+			<div class="row">
+				<?php 
+				foreach($langs as $lid=>$lang):
+				?>
+				<a data-install-lang="<?=$lang['code']?>">
+					<?=(($lang['flag']!='')?'<img src="'.$lang['flag'].'" width="16px" />':'');?> <?=$lang['name']?>
+				</a>
+				<?php
+				endforeach;
+				?>
+			</div>
+						<?php
+				endif;
+				?>
 		</div>
 		<div class="row">
 			<div class="small-12 medium-6 columns">
@@ -140,6 +159,19 @@ $sys=&get_inst();
 </div>
 <script>
 	$(document).ready(function(){
+		$('a[data-install-lang]').click(function(e){
+			e.preventDefault();
+			var data={};
+			data['lang']=$(this).attr('data-install-lang');
+			$.ajax({
+			    url:'<?=base_url('ajax/admin/install');?>',
+			    data:data,
+			    method:'POST',
+			    success:function(){
+			    	window.location.reload();
+			    },
+			});
+		});
 		$('a[data-installer],input[data-installer],button[data-installer]').live('click',function(e) {
 			$ths=$(this);
 			console.log('click');

@@ -15,7 +15,7 @@ Class Install_langs{
 			self::$langs[$lang_code]=array();
 		}
 	}
-	function define_name($code,$name){
+	function define_name($code,$name,$flag=''){
 		if(!isset(self::$langs))
 		{
 			self::$langs=array();
@@ -23,6 +23,11 @@ Class Install_langs{
 		if(!isset(self::$langs[$code]))
 		{
 			self::$langs[$code]=array();
+		}
+		self::$langs[$code]['flag']='';
+		if($flag!='')
+		{
+			self::$langs[$code]['flag']=$flag;
 		}
 		self::$langs[$code]['name']=$name;
 		self::$langs[$code]['slug']=$code;
@@ -64,6 +69,18 @@ Class Install_langs{
 			$a['lang']=$lang_code;
 			$sys->session->installer= (object) $a;
 		}
+	}
+	function get_langs(){
+		$l=self::$langs;
+		$langs=array();
+		foreach($l as $lid=>$ln){
+			$langs[$lid]=array(
+				'name'=>$ln['name'],
+				'flag'=>$ln['flag'],
+				'code'=>$ln['slug']
+			);
+		}
+		return $langs;
 	}
 }
 function __g($o){return __($o);}
