@@ -124,18 +124,23 @@ $sys=&get_inst();
 				if(!empty($langs)):
 						?>
 
-			<div class="row">
-				<?php 
-				foreach($langs as $lid=>$lang):
-				?>
-				<a data-install-lang="<?=$lang['code']?>">
-					<?=(($lang['flag']!='')?'<img src="'.$lang['flag'].'" width="16px" />':'');?> <?=$lang['name']?>
-				</a>
-				<?php
-				endforeach;
-				?>
+			<div class="row callout transparent">
+				<div class="small-12 columns">
+					<?=__('Pick Your Language For the Installer');?>
+				</div>
+				<div class="small-12 columns">
+					<?php 
+					foreach($langs as $lid=>$lang):
+					?>
+					<a data-install-lang="<?=$lang['code']?>">
+						<?=(($lang['flag']!='')?'<img src="'.$lang['flag'].'" width="16px" />':'');?> <?=$lang['name']?>
+					</a>
+					<?php
+					endforeach;
+					?>
+				</div>
 			</div>
-						<?php
+				<?php
 				endif;
 				?>
 		</div>

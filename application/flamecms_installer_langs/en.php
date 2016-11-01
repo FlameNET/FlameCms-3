@@ -1,4 +1,6 @@
 <?php
+/*script cuddies answer*/
+defined('FlameCMS') or die('No Script Cuddies');
 $sys=&get_inst();
 $sys->ilang->define_name('en','English',base_url('assets/imgs/flags/en-gb.png'));
 $sys->ilang->lang('en');
@@ -15,6 +17,8 @@ __s('All rights Reserved','');
 /*Install step 1*/
 __s('Welcome to FlameCMS','');
 __s('Content Management System for World of Warcraft Servers.','');
+
+__s('Pick Your Language For the Installer','');
 __s('Install Now','');
 __s('No, Thanks','');
 __s('Stargazers','');
