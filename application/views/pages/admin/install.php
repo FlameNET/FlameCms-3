@@ -126,6 +126,7 @@ $sys=&get_inst();
 			<p class="shadow_text">Welcome to FlameCMS<br />
 				Content Management System for World of Warcraft Servers.
 			</p>
+			<span>Future:<br>you will be able to choose the language on the installer</span>
 		</div>
 		<div class="row">
 			<div class="small-12 medium-6 columns">
