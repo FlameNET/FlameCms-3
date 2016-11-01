@@ -9,14 +9,24 @@ Class Initiator{
 	function setting_up(){
 		$sys=&get_inst();
 		$sys->load->library(array(
+			'session',
 			'System/Trigger'=>'trigger',
 			'System/page'=>'page',
 			'System/helpers/Pps'=>'pps',
-			'System/helpers/Sas'=>'sas'
+			'System/helpers/Sas'=>'sas',
+			'System/helpers/Hfs'=>'hfs'
 		));
 		/*If config File Does not exists, Trigger Installer*/
 		if(!file_exists(APPPATH.'/flamecms_config/config.php')){
-			$sys->load->library('System/admin/Install');
+			$sys->load->library(array(
+				'System/admin/Install',
+				));
+			set_inst($sys);
+			$sys->load->library(array(
+				'System/admin/install/Install_langs'=>'ilang',
+				));
+			/*Requires all files on a directory (this case will require all languages)*/
+			requireall(APPPATH.'/flamecms_installer_langs');
 			get_inst()->trigger->install();
 		}
 		/*Ignore CodeIgnither Configs (the are still Called, but, not used)*/

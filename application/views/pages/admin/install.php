@@ -6,13 +6,6 @@ if(!defined('page_redirect') || (defined('page_redirect') && (page_redirect!='ad
 die('Ups.... you shouldn\'t be here...');
 get_header();
 $sys=&get_inst();
-/*
- * 
- * 		<div>PHP <?php print_r($sys->install->checkphp());?></div>
- *		<div>APACHE <?php print_r($sys->install->checkapa());?></div>
- *		<div>MYSQL <?php print_r($sys->install->checkmsv());?></div>
- *		<div>Operating System <?php print_r($sys->install->checkops());?></div>
- */
 ?>
 <style>
 	content.flamecms_installer{
@@ -123,22 +116,21 @@ $sys=&get_inst();
 	<div class="small-12 columns" id="body_ajax_loader">
 		<div class="centered">
 			<img class="tm-logo" src="<?=base_url('assets/imgs/flamecms/fav_normal.png');?>" title="FlameCMS" alt="FlameCMS" height="217" width="281">
-			<p class="shadow_text">Welcome to FlameCMS<br />
-				Content Management System for World of Warcraft Servers.
+			<p class="shadow_text"><?=__('Welcome to FlameCMS');?><br />
+				<?=__('Content Management System for World of Warcraft Servers.');?>
 			</p>
-			<span>Future:<br>you will be able to choose the language on the installer</span>
 		</div>
 		<div class="row">
 			<div class="small-12 medium-6 columns">
-				<a data-installer="step-1" class="uk-button tm-button-download float-right"><i class="fa fa-check-circle-o"></i> Install Now</a>
+				<a data-installer="step-1" class="uk-button tm-button-download float-right"><i class="fa fa-check-circle-o"></i> <?=__('Install Now');?></a>
 			</div>
 			<div class="small-12 medium-6 columns">
-				<a href="https://google.com/" class="uk-button tm-button-download"> No, Thanks</a>
+				<a href="https://google.com/" class="uk-button tm-button-download"> <?=__('No, Thanks');?></a>
 			</div>
 		</div>
 		<div class="centered">
 			<ul class="tm-subnav uk-subnav">
-                <li><a href="https://github.com/FlameNET/FlameCMS/stargazers"><i class="fa fa-star"></i> <span data-uikit-stargazers="">3700</span> Stargazers</a></li>
+                <li><a href="https://github.com/FlameNET/FlameCMS/stargazers"><i class="fa fa-star"></i> <span data-uikit-stargazers="">3700</span> <?=__('Stargazers');?></a></li>
                 <li><a href="https://github.com/FlameNET/FlameCMS-3"><i class="fa fa-github"></i> FlameCMS</a></li>
                 <li><a href="https://twitter.com/FlameCMS"><i class="fa fa-twitter"></i> @FlameCMS</a></li>
                 <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i> FlameCMS</a></li>

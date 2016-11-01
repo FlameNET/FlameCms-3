@@ -6,13 +6,13 @@ $data=$sys->install->check();
 ?>
 <div class="row callout transparent">
 	<div class="small-12 columns">
-		<div class="titleset primary">Application Requirements</div>
+		<div class="titleset primary"><?=__('Application Requirements');?></div>
 		<table>
 		  <thead>
 		    <tr>
-		      <th width="200">Modules</th>
-		      <th>Required Version</th>
-		      <th width="150">Installed Version</th>
+		      <th width="200"><?=__('Modules');?></th>
+		      <th><?=__('Required Version');?></th>
+		      <th width="150"><?=__('Installed Version');?></th>
 		    </tr>
 		  </thead>
 		  <tbody>
@@ -38,14 +38,14 @@ $data=$sys->install->check();
 	    	<!-- Unsatisfied requirement/s -->
 	    	<div class="small-12 columns">
 	    		<div class="callout success">
-	    			hey! look at the person who has the best Host provider!
+	    			<?=__('hey! look at the person who has the best Host provider!')?>
 	    			<br />
-	    			Lets finish the install ok?
+	    			<?=__('Lets finish the install ok?');?>
 	    			<br />
 	    		</div>
 	    		<a data-installer="step-2" class="uk-button tm-button-download float-right">
 	    			<i class="fa fa-check-circle-o"></i>
-	    			Continue to Step 2
+	    			<?=__('Continue to Step 2');?>
 	    		</a>
 	    	</div>
 	    </div>
@@ -56,9 +56,9 @@ $data=$sys->install->check();
 	    	<!-- Unsatisfied requirement/s -->
 	    	<div class="small-12 columns">
 	    		<div class="callout alert">
-	    			Ups... it apears that you have some unsatisfied requirements...
+	    			<?=__('Ups... it apears that you have some unsatisfied requirements...');?>
 	    			<br />
-	    			please talk to you host provider in order to install them.
+	    			<?=__('please talk to you host provider in order to install them.');?>
 	    			<br />
 	    		</div>
 	    	</div>
