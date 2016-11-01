@@ -9,7 +9,7 @@ if(defined('page_redirect') && (page_redirect=='admin/install'))
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>FlameCMS Installer</title>
+		<title><?=__('FlameCMS Installer');?></title>
 		<!-- Enable Mobile View -->
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- Installer Favicon -->
@@ -31,7 +31,7 @@ if(defined('page_redirect') && (page_redirect=='admin/install'))
 					<img src="<?=base_url('assets/imgs/flamecms/logo.png');?>" width="100%">
 				</div>
 				<div class="title small-12 medium-4 large-3 columns">
-					<h5>Installer</h5>
+					<h5><?=__('Installer');?></h5>
 				</div>
 			</div>
 		</header>

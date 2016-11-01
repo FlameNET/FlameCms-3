@@ -9,29 +9,29 @@ $sys=&get_inst();
 			<div class="medium-3 columns">
 				<ul class="tabs vertical" id="example-vert-tabs" data-tabs>
 					<li>
-						<label>Required</label>
+						<label><?=__('Required');?></label>
 					</li>
 					<li class="tabs-title is-active">
 						<a href="#cms_setup_init" aria-selected="true">
-							[CMS] Initiation of setup
+							<?=__('[CMS] Initiation of setup');?>
 						</a>
 					</li>
 					<li class="tabs-title">
 						<a href="#cms_mysql_con">
-							[CMS] Mysql Server Connection
+							<?=__('[CMS] Mysql Server Connection');?>
 						</a>
 					</li>
 					<li class="tabs-title">
 						<a href="#cms_admin_acc">
-							[CMS] Administrator Account
+							<?=__('[CMS] Administrator Account');?>
 						</a>
 					</li>
 					<li>
-						<label>Not Required</label>
+						<label><?=__('Not Required');?></label>
 					</li>
 					<li class="tabs-title">
 						<a href="#wow_tab">
-							[WOW] Server Configuration and Realms
+							<?=__('[WOW] Server Configuration and Realms');?>
 						</a>
 					</li>
 				</ul>
@@ -40,11 +40,11 @@ $sys=&get_inst();
 					<div class="tabs-content vertical" data-tabs-content="example-vert-tabs">
 						<div class="tabs-panel is-active" id="cms_setup_init">
 							<fieldset class="fieldset flamecms">
-								<legend>[CMS] Initiation of setup</legend>
+								<legend><?=__('[CMS] Initiation of setup');?></legend>
 								<div class="row">
 									<div class="small-12 medium-6 columns">
 										<label for="cms_default_language_selection">
-											Default CMS Language
+											<?=__('Default CMS Language');?>
 										</label>
 										<select required="required" id="cms_default_language_selection">
 											<option value="cn">简体中文</option>
@@ -88,24 +88,24 @@ $sys=&get_inst();
 									</script>
 									<div class="small-12 medium-6 columns">
 										<label for="cms_domain">
-											Domain of this CMS
+											<?=__('Domain of this CMS');?>
 										</label>
 										<input type="url" id="cms_domain" required="required" placeholder="http://example.com"/>
 									</div>
 									
 									<div class="small-12 medium-6 columns">
 										<label for="cms_name">
-											CMS Public Name
+											<?=__('CMS Public Name');?>
 										</label>
 										<input type="text" id="cms_name" required="required" placeholder="FlameCMS"/>
 									</div>
 									<div class="small-12 medium-6 columns">
-										<label for="multilanguage">Multi Language?</p>
+										<label for="multilanguage"><?=__('Multi Language?');?></p>
 										<div class="switch medium">
 											<input class="switch-input" id="multilanguage" type="checkbox" name="multilanguage">
 											<label class="switch-paddle" for="multilanguage">
-												<span class="switch-active" aria-hidden="true">Yes</span>
-												<span class="switch-inactive" aria-hidden="true">No</span>
+												<span class="switch-active" aria-hidden="true"><?=__('Yes');?></span>
+												<span class="switch-inactive" aria-hidden="true"><?=__('No')?></span>
 											</label>
 										</div>
 									</div>
