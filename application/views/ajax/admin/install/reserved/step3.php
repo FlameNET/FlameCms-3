@@ -5,7 +5,7 @@ $sys=&get_inst();
 ?>
 <form method="POST"  data-abide novalidate>
 	<div class="callout transparent">
-		<div class="row collapse">
+		<div class="row">
 			<div class="medium-3 columns">
 				<ul class="tabs vertical" id="example-vert-tabs" data-tabs>
 					<li>
