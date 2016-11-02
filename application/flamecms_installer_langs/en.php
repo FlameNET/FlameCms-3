@@ -69,25 +69,7 @@ __s('Check [CMS] Mysql Settings','');
 __s('Everything Ok! procced','');
 __s('Ups, Apears that your Connection Is not Right. Please Check Your Settings','');
 __s('The Database Does not exist, please check it','');
-/*[CMS] Admin Account*/
-__s('Admin Username','');
-__s('Admin_username123','');
-__s('Admin Password','');
-__s('super_admin_p455w0rd','');
-__s('Confirm the Admin Password','');
-__s('Admin Email','');
-__s('admin@flamecms.github.io','');
-__s('Admin First Name','');
-__s('John','');
-__s('Admin Last Name','');
-__s('Doe','');
-/*[CMS] wow server and realms*/
-__s('Add WOW Server','');
-__s('','');
-__s('','');
-__s('','');
-__s('','');
-__s('','');
+
 __s('','');
 /*
 __s('','');

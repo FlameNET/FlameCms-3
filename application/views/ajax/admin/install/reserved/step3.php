@@ -248,32 +248,6 @@ $sys=&get_inst();
 						<div class="tabs-panel" id="cms_admin_acc">
 							<fieldset class="fieldset flamecms">
 								<legend><?=__('[CMS] Administrator Account');?></legend>
-								<div class="row">
-									<div class="small-12 medium-6 columns">
-										<label for="cms_admin_account_username"><?=__('Admin Username');?></label>
-										<input type="text" required="" id="cms_admin_account_username" placeholder="<?=__('Admin_username123')?>"/>
-									</div>
-									<div class="small-12 medium-6 columns">
-										<label for="cms_admin_account_password"><?=__('Admin Password');?></label>
-										<input type="password" required="" id="cms_admin_account_password" placeholder="<?=__('super_admin_p455w0rd')?>"/>
-									</div>
-									<div class="small-12 medium-6 columns">
-										<label for="cms_admin_account_confirm_password"><?=__('Confirm the Admin Password');?></label>
-										<input type="password" data-equalto="cms_admin_account_password" required="" id="cms_admin_account_confirm_password" placeholder="<?=__('super_admin_p455w0rd')?>"/>
-									</div>
-									<div class="small-12 medium-6 columns">
-										<label for="cms_admin_account_email"><?=__('Admin Email');?></label>
-										<input type="email" required="" id="cms_admin_account_email" placeholder="<?=__('admin@flamecms.github.io')?>">
-									</div>
-									<div class="small-12 medium-6 columns">
-										<label for="cms_admin_account_fname"><?=__('Admin First Name');?></label>
-										<input type="text" required="" id="cms_admin_account_fname" placeholder="<?=__('John')?>">
-									</div>
-									<div class="small-12 medium-6 columns">
-										<label for="cms_admin_account_lname"><?=__('Admin Last Name');?></label>
-										<input type="text" required="" id="cms_admin_account_lname" placeholder="<?=__('Doe')?>"/>
-									</div>
-								</div>
 							</fieldset>
 						</div>
 						<div class="tabs-panel" id="wow_tab">
@@ -282,34 +256,7 @@ $sys=&get_inst();
 							</div>
 							<fieldset class="fieldset flamecms">
 								<legend><?=__('[WOW] Server Configurations and Realms');?></legend>
-								<div class="row">
-									<div class="small-12 medium-12 columns" id="cms_wow_server_listing"></div>
-									<div class="small-12 medium-6 columns" id="cms_wow_server_add">
-										<a data-install-add-wow-server="true">
-											<i class="fa fa-plus-circle"> </i> <?=__('Add WOW Server');?>
-										</a>
-									</div>
-								</div>
 							</fieldset>
-								<div class="row"></div>
-									<script>
-										$(document).ready(function(){
-											$('#cms_wow_server_add>a[data-install-add-wow-server]').click(function(e){
-												e.preventDefault();
-												var data={};
-												data['list_count']=$("#cms_wow_server_listing").children().length;
-												$.ajax({
-												    url:'<?=base_url('ajax/admin/install/reserved/wow_server_config');?>',
-												    data:data,
-												    method:'POST',
-												    success:function(result){
-												    	var data=JSON.parse(result);
-												    	cms.html(data['message']);
-												    },
-												});
-											});
-										});
-									</script>
 						</div>
 					</div>
 			</div>
