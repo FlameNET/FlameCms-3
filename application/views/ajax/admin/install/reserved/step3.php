@@ -298,6 +298,7 @@ $sys=&get_inst();
 												e.preventDefault();
 												var data={};
 												data['list_count']=$("#cms_wow_server_listing").children().length;
+												data['action']='add';
 												$.ajax({
 												    url:'<?=base_url('ajax/admin/install/reserved/wow_server_config');?>',
 												    data:data,
