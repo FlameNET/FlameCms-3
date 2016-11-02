@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/FlameNET/FlameCms-3.png?label=ready&title=Ready)](https://waffle.io/FlameNET/FlameCms-3)
 #ATTENTION | WARNING
 ## ON THE INIT OF THE Repo
 ### IT WONT WORK YET
