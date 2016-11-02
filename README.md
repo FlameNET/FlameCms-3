@@ -1,4 +1,4 @@
-[![Stories in Ready](https://badge.waffle.io/FlameNET/FlameCms-3.png?label=ready&title=Ready)](https://waffle.io/FlameNET/FlameCms-3)
+
 #ATTENTION | WARNING
 ## ON THE INIT OF THE Repo
 ### IT WONT WORK YET
@@ -9,7 +9,7 @@
 
 [![Coverity Scan Build Status](https://scan.coverity.com/projects/3899/badge.svg)](https://scan.coverity.com/projects/3899/) 
 [![Bountysource](https://www.bountysource.com/badge/team?team_id=56506&style=bounties_received)](https://www.bountysource.com/badge/team?team_id=56506&style=bounties_received)  
-
+[![Stories in Ready](https://badge.waffle.io/FlameNET/FlameCms-3.png?label=ready&title=Ready)](https://waffle.io/FlameNET/FlameCms-3)
 ## Introduction
 
 FlameCMS is a *MMORPG* Framework based in PHP & HTML.
