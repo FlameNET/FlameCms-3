@@ -119,57 +119,57 @@ $sys=&get_inst();
 											</div>
 											<div class="medium-6 large-4 columns">
 												<label >简体中文
-													<input type="checkbox" id="multilang-cn" required="required" />	
+													<input type="checkbox" id="multilang-cn" />	
 												</label>
 											</div>
 											<div class="medium-6 large-4 columns">
 												<label>Deutsch
-													<input type="checkbox" id="multilang-de" required="required" />
+													<input type="checkbox" id="multilang-de" />
 												</label>
 											</div>
 											<div class="medium-6 large-4 columns">
 												<label>Español
-													<input type="checkbox" id="multilang-es" required="required" />
+													<input type="checkbox" id="multilang-es" />
 												</label>
 											</div>
 											<div class="medium-6 large-4 columns">
 												<label>English
-													<input type="checkbox" id="multilang-en" required="required" />
+													<input type="checkbox" id="multilang-en" />
 												</label>
 											</div>
 											<div class="medium-6 large-4 columns">
 												<label>Français
-													<input type="checkbox" id="multilang-fr" required="required" />
+													<input type="checkbox" id="multilang-fr" />
 												</label>
 											</div>
 											<div class="medium-6 large-4 columns">
 												<label>ελληνικά
-													<input type="checkbox" id="multilang-gr" required="required" />
+													<input type="checkbox" id="multilang-gr" />
 												</label>
 											</div>
 											<div class="medium-6 large-4 columns">
 												<label>Italiano
-													<input type="checkbox" id="multilang-it" required="required" />
+													<input type="checkbox" id="multilang-it" />
 												</label>
 											</div>
 											<div class="medium-6 large-4 columns">
 												<label>한국어
-													<input type="checkbox" id="multilang-ko" required="required" />
+													<input type="checkbox" id="multilang-ko" />
 												</label>
 											</div>
 											<div class="medium-6 large-4 columns">
 												<label>Português
-													<input type="checkbox" id="multilang-pt" required="required" />
+													<input type="checkbox" id="multilang-pt" />
 												</label>
 											</div>
 											<div class="medium-6 large-4 columns">
 												<label>Русский
-													<input type="checkbox" id="multilang-ru" required="required" />
+													<input type="checkbox" id="multilang-ru" />
 												</label>
 											</div>
 											<div class="medium-6 large-4 columns">
 												<label>繁體中文
-													<input type="checkbox" id="multilang-tw" required="required" />
+													<input type="checkbox" id="multilang-tw" />
 												</label>
 											</div>
 										</div>	
@@ -180,6 +180,69 @@ $sys=&get_inst();
 						<div class="tabs-panel" id="cms_mysql_con">
 							<fieldset class="fieldset flamecms">
 								<legend><?=__('[CMS] Mysql Server Configuration');?></legend>
+								<div class="callout" id="cms_mysql_check_message" style="display:none;">
+								</div>
+								<div class="row">
+									<div class="small-12 medium-6 column">
+										<label for="cms_mysql_con_host"><?=__('[CMS] Mysql Host');?></label>
+										<input id="cms_mysql_con_host" type="text" placeholder="<?=__('80.00.00.00 or flamecms.github.io');?>"/>
+									</div>
+									<div class="small-12 medium-6 column">
+										<label for="cms_mysql_con_user"><?=__('[CMS] Mysql User');?></label>
+										<input id="cms_mysql_con_user" type="text" placeholder="<?=__('dbuser');?>"/>
+									</div>
+									<div class="small-12 medium-6 column">
+										<label for="cms_mysql_con_pass"><?=__('[CMS] Mysql Password');?></label>
+										<input id="cms_mysql_con_pass" type="password" placeholder="<?=__('excelentPassword');?>"/>
+									</div>
+									<div class="small-12 medium-6 column">
+										<label for="cms_mysql_con_port"><?=__('[CMS] Mysql Port');?></label>
+										<input id="cms_mysql_con_port" type="number" value="3306" placeholder="<?=__('Port');?>"/>
+									</div>
+									<div class="small-12 medium-6 column">
+										<label for="cms_mysql_con_db"><?=__('[CMS] Database Name');?></label>
+										<input id="cms_mysql_con_db" type="text" value="" placeholder="<?=__('greatdb');?>"/>
+									</div>
+									<div class="small-12 medium-6 column">
+										<a data-install-check-db="cms" class="uk-button tm-button-download">
+											<?=__('Check [CMS] Mysql Settings');?>
+										</a>
+									</div>
+									<script>
+										$(document).ready(function(){
+											$('a[data-install-check-db]').click(function(e){
+												var cms=$('#cms_mysql_check_message');
+												cms.slideUp();
+												e.preventDefault();
+												var data={};
+												data['host']=$('#cms_mysql_con_host').val();
+												data['user']=$('#cms_mysql_con_user').val();
+												data['pass']=$('#cms_mysql_con_pass').val();
+												data['port']=$('#cms_mysql_con_port').val();
+												data['db']=$('#cms_mysql_con_db').val();
+												$.ajax({
+												    url:'<?=base_url('ajax/admin/install/reserved/check_mysql_settings');?>',
+												    data:data,
+												    method:'POST',
+												    success:function(result){
+												    	var data=JSON.parse(result);
+												    	cms.html(data['message']);
+												    	if(cms.hasClass('success') || cms.hasClass('warning') || cms.hasClass('alert'))
+												    	{
+												    		cms.removeClass('success').removeClass('warning').removeClass('alert');
+												    		cms.addClass(data['callout']);
+												    		cms.slideDown();
+												    	}
+												    	else{
+												    		cms.addClass(data['callout']);
+												    		cms.slideDown();
+												    	}
+												    },
+												});
+											});
+										});
+									</script>
+								</div>
 							</fieldset>
 						</div>
 						<div class="tabs-panel" id="cms_admin_acc">

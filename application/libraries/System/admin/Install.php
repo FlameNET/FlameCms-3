@@ -47,6 +47,25 @@ class Install{
 		$data['ope']=$sys->install->check_openssl();
 		return $data;
 	}
+	function check_msqlcon($host,$user,$pass,$db,$port){
+		@ $msc=mysqli_connect($host,$user,$pass,'',$port) or '';
+		if(($msc!=='') && (!is_bool($msc))){
+			/*connection ok, lets check the db*/
+			@ $msq=mysqli_query($msc, 'SHOW DATABASES LIKE "'.$db.'";');
+			if(mysqli_num_rows($msq)==0){
+				/*The Database Does Not Exist*/
+				return 2;
+			}
+			else{
+				/*Everything Ok*/
+				return 0;
+			}
+		}
+		else{
+			/*The connection it's broken (or no connection at all)*/
+			return 1;
+		}
+	}
 	function check_openssl(){
 		$openssl=function_exists('openssl_free_key');
 		return Array('uv'=>(($openssl==true)?'yes':'no'),'cv'=>'OpenSSL Extension Exists','label'=>'OpenSSL','ok'=>$openssl);
