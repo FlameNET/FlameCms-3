@@ -3,7 +3,7 @@ defined('FlameCMS') or die('No Script Cuddies');
 defined('ajaxload') or die('No Script Cuddies');
 $sys=&get_inst();
 ?>
-<form method="POST"  data-abide novalidate>
+<form method="POST" id="cms_server_configuration" data-abide novalidate>
 	<div class="callout transparent">
 		<div class="row">
 			<div class="medium-3 columns">
@@ -24,14 +24,6 @@ $sys=&get_inst();
 					<li class="tabs-title">
 						<a href="#cms_admin_acc">
 							<?=__('[CMS] Administrator Account');?>
-						</a>
-					</li>
-					<li>
-						<label><?=__('Not Required');?></label>
-					</li>
-					<li class="tabs-title">
-						<a href="#wow_tab">
-							<?=__('[WOW] Server Configuration and Realms');?>
 						</a>
 					</li>
 				</ul>
@@ -185,23 +177,23 @@ $sys=&get_inst();
 								<div class="row">
 									<div class="small-12 medium-6 column">
 										<label for="cms_mysql_con_host"><?=__('[CMS] Mysql Host');?></label>
-										<input id="cms_mysql_con_host" type="text" placeholder="<?=__('80.00.00.00 or flamecms.github.io');?>"/>
+										<input id="cms_mysql_con_host" required="" type="text" placeholder="<?=__('80.00.00.00 or flamecms.github.io');?>"/>
 									</div>
 									<div class="small-12 medium-6 column">
 										<label for="cms_mysql_con_user"><?=__('[CMS] Mysql User');?></label>
-										<input id="cms_mysql_con_user" type="text" placeholder="<?=__('dbuser');?>"/>
+										<input id="cms_mysql_con_user" required="" type="text" placeholder="<?=__('dbuser');?>"/>
 									</div>
 									<div class="small-12 medium-6 column">
 										<label for="cms_mysql_con_pass"><?=__('[CMS] Mysql Password');?></label>
-										<input id="cms_mysql_con_pass" type="password" placeholder="<?=__('excelentPassword');?>"/>
+										<input id="cms_mysql_con_pass" required="" type="password" placeholder="<?=__('excelentPassword');?>"/>
 									</div>
 									<div class="small-12 medium-6 column">
 										<label for="cms_mysql_con_port"><?=__('[CMS] Mysql Port');?></label>
-										<input id="cms_mysql_con_port" type="number" value="3306" placeholder="<?=__('Port');?>"/>
+										<input id="cms_mysql_con_port" required="" type="number" value="3306" placeholder="<?=__('Port');?>"/>
 									</div>
 									<div class="small-12 medium-6 column">
 										<label for="cms_mysql_con_db"><?=__('[CMS] Database Name');?></label>
-										<input id="cms_mysql_con_db" type="text" value="" placeholder="<?=__('greatdb');?>"/>
+										<input id="cms_mysql_con_db" required="" type="text" value="" placeholder="<?=__('greatdb');?>"/>
 									</div>
 									<div class="small-12 medium-6 column">
 										<a data-install-check-db="cms" class="uk-button tm-button-download">
@@ -276,53 +268,35 @@ $sys=&get_inst();
 								</div>
 							</fieldset>
 						</div>
-						<div class="tabs-panel" id="wow_tab">
-							<div class="callout primary">
-								<i class="fa fa-info-circle"> </i><?=__('This is unnecessary, because you can do it on the admin panel');?>
-							</div>
-							<fieldset class="fieldset flamecms">
-								<legend><?=__('[WOW] Server Configurations and Realms');?></legend>
-								<div class="row">
-									<div class="small-12 medium-12 columns" id="cms_wow_server_listing"></div>
-									<div class="small-12 medium-6 columns" id="cms_wow_server_add">
-										<a data-install-add-wow-server="true">
-											<i class="fa fa-plus-circle"> </i> <?=__('Add WOW Server');?>
-										</a>
-									</div>
-								</div>
-							</fieldset>
-								<div class="row"></div>
-									<script>
-										$(document).ready(function(){
-											$('#cms_wow_server_add>a[data-install-add-wow-server]').click(function(e){
-												e.preventDefault();
-												var data={};
-												data['list_count']=$("#cms_wow_server_listing").children().length;
-												data['action']='add';
-												$.ajax({
-												    url:'<?=base_url('ajax/admin/install/reserved/wow_server_config');?>',
-												    data:data,
-												    method:'POST',
-												    success:function(result){
-												    	var data=JSON.parse(result);
-												    	cms.html(data['message']);
-												    },
-												});
-											});
-										});
-									</script>
-						</div>
 					</div>
 			</div>
 		</div>
-		
+		<script>
+			$(document).ready(function(){
+				$(document).on('formvalid.zf.abide',function(e){
+					var sub=$('#form_installer_submit');
+					if(sub.hasAttr('disabled')){
+						sub.removeAttr('disabled');
+					}
+				}).on('forminvalid.zf.abide',function(e){
+					var sub=$('#form_installer_submit');
+					if(!sub.hasAttr('disabled')){
+						sub.attr('disabled','disabled');
+					}
+				});
+				$('#cms_server_configuration input[required],#cms_server_configuration select[required]').change(function(e){
+					var form=$('#cms_server_configuration');
+					var v=form.foundation('validateForm');
+				});
+			});
+		</script>
 		<div class="row">
 			<div class="small-12 columns" >
 				<div class="blank-space"></div>
 				<div class="callout transparent">
 					<div class="row">
 						<div class="small-12 columns">
-							<button data-installer="step-2" class="uk-button tm-button-download float-right" type="submit" disabled="disabled"><?=__('Send Data');?></button>
+							<button id="form_installer_submit" type="submit" data-installer="step-2" class="uk-button tm-button-download float-right" type="submit" disabled="disabled"><?=__('Send Data');?></button>
 						</div>
 					</div>
 				</div>

@@ -40,7 +40,7 @@ __s('[CMS] Mysql Server Configuration','');
 __s('[CMS] Mysql Admin Account','');
 __s('[CMS] Administrator Account','');
 __s('Not Required','');
-__s('[WOW] Server Configuration and Realms','');
+__s('[WOW] Server Configuration and Realms','[WOW] Server Configuration and Realms (info only)');
 __s('[WOW] Server Configurations and Realms','');
 /*[CMS] Initiation of setup*/
 __s('Default CMS Language','');
@@ -84,10 +84,9 @@ __s('Doe','');
 /*[CMS] wow server and realms*/
 __s('Add WOW Server','');
 __s('','');
-__s('','');
-__s('','');
-__s('','');
-__s('','');
+__s('To continue, please fill all the information and submit the form.','');
+__s('With all done, you will be redirected to the administation page and you will be able to and the wow server.','');
+
 __s('','');
 /*
 __s('','');
