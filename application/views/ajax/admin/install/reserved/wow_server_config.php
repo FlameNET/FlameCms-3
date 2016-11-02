@@ -5,14 +5,14 @@ $sys=&get_inst();
 
 if($sys->input->is_ajax_request())
 {
-	if($_POST['action']=='add')
+	if(isset($_POST['action']) && ($_POST['action']=='add'))
 	{
 		/*return data*/
 		$rd=array(
 			
 		);
 	}
-	return json_encode($rd,true)
+	return json_encode($rd,true);
 }
 else{
 	die('Ups...');
