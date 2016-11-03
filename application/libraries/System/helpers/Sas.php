@@ -42,7 +42,7 @@ class Sas{
 		ob_start();
 		if(!empty($styles)){
 			foreach($styles as $style){
-				?><link type="text/css" rel="stylesheet" href="<?=(($style['ext']==false)?base_url('assets/'):'').$style['path'].'?v='.$style['version'];?>">
+				?><link type="text/css" rel="stylesheet" href="<?=(($style['ext']==false)?base_url('assets\/'):'').$style['path'].'?v='.$style['version'];?>">
 				<?php
 			}
 		}
@@ -133,7 +133,7 @@ class Sas{
 				{
 					ob_start();
 					?>
-					<script type="text/javascript" src="<?=(($script['ext']==false)?base_url('assets/'):'').$script['path'].'?v='.$script['version'];?>"></script><?php
+					<script type="text/javascript" src="<?=(($script['ext']==false)?base_url('assets\/'):'').$script['path'].'?v='.$script['version'];?>"></script><?php
 					$scripts_header_return.=ob_get_clean();
 				}
 				$loaded[$script['slug']]=true;
@@ -183,7 +183,7 @@ class Sas{
 				{
 					ob_start();
 					?>
-					<script type="text/javascript" src="<?=(($script['ext']==false)?base_url('assets/'):'').$script['path'].'?v='.$script['version'];?>"></script><?php
+					<script type="text/javascript" src="<?=(($script['ext']==false)?base_url('assets\/'):'').$script['path'].'?v='.$script['version'];?>"></script><?php
 					$scripts_footer_return.=ob_get_clean();
 				}
 				$loaded[$script['slug']]=true;

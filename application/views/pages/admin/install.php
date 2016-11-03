@@ -126,7 +126,7 @@ $sys=&get_inst();
 
 			<div class="row callout transparent">
 				<div class="small-12 columns">
-					<?=__('Pick Your Language For the Installer');?>
+					<?=__('Pick Your Language For the Installer');?> : <?=get_inst()->ilang->get_installer_lang();?>
 				</div>
 				<div class="small-12 columns">
 					<?php 
@@ -162,6 +162,7 @@ $sys=&get_inst();
 		</div>
 	</div>
 </div>
+
 <script>
 	$(document).ready(function(){
 		$('a[data-install-lang]').click(function(e){
@@ -183,7 +184,6 @@ $sys=&get_inst();
 			if($ths.is('input') || $ths.is('button')){
 				if(($ths.hasAttr('type')) && ($ths.attr('type')=='submit')){
 					$ths.closest("form").keycript('<?=base_url('ajax/admin/install');?>',function(result){
-						
 						$(document).foundation();
 					});
 				}

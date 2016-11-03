@@ -10,7 +10,7 @@ Class Page{
 		$ajax_check='';
 		$temp=explode('/',$page);
 		$ajax_check=$temp[0];
-		if($ajax_check!='ajax'){
+		if(($ajax_check!='ajax') && ($ajax_check!='assets')){
 			get_inst()->load->view('styles_and_scripts');
 			//unset($temp);
 			/*precheck if exists, if don't, maybe is the lang code?*/
@@ -23,7 +23,7 @@ Class Page{
 				/*here, it does not matter if is exists or not... the pps will automaticly see it*/
 				get_inst()->pps->init($page);
 		}
-		else{
+		elseif($ajax_check!='assets'){
 			unset($temp[0]);
 			$page=implode('/',$temp);
 			unset($temp);

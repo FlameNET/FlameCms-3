@@ -9,7 +9,6 @@ Class Initiator{
 	function setting_up(){
 		$sys=&get_inst();
 		$sys->load->library(array(
-			'session',
 			'System/Trigger'=>'trigger',
 			'System/page'=>'page',
 			'System/helpers/Pps'=>'pps',
@@ -19,6 +18,7 @@ Class Initiator{
 		/*If config File Does not exists, Trigger Installer*/
 		if(!file_exists(APPPATH.'/flamecms_config/config.php')){
 			$sys->load->library(array(
+				'System/libraries/session/MY_Session'=>'session',
 				'System/admin/Install',
 				));
 			set_inst($sys);
@@ -31,7 +31,9 @@ Class Initiator{
 		}
 		/*Ignore CodeIgnither Configs (the are still Called, but, not used)*/
 		else{
+			
 			require_once(APPPATH.'/flamecms_config/config.php');
+			
 			$this->configs();
 			/*END*/
 			set_inst($sys);

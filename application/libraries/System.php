@@ -33,6 +33,10 @@ class System {
 			define('FlameCMS','init');
 			$CI=&get_instance();
 			/*Preload system*/
+			
+			/*Old CI Bug*/
+			//session_start();
+				
 			$CI->load->library(
 				array(
 					'calendar',

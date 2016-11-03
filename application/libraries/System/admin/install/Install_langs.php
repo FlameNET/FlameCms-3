@@ -50,24 +50,25 @@ Class Install_langs{
 	}
 	function get_installer_lang(){
 		$sys=&get_inst();
-		if(($sys->session->installer!==null) && ($sys->session->installer->lang!==null)){
-			return $sys->session->installer->lang;
+		if(($sys->session->installer!==null) && ($sys->session->installer['lang']!==null)){
+			return $sys->session->installer['lang'];
 		}
 		else{
 			//default lang
 			$this->set_installer_lang('en');
-			return $sys->session->installer->lang;
+			return $sys->session->installer['lang'];
 		}
 	}
 	function set_installer_lang($lang_code){
 		$sys=&get_inst();
 		if($sys->session->installer!==null){
-			$sys->session->installer->lang=$lang_code;
+			$data=array('lang'=>$lang_code);
+			$sys->session->set_userdata('installer',$data);
 		}
 		else{
 			$a=array();
 			$a['lang']=$lang_code;
-			$sys->session->installer= (object) $a;
+			$sys->session->set_userdata('installer',$a);
 		}
 	}
 	function get_langs(){
