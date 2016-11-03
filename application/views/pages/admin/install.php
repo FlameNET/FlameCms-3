@@ -133,7 +133,7 @@ $sys=&get_inst();
 					foreach($langs as $lid=>$lang):
 					?>
 					<a data-install-lang="<?=$lang['code']?>">
-						<?=(($lang['flag']!='')?'<img src="'.$lang['flag'].'" width="16px" />':'');?> <?=$lang['name']?>
+						<?=(($lang['flag']!='')?'<img src="'.$lang['flag'].'" width="16px" />':'');?>
 					</a>
 					<?php
 					endforeach;
