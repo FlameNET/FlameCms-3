@@ -14,6 +14,10 @@ if($sys->input->is_ajax_request())
 		define('ajaxload',true);
 		$sys->page->load('ajax/admin/install/reserved/step3');
 	}
+	elseif($data['step']=='step-3'){
+		define('ajaxload',true);
+		$sys->page->load('ajax/admin/install/reserved/step4');
+	}
 }
 else{
 	die('Ups...');
