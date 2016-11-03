@@ -3,6 +3,22 @@
  * Copyright 2016-2016
  * Licensed under GNU (https://github.com/FlameNET/FlameCms-3/blob/master/licence.txt)
  */
+content.flamecms_installer a.languages.active {
+    background-color: rgba(50,50,50,0.5);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 0px;
+    color: white;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+content.flamecms_installer a.languages {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
 content.flamecms_installer div#body_ajax_loader.ajax_loaded {
     margin: -115px 0 !important;
 }

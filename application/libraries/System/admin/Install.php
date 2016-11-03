@@ -68,15 +68,15 @@ class Install{
 	}
 	function check_openssl(){
 		$openssl=function_exists('openssl_free_key');
-		return Array('uv'=>(($openssl==true)?'yes':'no'),'cv'=>'OpenSSL Extension Exists','label'=>'OpenSSL','ok'=>$openssl);
+		return Array('uv'=>(($openssl==true)?__('Yes'):__('No')),'cv'=>__('OpenSSL Extension Exists'),'label'=>'OpenSSL','ok'=>$openssl);
 	}
 	function check_hash(){
 		$hash=function_exists('hash');
-		return Array('uv'=>(($hash==true)?'yes':'no'),'cv'=>'Hash Extension Exists','label'=>'Hash','ok'=>$hash);
+		return Array('uv'=>(($hash==true)?__('Yes'):__('No')),'cv'=>__('Hash Extension Exists'),'label'=>'Hash','ok'=>$hash);
 	}
 	function check_curl(){
 		$curl=function_exists('curl_version');
-		return Array('uv'=>(($curl==true)?'yes':'no'),'cv'=>'Curl Extension Exists','label'=>'Curl','ok'=>$curl);
+		return Array('uv'=>(($curl==true)?__('Yes'):__('No')),'cv'=>__('Curl Extension Exists'),'label'=>'Curl','ok'=>$curl);
 	}
 	function check_iconv(){
 		if (function_exists('iconv')) {
@@ -85,7 +85,7 @@ class Install{
 		else{
 			$iconv=false;
 		}
-		return Array('uv'=>(($iconv==true)?'yes':'no'),'cv'=>'IconV Extension Exists','label'=>'Iconv','ok'=>$iconv);
+		return Array('uv'=>(($iconv==true)?__('Yes'):__('No')),'cv'=>__('IconV Extension Exists'),'label'=>'Iconv','ok'=>$iconv);
 	}
 	function check_soap(){
 		if (extension_loaded('soap')) {
@@ -94,32 +94,32 @@ class Install{
 		else{
 			$soap=class_exists("SOAPClient");
 		}
-		return Array('uv'=>(($soap==true)?'yes':'no'),'cv'=>'Soap Exists and Enabled','label'=>'Soap Client API','ok'=>$soap);
+		return Array('uv'=>(($soap==true)?__('Yes'):__('No')),'cv'=>__('Soap Exists and Enabled'),'label'=>__('Soap Client API'),'ok'=>$soap);
 	}
 	function checkphp(){
 		$var=$this->get_var_checks();
 		$check=$var['ch']['php'];
 		$current=$var['cu']['php'];
-		return Array('uv'=>$current,'cv'=>$check,'label'=>'PHP Version','ok'=>$this->decode_versions($check, $current));
+		return Array('uv'=>$current,'cv'=>$check,'label'=>__('PHP Version'),'ok'=>$this->decode_versions($check, $current));
 	}
 	function checkapa(){
 		$var=$this->get_var_checks();
 		$check=$var['ch']['apa'];
 		$current=$var['cu']['apa'];
-		return Array('uv'=>$current,'cv'=>$check,'label'=>'Apache Server Version','ok'=>$this->decode_versions($check, $current));
+		return Array('uv'=>$current,'cv'=>$check,'label'=>__('Apache Server Version'),'ok'=>$this->decode_versions($check, $current));
 	}
 	function checkmsv(){
 		$var=$this->get_var_checks();
 		$check=$var['ch']['msv'];
 		$current=$var['cu']['msv'];
-		return Array('uv'=>$current,'cv'=>$check,'label'=>'Mysqli Client API Version','ok'=>$this->decode_versions($check, $current));
+		return Array('uv'=>$current,'cv'=>$check,'label'=>__('Mysqli Client API Version'),'ok'=>$this->decode_versions($check, $current));
 	}
 	function checkops(){
 		$var=$this->get_var_checks();
 		$check=$var['ch']['osv'];
 		$current=$var['cu']['osv'];
 		
-		return Array('uv'=>$current,'cv'=>$check,'label'=>'Operating System','ok'=>in_array(strtolower($current),$check));
+		return Array('uv'=>$current,'cv'=>$check,'label'=>__('Operating System'),'ok'=>in_array(strtolower($current),$check));
 	}
 	function decode_versions($v1,$v2){
 		$vch=version_compare($v2,$v1);

@@ -126,14 +126,14 @@ $sys=&get_inst();
 
 			<div class="row callout transparent">
 				<div class="small-12 columns">
-					<?=__('Pick Your Language For the Installer');?> : <?=get_inst()->ilang->get_installer_lang();?>
+					<?=__('Pick Your Language For the Installer');?>
 				</div>
 				<div class="small-12 columns">
 					<?php 
 					foreach($langs as $lid=>$lang):
 					?>
-					<a data-install-lang="<?=$lang['code']?>">
-						<?=(($lang['flag']!='')?'<img src="'.$lang['flag'].'" width="16px" />':'');?>
+					<a <?=((get_inst()->ilang->get_installer_lang()==$lang['code'])?'':'data-install-lang="'.$lang['code'].'" ');?>class="languages <?=((get_inst()->ilang->get_installer_lang()==$lang['code'])?'active':'')?>">
+						<?=(($lang['flag']!='')?'<img src="'.$lang['flag'].'" width="16px" />':'');?> <?=$lang['name']?>
 					</a>
 					<?php
 					endforeach;
@@ -157,7 +157,7 @@ $sys=&get_inst();
                 <li><a href="https://github.com/FlameNET/FlameCMS/stargazers"><i class="fa fa-star"></i> <span data-uikit-stargazers="">3700</span> <?=__('Stargazers');?></a></li>
                 <li><a href="https://github.com/FlameNET/FlameCMS-3"><i class="fa fa-github"></i> FlameCMS</a></li>
                 <li><a href="https://twitter.com/FlameCMS"><i class="fa fa-twitter"></i> @FlameCMS</a></li>
-                <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i> FlameCMS</a></li>
+                <li><a href="https://www.facebook.com/FlameCMS/"><i class="fa fa-facebook"></i> FlameCMS</a></li>
             </ul>
 		</div>
 	</div>

@@ -27,6 +27,18 @@ __s('Application Requirements','');
 __s('Modules','');
 __s('Required Version','');
 __s('Installed Version','');
+__s('Operating System','');
+__s('Mysqli Client API Version','');
+__s('Apache Server Version','');
+__s('PHP Version','');
+__s('Soap Client API','');
+__s('Soap Exists and Enabled','');
+
+__s('IconV Extension Exists','');
+__s('Curl Extension Exists','');
+__s('Hash Extension Exists','');
+__s('OpenSSL Extension Exists','');
+
 __s('hey! look at the person who has the best Host provider!','');
 __s('Lets finish the install ok?','');
 __s('Continue to Step 2','');
