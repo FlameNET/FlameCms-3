@@ -1,4 +1,5 @@
 <?php
+define('CMS_Version','0.0.3-alpha',true);
 /**
  * CodeIgniter
  *

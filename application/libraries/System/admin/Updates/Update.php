@@ -25,7 +25,7 @@ Class Update{
 		$sys=&get_inst();
 		$data=$this->get_releases();
 		//$cversion=$sys->configuration->system->cms_version;
-		$cversion='0.0.3-alpha';
+		$cversion=CMS_Version;
 		$nversion=$data['current_version'];
 		$check=$this->decode_versions($cversion, $nversion);
 		$str=(($check==1)?'We have an update!':($check==0)?'We are on the current version!':'we have an higer version');
