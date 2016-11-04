@@ -10,10 +10,26 @@ Target Server Type    : MYSQL
 Target Server Version : 100027
 File Encoding         : 65001
 
-Date: 2016-11-04 22:03:27
+Date: 2016-11-04 22:34:16
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for v3_log_login
+-- ----------------------------
+DROP TABLE IF EXISTS `v3_log_login`;
+CREATE TABLE `v3_log_login` (
+  `username` longtext NOT NULL,
+  `id` int(99) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  `ip` longtext NOT NULL,
+  `useragent` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of v3_log_login
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for v3_settings
