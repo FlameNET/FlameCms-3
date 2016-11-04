@@ -1,5 +1,20 @@
 <?php
+/*Defines the Current Version for the CMS*/
 define('CMS_Version','0.0.3-alpha',true);
+/* ************************************	*
+ * * Only Update for the Types:			*
+ * ************************************	*
+ * - Pre-Alpha		-> alpha			*
+ * - Alpha			-> alpha-release	*
+ * - Pre-Beta		-> beta				*
+ * - Beta			-> beta-release 	*
+ * - Pre-Charlie	-> charlie			*
+ * - Charlie		-> charlie-release	*
+ * - Pre-Release	-> pre-release		*
+ * - Release		-> release			*
+ * ************************************	*
+ * */
+define('CMS_type','alpha');
 /**
  * CodeIgniter
  *
