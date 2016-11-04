@@ -14,7 +14,7 @@ define('CMS_Version','0.0.3-alpha',true);
  * - Release		-> release			*
  * ************************************	*
  * */
-define('CMS_type','alpha');
+define('CMS_type','alpha',true);
 /**
  * CodeIgniter
  *
