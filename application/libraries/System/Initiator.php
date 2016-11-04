@@ -13,8 +13,10 @@ Class Initiator{
 			'System/page'=>'page',
 			'System/helpers/Pps'=>'pps',
 			'System/helpers/Sas'=>'sas',
-			'System/helpers/Hfs'=>'hfs'
+			'System/helpers/Hfs'=>'hfs',
+			'System/admin/Updates/Update'=>'up'
 		));
+		$sys->up->get_releases();
 		/*If config File Does not exists, Trigger Installer*/
 		if(!file_exists(APPPATH.'/flamecms_config/config.php')){
 			$sys->load->library(array(
