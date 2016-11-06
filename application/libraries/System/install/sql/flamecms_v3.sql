@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 100027
 File Encoding         : 65001
 
-Date: 2016-11-06 20:49:56
+Date: 2016-11-06 21:06:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -191,7 +191,7 @@ CREATE TABLE `v3_settings` (
 -- ----------------------------
 -- Records of v3_settings
 -- ----------------------------
-INSERT INTO `v3_settings` VALUES ('00000000001', 'cms_sitename', 'FlameCMS Test site', 's', null, null);
+INSERT INTO `v3_settings` VALUES ('00000000001', 'cms_sitename', 'FlameCMS', 's', null, null);
 INSERT INTO `v3_settings` VALUES ('00000000002', 'cms_https', 'true', 'b', null, null);
 INSERT INTO `v3_settings` VALUES ('00000000003', 'cms_theme', 'default', 's', null, null);
 INSERT INTO `v3_settings` VALUES ('00000000004', 'cms_lang', 'en', 's', null, null);
@@ -199,7 +199,7 @@ INSERT INTO `v3_settings` VALUES ('00000000005', 'cms_multilang', 'true', 'b', n
 INSERT INTO `v3_settings` VALUES ('00000000006', 'cms_languages', '{\'0\':\"pt\",\'1\':\"en\",\'2\':\"es\"}', 'j', null, null);
 INSERT INTO `v3_settings` VALUES ('00000000007', 'cms_force_https', 'false', 'b', null, null);
 INSERT INTO `v3_settings` VALUES ('00000000008', 'cms_login_force_https', 'false', 'b', null, null);
-INSERT INTO `v3_settings` VALUES ('00000000009', '', '', '', null, null);
+INSERT INTO `v3_settings` VALUES ('00000000009', 'cms_cookie_name', 'flamecms', 's', null, null);
 INSERT INTO `v3_settings` VALUES ('00000000010', 'cms_baseurl', 'v3.flamecms.tk', 's', null, null);
 INSERT INTO `v3_settings` VALUES ('00000000011', 'cms_alpha_security', 'false', 'b', null, null);
 INSERT INTO `v3_settings` VALUES ('00000000012', 'cms_version', '0.0.3-alpha', 'v', null, null);
