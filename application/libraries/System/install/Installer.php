@@ -23,10 +23,51 @@ class Installer{
 		$sys->db->query($sql);
 	}
 	function initiate_root_account(){
-		
+		$data_user=array(
+			'username'=>'flamecms',
+			'activation'=>'',
+			/* the password will never match,
+			 * since it needs an specific combination and that is not made here.
+			 * */
+			'password'=>md5(''),
+			'enforcement'=>'',
+			'ek01'=>'',
+			'ek02'=>'',
+			'ek03'=>'',
+			'ek04'=>'',
+			'ek05'=>'',
+			'ek06'=>'',
+			'ek07'=>'',
+			'ek08'=>'',
+			'ek09'=>'',
+			'ek10'=>'',
+		);
+		$data_acco=array(
+			'fname'=>'FlameCMS',
+			'lname'=>'Root',
+			'email'=>'',
+			'permission_level'=>'12',
+			'about_text'=>'FlameCMS Root Control account ',
+			'job'=>'',
+			'contact_info'=>'',
+		);
 	}
-	function initiate_administrator_account(){
-		
+	function initiate_owner_account(){
+		$data_user=array(
+			'username'=>'',
+			'activation'=>'',
+			'password'=>'',
+			'enforcement'=>'',
+		);
+		$data_acco=array(
+			'fname'=>'',
+			'lname'=>'',
+			'email'=>'',
+			'permission_level'=>'11',
+			'about_text'=>'',
+			'job'=>'',
+			'contact_info'=>'',
+		);
 	}
 	function change_settings(){
 		
