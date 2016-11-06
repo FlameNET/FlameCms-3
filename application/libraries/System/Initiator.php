@@ -35,9 +35,7 @@ Class Initiator{
 		}
 		/*Ignore CodeIgnither Configs (the are still Called, but, not used)*/
 		else{
-			
-			require_once(APPPATH.'/flamecms_config/config.php');
-			
+			$this->config->load('flamecms/config.php');
 			$this->configs();
 			/*END*/
 			set_inst($sys);
