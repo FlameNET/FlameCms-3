@@ -2,7 +2,7 @@
 /*script cuddies answer*/
 defined('FlameCMS') or die('No Script Cuddies');
 $sys=&get_inst();
-$sys->ilang->define_name('es','Espa&ntilde;ol',base_url('assets/imgs/flags/spain.png'));
+$sys->ilang->define_name('es','Espa&ntilde;ol',base_url('assets/imgs/flags/es.png'));
 $sys->ilang->lang('es');
 /*Header*/
 __s('FlameCMS Installer','Instalador de FlameCMS');
