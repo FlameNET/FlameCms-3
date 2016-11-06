@@ -98,8 +98,15 @@ __s('Add WOW Server','');
 __s('','');
 __s('To continue, please fill all the information and submit the form.','');
 __s('With all done, you will be redirected to the administation page and you will be able to and the wow server.','');
-
+/*Install End Fenching Current Status...*/
+__s('Feching Current Status...','');
 __s('','');
+__s('','');
+__s('','');
+__s('','');
+__s('','');
+__s('','');
+
 /*
 __s('','');
  * */

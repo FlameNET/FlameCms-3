@@ -97,7 +97,13 @@ __s('Add WOW Server','Adicionar Servidor WOW');
 __s('','');
 __s('To continue, please fill all the information and submit the form.','para continuar, preencha todos os campos e envie o formulário');
 __s('With all done, you will be redirected to the administation page and you will be able to and the wow server.','Com tudo feito, vai ser redirecionado para a pagina de administração, e poderá adicionar servidores de "World of Warcraft".');
-
+/*Install End Fenching Current Status...*/
+__s('Feching Current Status...','A obter o estado actual ...');
+__s('','');
+__s('','');
+__s('','');
+__s('','');
+__s('','');
 __s('','');
 /*
 __s('','');
