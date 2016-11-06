@@ -10,10 +10,104 @@ Target Server Type    : MYSQL
 Target Server Version : 100027
 File Encoding         : 65001
 
-Date: 2016-11-04 22:34:16
+Date: 2016-11-06 17:19:52
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for v3_blog_content
+-- ----------------------------
+DROP TABLE IF EXISTS `v3_blog_content`;
+CREATE TABLE `v3_blog_content` (
+  `blog_id` int(11) unsigned zerofill NOT NULL AUTO_INCREMENT,
+  `created_by` varchar(99) NOT NULL,
+  `created_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `modified_on` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `blog_content` longtext NOT NULL,
+  `blog_slug` varchar(255) NOT NULL,
+  `blog_child` int(11) unsigned zerofill DEFAULT NULL,
+  PRIMARY KEY (`blog_id`),
+  KEY `created_by` (`created_by`),
+  KEY `blog_child` (`blog_child`),
+  CONSTRAINT `v3_blog_content_ibfk_1` FOREIGN KEY (`created_by`) REFERENCES `v3_user_login` (`UUID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `v3_blog_content_ibfk_2` FOREIGN KEY (`blog_child`) REFERENCES `v3_blog_content` (`blog_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of v3_blog_content
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for v3_forum
+-- ----------------------------
+DROP TABLE IF EXISTS `v3_forum`;
+CREATE TABLE `v3_forum` (
+  `forum_id` int(11) unsigned zerofill NOT NULL AUTO_INCREMENT,
+  `section_id` int(11) unsigned zerofill NOT NULL,
+  `is_content` tinyint(1) NOT NULL,
+  `forum_slug` varchar(255) NOT NULL,
+  `forum_name` text NOT NULL,
+  `created_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified_on` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `subforum_id` int(11) unsigned zerofill DEFAULT NULL,
+  PRIMARY KEY (`forum_id`),
+  KEY `section_id` (`section_id`),
+  KEY `subforum_id` (`subforum_id`),
+  CONSTRAINT `v3_forum_ibfk_1` FOREIGN KEY (`section_id`) REFERENCES `v3_forum_section` (`section_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `v3_forum_ibfk_2` FOREIGN KEY (`subforum_id`) REFERENCES `v3_forum` (`forum_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of v3_forum
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for v3_forum_messages
+-- ----------------------------
+DROP TABLE IF EXISTS `v3_forum_messages`;
+CREATE TABLE `v3_forum_messages` (
+  `forum_id` int(11) unsigned zerofill NOT NULL,
+  `mensage_id` int(11) unsigned zerofill NOT NULL AUTO_INCREMENT,
+  `message_content` longtext NOT NULL,
+  `message_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`mensage_id`,`forum_id`),
+  KEY `forum_id` (`forum_id`),
+  CONSTRAINT `v3_forum_messages_ibfk_1` FOREIGN KEY (`forum_id`) REFERENCES `v3_forum` (`forum_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of v3_forum_messages
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for v3_forum_section
+-- ----------------------------
+DROP TABLE IF EXISTS `v3_forum_section`;
+CREATE TABLE `v3_forum_section` (
+  `section_id` int(11) unsigned zerofill NOT NULL AUTO_INCREMENT,
+  `section_name` text NOT NULL,
+  `section_slug` varchar(255) NOT NULL,
+  `created_by` varchar(99) NOT NULL,
+  `created_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified_on` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `child_of_forum` int(11) unsigned zerofill DEFAULT NULL,
+  `child_of_section` int(11) unsigned zerofill DEFAULT NULL,
+  PRIMARY KEY (`section_id`),
+  UNIQUE KEY `section_id` (`section_id`) USING BTREE,
+  UNIQUE KEY `section_slug` (`section_slug`) USING BTREE,
+  KEY `created_by` (`created_by`),
+  KEY `child_of_section` (`child_of_section`),
+  KEY `child_of_forum` (`child_of_forum`),
+  CONSTRAINT `v3_forum_section_ibfk_1` FOREIGN KEY (`created_by`) REFERENCES `v3_user_login` (`UUID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `v3_forum_section_ibfk_2` FOREIGN KEY (`child_of_section`) REFERENCES `v3_forum_section` (`section_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `v3_forum_section_ibfk_3` FOREIGN KEY (`child_of_forum`) REFERENCES `v3_forum` (`forum_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of v3_forum_section
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for v3_log_login
@@ -108,8 +202,9 @@ INSERT INTO `v3_settings` VALUES ('00000000056', 'cms_install_id', '1', 'i');
 DROP TABLE IF EXISTS `v3_system_perms`;
 CREATE TABLE `v3_system_perms` (
   `perm_system_id` varchar(255) NOT NULL,
-  `perm_id` int(11) NOT NULL,
+  `perm_id` int(11) unsigned zerofill NOT NULL,
   `perm_description` varchar(255) NOT NULL,
+  `perm_data` longtext NOT NULL,
   PRIMARY KEY (`perm_system_id`,`perm_id`),
   UNIQUE KEY `perm_system_id` (`perm_system_id`,`perm_id`) USING BTREE,
   KEY `perm_id` (`perm_id`) USING BTREE
@@ -118,6 +213,7 @@ CREATE TABLE `v3_system_perms` (
 -- ----------------------------
 -- Records of v3_system_perms
 -- ----------------------------
+INSERT INTO `v3_system_perms` VALUES ('administrator', '00000000000', 'a', '');
 
 -- ----------------------------
 -- Table structure for v3_system_roles
@@ -129,7 +225,9 @@ CREATE TABLE `v3_system_roles` (
   `role_perms_id` int(11) unsigned zerofill NOT NULL,
   `role_gm` tinyint(1) NOT NULL,
   `role_visible_name` text NOT NULL,
-  PRIMARY KEY (`role_id`)
+  PRIMARY KEY (`role_id`),
+  KEY `role_perms_id` (`role_perms_id`),
+  CONSTRAINT `v3_system_roles_ibfk_1` FOREIGN KEY (`role_perms_id`) REFERENCES `v3_system_perms` (`perm_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -166,8 +264,8 @@ CREATE TABLE `v3_user_data` (
   PRIMARY KEY (`UUID`),
   UNIQUE KEY `UUID` (`UUID`) USING BTREE,
   KEY `permission_level` (`permission_level`),
-  CONSTRAINT `v3_user_data_ibfk_1` FOREIGN KEY (`UUID`) REFERENCES `v3_user_data` (`UUID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `v3_user_data_ibfk_2` FOREIGN KEY (`permission_level`) REFERENCES `v3_system_roles` (`role_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `v3_user_data_ibfk_2` FOREIGN KEY (`permission_level`) REFERENCES `v3_system_roles` (`role_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `v3_user_data_ibfk_3` FOREIGN KEY (`UUID`) REFERENCES `v3_user_login` (`UUID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
