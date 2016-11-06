@@ -196,6 +196,10 @@ $sys=&get_inst();
 										<input id="cms_mysql_con_db" required="" type="text" value="" placeholder="<?=__('greatdb');?>"/>
 									</div>
 									<div class="small-12 medium-6 column">
+										<label for="cms_mysql_con_prefix"><?=__('[CMS] Database Table Prefix');?></label>
+										<input id="cms_mysql_con_prefix" type="text" value="" placeholder="<?=__('tableprexif_');?>"/>
+									</div>
+									<div class="small-12 medium-12 column">
 										<a data-install-check-db="cms" class="uk-button tm-button-download">
 											<?=__('Check [CMS] Mysql Settings');?>
 										</a>

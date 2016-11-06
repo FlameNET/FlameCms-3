@@ -76,6 +76,8 @@ __s('[CMS] Mysql Port','');
 __s('Port','');
 __s('[CMS] Database Name','');
 __s('greatdb','');
+__s('[CMS] Database Table Prefix','');
+__s('tableprexif_','');
 __s('Check [CMS] Mysql Settings','');
 /*[CMS] Mysql Settings Connection Errors*/
 __s('Everything Ok! procced','');

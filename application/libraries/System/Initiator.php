@@ -18,7 +18,9 @@ Class Initiator{
 		));
 		$sys->up->get_releases();
 		/*If config File Does not exists, Trigger Installer*/
-		if(!file_exists(APPPATH.'/flamecms_config/config.php')){
+		include(APPPATH.'/flamecms_config/config.php');
+		
+		if(!check_the_config_file_flamecms()){
 			$sys->load->library(array(
 				'System/libraries/session/MY_Session'=>'session',
 				'System/admin/Install',

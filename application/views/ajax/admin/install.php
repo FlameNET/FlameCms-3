@@ -15,6 +15,7 @@ if($sys->input->is_ajax_request())
 		$sys->page->load('ajax/admin/install/reserved/step3');
 	}
 	elseif($data['step']=='step-3'){
+		$sys->session->install_data=$data;
 		define('ajaxload',true);
 		$sys->page->load('ajax/admin/install/reserved/step4');
 	}

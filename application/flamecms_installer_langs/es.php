@@ -77,6 +77,8 @@ __s('[CMS] Mysql Port','[CMS] Puerto Mysql');
 __s('Port','Puerto');
 __s('[CMS] Database Name','Nombre de la base de datos');
 __s('greatdb','db');
+__s('[CMS] Database Table Prefix','prefixo de la tabiela da base de datos');
+__s('tableprexif_','prefixodelastabelas_');
 __s('Check [CMS] Mysql Settings','Compruebe [CMS] Configuración de Mysql');
 
 /*[CMS] Mysql Settings Connection Errors*/
@@ -102,6 +104,12 @@ __s('','');
 __s('To continue, please fill all the information and submit the form.','Para continuar, rellene toda la informaci&oacute;n y env&iacute;e el formulario.');
 __s('With all done, you will be redirected to the administation page and you will be able to and the wow server.','Con todo hecho, usted será redirigido a la página de administración de el servidor wow.');
 
+__s('Feching Current Status...','Obteniendo estado actual ...');
+__s('','');
+__s('','');
+__s('','');
+__s('','');
+__s('','');
 __s('','');
 /*
 __s('','');

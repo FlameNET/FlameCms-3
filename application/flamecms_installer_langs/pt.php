@@ -75,6 +75,8 @@ __s('[CMS] Mysql Port','[CMS] Porta do Servidor MySql');
 __s('Port','Porta');
 __s('[CMS] Database Name','[CMS] Nome da Base de Dados');
 __s('greatdb','BasededadosFantástica');
+__s('[CMS] Database Table Prefix','[CMS] Prefixo das tabelas da base de dados');
+__s('tableprexif_','prefixodatabela_');
 __s('Check [CMS] Mysql Settings','Verificar [CMS] As Definições do servidor Mysql');
 /*[CMS] Mysql Settings Connection Errors*/
 __s('Everything Ok! procced','Tudo Bem! Continue');
