@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 100027
 File Encoding         : 65001
 
-Date: 2016-11-06 20:42:06
+Date: 2016-11-06 20:49:56
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -161,6 +161,7 @@ CREATE TABLE `v3_sessions` (
   `data` blob NOT NULL,
   `ip_address` varchar(45) NOT NULL,
   PRIMARY KEY (`session_id`),
+  UNIQUE KEY `id` (`session_id`) USING BTREE,
   KEY `UUID` (`UUID`),
   KEY `ci_sessions_timestamp` (`timestamp`) USING BTREE,
   CONSTRAINT `v3_sessions_ibfk_1` FOREIGN KEY (`UUID`) REFERENCES `v3_user_login` (`UUID`) ON DELETE NO ACTION ON UPDATE NO ACTION
