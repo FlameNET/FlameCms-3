@@ -17,16 +17,25 @@ class Installer{
 		fclose($myfile);
 		return true;
 	}
-	function initiate_db(){
+	function initiate_db($prefix){
 		$sys=&get_inst();
+		$sql=sql($prefix);
+		$sys->db->query($sql);
+	}
+	function initiate_root_account(){
+		
+	}
+	function initiate_administrator_account(){
+		
+	}
+	function change_settings(){
 		
 	}
 }
 
 function config_creator_text($host,$user,$pass,$database,$port,$prefix){
 	ob_start();
-	?>
-	<\?php
+	?><\?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 defined('FlameCMS') or die('No Script Cuddies');
 
