@@ -47,7 +47,7 @@ class Installer{
 			'lname'=>'Root',
 			'email'=>'',
 			'permission_level'=>'12',
-			'about_text'=>'FlameCMS Root Control account ',
+			'about_text'=>'FlameCMS Root Control account',
 			'job'=>'',
 			'contact_info'=>'',
 		);

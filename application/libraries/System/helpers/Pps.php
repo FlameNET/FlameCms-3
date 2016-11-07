@@ -104,4 +104,22 @@ Class Pps{
 			}
 		}
 	}
+	function minify($script_path,$echo=false){
+		if(!file_exists($script_path))
+		{return false;}
+		$subject=file_get_contents($script_path);
+		/*
+		 * replaces every comment (
+		 * 	// 
+		 * 	/**\
+		 * /* * *\/)
+		 * (this comment would be removed...)
+		 * and remove the line breaks
+		 */
+		$clean=preg_replace('/((\/\/.*)|(\/\*.*\*\/)|(\/\*.*\n.*\*\/)|(\n))/gm', '', $subject);
+		if($echo==true){
+			echo $clean;
+		}
+		return $clean;
+	}
 }
