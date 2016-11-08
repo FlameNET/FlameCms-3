@@ -73,10 +73,48 @@ class Installer{
 		
 	}
 }
+function config_systemkeys_creator(){
+	ob_start();
+	echo '<?php';
+	?>
+defined('BASEPATH') OR exit('No direct script access allowed');
+defined('FlameCMS') or die('No Script Cuddies');
 
+/* ***********************************
+ * This system keys cannot be changed!
+ * ***********************************
+ * if you change, it will break the 
+ * hole system if you change them!
+ * ***********************************
+ * If the system breaks, it will 
+ * delete all the database tables,
+ * delete all the system configuration
+ * files and will not leave any trace
+ * of it only for security reasons,
+ * with the purpose of the user
+ * privacy.
+ * ***********************************
+*/
+$encription=array();
+$encription['01']='<?=md5(uniqid('',true));?>';
+$encription['02']='<?=md5(uniqid('',true));?>';
+$encription['03']='<?=md5(uniqid('',true));?>';
+$encription['04']='<?=md5(uniqid('',true));?>';
+$encription['05']='<?=md5(uniqid('',true));?>';
+$encription['06']='<?=md5(uniqid('',true));?>';
+$encription['07']='<?=md5(uniqid('',true));?>';
+$encription['08']='<?=md5(uniqid('',true));?>';
+$encription['09']='<?=md5(uniqid('',true));?>';
+$encription['10']='<?=md5(uniqid('',true));?>';
+
+$config['system_keys']=$encription;
+	<?php
+	return ob_get_clean();
+}
 function config_creator_text($host,$user,$pass,$database,$port,$prefix){
 	ob_start();
-	?><\?php
+	echo '<?php';
+	?>
 defined('BASEPATH') OR exit('No direct script access allowed');
 defined('FlameCMS') or die('No Script Cuddies');
 
