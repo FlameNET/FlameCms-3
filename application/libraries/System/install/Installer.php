@@ -17,6 +17,18 @@ class Installer{
 		fclose($myfile);
 		return true;
 	}
+	
+	function config_file_system_keys(){
+		$sys=&get_inst();
+		$myfile = fopen(APPPATH.'config/flamecms/system.php', "rw") or false;
+		if($myfile==false){
+			return false;
+		}
+		$txt = config_systemkeys_creator();
+		fwrite($myfile, $txt);
+		fclose($myfile);
+		return true;
+	}
 	function initiate_db($prefix){
 		$sys=&get_inst();
 		$sql=sql($prefix);
@@ -84,7 +96,7 @@ defined('FlameCMS') or die('No Script Cuddies');
  * This system keys cannot be changed!
  * ***********************************
  * if you change, it will break the 
- * hole system if you change them!
+ * hole system!
  * ***********************************
  * If the system breaks, it will 
  * delete all the database tables,
