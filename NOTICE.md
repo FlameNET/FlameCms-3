@@ -18,3 +18,5 @@
  Automaticly, for example, On The VestaCP Control Panel, your
  Host provider can give backups from 1 to 10 days (depends on
  the package you've signed with your payment with them).
+###Can i migrate From one server to other?
+ Yes, since the system keys are untouched on the migration.
