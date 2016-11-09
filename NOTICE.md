@@ -1,4 +1,4 @@
- # NOTICE
+ #NOTICE
  If the system breaks, it will delete all the database tables,
  delete all the system configuration files and will not leave 
  any trace of it only for security reasons, with the purpose of the user privacy.
