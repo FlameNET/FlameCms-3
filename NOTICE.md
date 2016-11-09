@@ -17,4 +17,4 @@
  Any host provider can give you the possibility to have them made
  Automaticly, for example, On The VestaCP Control Panel, your
  Host provider can give backups from 1 to 10 days (depends on
- the package).
+ the package you've signed with your payment with them).
