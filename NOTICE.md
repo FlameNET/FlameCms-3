@@ -11,3 +11,10 @@
  Because, all of the users deserve to know that their data is protected.
  Since this is an security measure, be sure that your host provider,
  provides you backups at least with 10 days.
+
+###How can i have a backups?
+ You can have them, if you Talk With your host provider,
+ Any host provider can give you the possibility to have them made
+ Automaticly, for example, On The VestaCP Control Panel, your
+ Host provider can give backups from 1 to 10 days (depends on
+ the package).
