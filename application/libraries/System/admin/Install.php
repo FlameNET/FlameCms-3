@@ -27,7 +27,8 @@ class Install{
 			'apa'=>'2.2.29',
 			'osv'=>array(
 				'linux',
-				'windows'
+				'windows',
+				'Windows NT'
 				),
 			),'cu'=>$data);
 		return $check;
