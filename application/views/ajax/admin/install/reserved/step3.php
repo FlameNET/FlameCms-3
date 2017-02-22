@@ -300,7 +300,7 @@ $sys=&get_inst();
 				<div class="callout transparent">
 					<div class="row">
 						<div class="small-12 columns">
-							<button id="form_installer_submit" type="submit" data-installer="step-2" class="uk-button tm-button-download float-right" type="submit" disabled="disabled"><?=__('Send Data');?></button>
+							<button id="form_installer_submit" type="submit" data-installer="step-3" class="uk-button tm-button-download float-right" type="submit" disabled="disabled"><?=__('Send Data');?></button>
 						</div>
 					</div>
 				</div>
