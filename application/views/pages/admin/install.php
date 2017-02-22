@@ -183,9 +183,10 @@ $sys=&get_inst();
 			console.log('click');
 			if($ths.is('input') || $ths.is('button')){
 				if(($ths.hasAttr('type')) && ($ths.attr('type')=='submit')){
-					$ths.closest("form").keycript('<?=base_url('ajax/admin/install');?>',function(result){
+					$.keycript($(this),'<?=base_url('ajax/admin/install');?>',function(result){
 						$(document).foundation();
 					});
+					e.preventDefault();
 				}
 			}
 			else{

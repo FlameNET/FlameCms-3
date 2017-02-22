@@ -2,6 +2,10 @@
 defined('FlameCMS') or die('No Script Cuddies');
 Class Update{
 	function get_releases(){
+		if(defined('installer'))
+		{
+			return false;
+		}
 		$sys=&get_inst();
 		//$server=$sys->configuration->system->cms_update_server;
 		$server='https://api.github.com/repos/FlameNET/FlameCms-3/releases';
@@ -12,6 +16,10 @@ Class Update{
 		$response = curl_exec($ch);
 		$response=json_decode($response,true);
 		$nedded_data=array();
+		if(isset($response['message']))
+		{
+			return false;
+		}
 		$nedded_data['current_version']=$response[0]['tag_name'];
 		$nedded_data['release_type']=$response[0]['name'];
 		$nedded_data['prerelease']=$response[0]['prerelease'];

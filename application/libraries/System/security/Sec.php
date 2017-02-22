@@ -13,6 +13,7 @@ class Sec{
 		$fs=implode('',$kd);
 		if(strlen($str)>$lenght){
 			$fs=str_split($fs,$lenght);
+			$fs=$fs[0];
 		}
 		else{
 			while(strlen($fs)<$lenght){

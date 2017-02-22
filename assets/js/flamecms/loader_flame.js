@@ -23,7 +23,7 @@ jQuery(document).ready(function($){
 				return '';
 			}
 		};
-		$.keycript=function(u,successCallback,errorCallback,errorCallback){
+		$.keycript=function(form,u,successCallback,errorCallback,completeCallback){
 			if((typeof completeCallback)=='undefined'){
 				completeCallback=function(){};
 			}
@@ -31,7 +31,6 @@ jQuery(document).ready(function($){
 				errorCallback=function(){};
 			}
 			var data={};
-			var form=$(this);
 			var method='';
 			if(form.hasAttr('method')){
 				method=form.attr('method');
@@ -41,24 +40,25 @@ jQuery(document).ready(function($){
 			}
 			form.find('input,textarea,select').each(function(){
 				var t=$(this);
-				if((t.hasAttr('type')==true) && ((t.attr('type')=='checkbox') || (t.attr('type')=='password')))
+				if((t.hasAttr('type')==true) && (t.attr('type')=='password'))
 				{
-					if(t.attr('type')=='checkbox'){
 						var temp_checked=false;
 						if(t.is(":checked")){
 							temp_checked=true;
 						}
-						data_temp[t.id()]=temp_checked;
-					}
-					else{
-						data_temp[t.id()]=CryptoJS.MD5(t.val()).toString();
-					}
+						data[t.id()]=temp_checked;
 				}
 				else{
-					if((t.attr('type')!='submit'))
-						data_temp[t.id()]=t.val();
+					if((t.hasAttr('type')==true) && (t.attr('type')=='checkbox')){
+							data[t.id()]=CryptoJS.MD5(t.val()).toString();
+					}
+					else{
+						if((t.attr('type')!='submit'))
+							data[t.id()]=t.val();
+					}
 				}
-			});
+			});~
+			console.log(data);
 			$.ajax({
 			    url:u,
 			    data:data,

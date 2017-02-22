@@ -1,5 +1,6 @@
 <?php
 defined('FlameCMS') or die('No Script Cuddies');
+define('installer',true,true);
 $sys=&get_inst();
 
 if($sys->input->is_ajax_request())
