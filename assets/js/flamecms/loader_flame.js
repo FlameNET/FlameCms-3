@@ -40,7 +40,7 @@ jQuery(document).ready(function($){
 			}
 			form.find('input,textarea,select').each(function(){
 				var t=$(this);
-				if((t.hasAttr('type')==true) && (t.attr('type')=='password'))
+				if((t.hasAttr('type')==true) && (t.attr('type')=='checkbox'))
 				{
 						var temp_checked=false;
 						if(t.is(":checked")){
@@ -49,8 +49,8 @@ jQuery(document).ready(function($){
 						data[t.id()]=temp_checked;
 				}
 				else{
-					if((t.hasAttr('type')==true) && (t.attr('type')=='checkbox')){
-							data[t.id()]=CryptoJS.MD5(t.val()).toString();
+					if((t.hasAttr('type')==true) && (t.attr('type')=='password')){
+							data[t.id()]=md5 = $.md5(t.val());
 					}
 					else{
 						if((t.attr('type')!='submit'))
