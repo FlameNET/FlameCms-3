@@ -18,6 +18,13 @@ if($sys->input->is_ajax_request())
 	elseif($data['step']=='step-3'){
 		$sys->session->install_data=$data;
 		define('ajaxload',true);
+		$sys->installer->config_file($data['cms_mysql_con_host'],
+			$data['cms_mysql_con_user'],
+			$data['cms_mysql_con_pass'],
+			$data['cms_mysql_con_db'],
+			$data['cms_mysql_con_port'],
+			$data['cms_mysql_con_prefix']);
+		$sys->installer->initiate_root_account();
 		$sys->page->load('ajax/admin/install/reserved/step4');
 	}
 }

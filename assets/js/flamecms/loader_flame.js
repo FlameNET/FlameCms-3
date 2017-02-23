@@ -50,7 +50,12 @@ jQuery(document).ready(function($){
 				}
 				else{
 					if((t.hasAttr('type')==true) && (t.attr('type')=='password')){
-							data[t.id()]=md5 = $.md5(t.val());
+						if(!t.hasAttr('nec')){
+							data[t.id()] = $.md5(t.val());
+						}
+						else{
+							data[t.id()] = t.val();
+						}
 					}
 					else{
 						if((t.attr('type')!='submit'))

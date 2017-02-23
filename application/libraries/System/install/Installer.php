@@ -3,18 +3,19 @@ defined('FlameCMS') or die('No Script Cuddies');
 class Installer{
 	function config_file($host,$user,$pass,$database,$port,$prefix){
 		$sys=&get_inst();
-		$myfile = fopen(APPPATH.'config/flamecms/config.php', "rw") or false;
-		if($myfile==false){
-			return false;
-		}
-		$test=$sys->install->check_msqlcon($_POST['host'],$_POST['user'],$_POST['pass'],$_POST['db'],$_POST['port']);
+		if(!file_exists(APPPATH.'config/flamecms'))
+			mkdir(APPPATH.'config/flamecms');
+		//$myfile = fopen(APPPATH.'config/flamecms/config.php', "rw") or false;
+		$test=$sys->install->check_msqlcon($host,$user,$pass,$database,$port);
+		
 		if($test!=0)
 		{
 			return $test;
 		}
 		$txt = config_creator_text($host,$user,$pass,$database,$port,$prefix);
-		fwrite($myfile, $txt);
-		fclose($myfile);
+		write_file(APPPATH.'config/flamecms/config.php', $txt);
+		$sys->load->database();
+		$sys->db->query(sql($prefix));
 		return true;
 	}
 	

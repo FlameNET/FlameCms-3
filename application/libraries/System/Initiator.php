@@ -19,11 +19,13 @@ Class Initiator{
 		$sys->up->get_releases();
 		/*If config File Does not exists, Trigger Installer*/
 		include(APPPATH.'/flamecms_config/config.php');
-		
-		if(!check_the_config_file_flamecms()){
+		/*Temporary, until installer is completely finished*/
+		//if(!check_the_config_file_flamecms()){
+		if(true==false){
 			$sys->load->library(array(
 				'System/libraries/session/MY_Session'=>'session',
 				'System/admin/Install',
+				'System/install/Installer'=>'installer',
 				));
 			set_inst($sys);
 			$sys->load->library(array(

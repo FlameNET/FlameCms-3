@@ -185,7 +185,7 @@ $sys=&get_inst();
 									</div>
 									<div class="small-12 medium-6 column">
 										<label for="cms_mysql_con_pass"><?=__('[CMS] Mysql Password');?></label>
-										<input id="cms_mysql_con_pass" required="" type="password" placeholder="<?=__('excelentPassword');?>"/>
+										<input id="cms_mysql_con_pass" nec="" required="" type="password" placeholder="<?=__('excelentPassword');?>"/>
 									</div>
 									<div class="small-12 medium-6 column">
 										<label for="cms_mysql_con_port"><?=__('[CMS] Mysql Port');?></label>
@@ -294,6 +294,7 @@ $sys=&get_inst();
 				});
 			});
 		</script>
+		<input type="hidden" id="step" value="step-3" required=""/>
 		<div class="row">
 			<div class="small-12 columns" >
 				<div class="blank-space"></div>

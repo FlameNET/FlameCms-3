@@ -49,7 +49,8 @@ class System {
 			$CI->load->helper(
 				array(
 					'cookie',
-					'url'
+					'url',
+					'file'
 				)
 			);
 			set_inst($CI);
