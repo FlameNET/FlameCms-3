@@ -37,11 +37,17 @@ Class Initiator{
 		}
 		/*Ignore CodeIgnither Configs (the are still Called, but, not used)*/
 		else{
-			$this->config->load('flamecms/config.php');
+			//removed, this is loaded, on the database.php
+			//$sys->config->load('flamecms/config.php');
 			$this->configs();
 			/*END*/
 			set_inst($sys);
 		}
+	}
+	function config(){
+		/*Initiate The Configurations*/
+		/*They will be in parent_child format, on the DB, so we can load "per parent" configuration*/
+		$this->config();
 	}
 	function configs(){
 		/*Initiate The Configurations*/
