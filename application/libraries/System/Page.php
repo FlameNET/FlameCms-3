@@ -10,6 +10,12 @@ Class Page{
 		$ajax_check='';
 		$temp=explode('/',$page);
 		$ajax_check=$temp[0];
+		
+		if(!file_exists(APPPATH.'views/'.$page.'.php')){
+			if(is_dir(APPPATH.'views/'.$page.'')){
+				$page.='/index';
+			}
+		}
 		if(($ajax_check!='ajax') && ($ajax_check!='assets')){
 			get_inst()->load->view('styles_and_scripts');
 			//unset($temp);

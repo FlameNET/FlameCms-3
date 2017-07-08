@@ -18,9 +18,6 @@ class Main extends CI_Controller {
 	}
 	function page(){
 		$args=implode('/',func_get_args());
-		if(count(func_get_args())==0){
-			$args='index';
-		}
 		get_inst()->page->load($args);
 	}
 }
