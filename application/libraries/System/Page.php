@@ -18,10 +18,12 @@ Class Page{
 		$temp=explode('/',$page);
 		$ajax_check=$temp[0];
 		if(get_inst()->settings_cms->cms_theme=='default'){
-			if(!file_exists(APPPATH.'views/page/'.$page.'.php')){
+			if(!file_exists(APPPATH.'views/page/'.$page.'.php') && ($page!=='')){
 				if(is_dir(APPPATH.'views/page/'.$page.'')){
 					$page.='/index';
 				}
+			}else{
+				$page.='/index';
 			}
 		}else{
 			if(!file_exists(APPPATH.'views/page_'.get_inst()->settings_cms->cms_theme.'/'.$page.'.php')){

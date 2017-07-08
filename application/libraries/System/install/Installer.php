@@ -757,11 +757,72 @@ function sql($prefix){
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 	-- ----------------------------
-	-- Records of `<?=$prefix;?>_lang_str`
+	-- Records of `<?=$prefix;?>lang_str`
 	-- ----------------------------
 	
+	-- ----------------------------
+	-- Table structure for `<?=$prefix;?>servers`
+	-- ----------------------------
+	DROP TABLE IF EXISTS `<?=$prefix;?>servers`;
+	CREATE TABLE `<?=$prefix;?>servers` (
+	  `server_id` int(11) unsigned zerofill NOT NULL AUTO_INCREMENT,
+	  `server_character` longtext NOT NULL,
+	  `server_world` longtext NOT NULL,
+	  `server_realm` longtext NOT NULL,
+	  `server_active` tinyint(1) NOT NULL DEFAULT '1',
+	  `server_type` int(11) unsigned zerofill NOT NULL,
+	  `server_other_data` longtext NOT NULL,
+	  `server_created_by` varchar(99) NOT NULL,
+	  `server_created` int(11) NOT NULL,
+	  `server_modified_by` varchar(99) DEFAULT NULL,
+	  `server_modified` int(11) DEFAULT NULL,
+	  PRIMARY KEY (`server_id`),
+	  KEY `server_type` (`server_type`),
+	  KEY `server_created_by` (`server_created_by`),
+	  KEY `server_modified_by` (`server_modified_by`),
+	  CONSTRAINT `<?=$prefix;?>servers_ibfk_1` FOREIGN KEY (`server_type`) REFERENCES `<?=$prefix;?>servers_types` (`server_type_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+	  CONSTRAINT `<?=$prefix;?>servers_ibfk_2` FOREIGN KEY (`server_created_by`) REFERENCES `<?=$prefix;?>user_login` (`UUID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+	  CONSTRAINT `<?=$prefix;?>servers_ibfk_3` FOREIGN KEY (`server_modified_by`) REFERENCES `<?=$prefix;?>user_login` (`UUID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+	
+	-- ----------------------------
+	-- Records of flamecms_servers
+	-- ----------------------------
+	
+	-- ----------------------------
+	-- Table structure for `<?=$prefix;?>servers_types`
+	-- ----------------------------
+	DROP TABLE IF EXISTS `<?=$prefix;?>servers_types`;
+	CREATE TABLE `<?=$prefix;?>servers_types` (
+	  `server_type_id` int(11) unsigned zerofill NOT NULL AUTO_INCREMENT,
+	  `server_type_name` text NOT NULL,
+	  `server_type_slug` varchar(6) NOT NULL,
+	  `server_type_version` varchar(8) NOT NULL,
+	  `server_type_created_by` varchar(99) NOT NULL,
+	  `server_type_created` int(11) NOT NULL,
+	  `server_type_modified_by` varchar(99) DEFAULT NULL,
+	  `server_type_modified` int(11) DEFAULT NULL,
+	  PRIMARY KEY (`server_type_id`),
+	  CONSTRAINT `<?=$prefix;?>servers_type_ibfk_2` FOREIGN KEY (`server_type_created_by`) REFERENCES `<?=$prefix;?>user_login` (`UUID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+	  CONSTRAINT `<?=$prefix;?>servers_type_ibfk_3` FOREIGN KEY (`server_type_modified_by`) REFERENCES `<?=$prefix;?>user_login` (`UUID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+	
+	-- ----------------------------
+	-- Records of flamecms_servers_types
+	-- ----------------------------
 	
 	SET FOREIGN_KEY_CHECKS=1;
+	
+	<?php /* correction: 08/Jul/2017 20:03 */ ?>
+	SET FOREIGN_KEY_CHECKS=0;
+	
+	ALTER TABLE `<?=$prefix;?>blog_content`
+	ADD COLUMN `blog_language`  varchar(5) NULL AFTER `blog_child`,
+	ADD COLUMN `blog_language_main`  int(11) UNSIGNED ZEROFILL NULL AFTER `blog_language`,
+	ADD FOREIGN KEY (`blog_language_main`) REFERENCES `<?=$prefix;?>blog_content` (`blog_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+	
+	SET FOREIGN_KEY_CHECKS=1;
+	
 	<?php
 	$sql=ob_get_clean();
 	return $sql;
