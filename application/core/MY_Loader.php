@@ -5,7 +5,6 @@
  * And no, you may not use it for your projects. 
  * it can make the things very confusing...
  */
- */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
