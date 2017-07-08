@@ -13,17 +13,20 @@ class Installer{
 			return $test;
 		}
 		$txt = config_creator_text($host,$user,$pass,$database,$port,$prefix);
-		write_file(APPPATH.'config/flamecms/config.php', $txt);
+		write_file(APPPATH.'config/flamecms/installer_config.php', $txt);
 		$sys->load->database();
 		$valid_db=$this->initiate_db($prefix, $host, $user, $pass, $database, $port);
 		if($valid_db==false){
 			unlink(APPPATH.'config/flamecms/config.php');
+			unlink(APPPATH.'config/flamecms/installer_config.php');
 			rmdir(APPPATH.'config/flamecms');
 			return false;
 		}
 		return true;
 	}
-	
+	function end_install(){
+		rename(APPPATH.'config/flamecms/installer_config.php',APPPATH.'config/flamecms/config.php');
+	}
 	function config_file_system_keys(){
 		$sys=&get_inst();
 		$myfile = fopen(APPPATH.'config/flamecms/system.php', "rw") or false;
@@ -38,12 +41,13 @@ class Installer{
 	function initiate_db($prefix,$host,$user,$pass,$database,$port){
 		$sys=&get_inst();
 		$sql=sql($prefix);
-		if( ($f = mkstemp("flamecmsinstaller.sql")) ) {
-			fwrite($f, $sql);
-			fclose($f);
+		$temp_file=dirname(__file__)."/flamecmsinstaller.sql";
+		if($file=file_put_contents($temp_file, $sql)) {
 			$command="mysql -u{$user} -p{$pass} "
 				. "-h {$host} -D {$database} ";
-			shell_exec($command."< ".$f);
+			shell_exec($command."< ".$temp_file);
+			unlink($temp_file);
+			return true;
 		}
 		else{
 			return false;

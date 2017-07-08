@@ -74,7 +74,15 @@ $active_group = 'default';
 $query_builder = TRUE;
 include(APPPATH.'/flamecms_config/config.php');
 
-if(!check_the_config_file_flamecms())
+if(check_the_config_file_flamecms())
+{
+	include('flamecms/config.php');
+}
+elseif(check_the_installer_config_file_flamecms())
+{
+	include('flamecms/installer_config.php');
+}
+else
 {
 	$db['default'] = array(
 		'dsn'	=> '',
@@ -97,8 +105,4 @@ if(!check_the_config_file_flamecms())
 		'failover' => array(),
 		'save_queries' => TRUE
 	);
-}
-else
-{
-	include('flamecms/config.php');
 }
