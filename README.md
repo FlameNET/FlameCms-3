@@ -1,10 +1,18 @@
 
-#ATTENTION | WARNING
+# ATTENTION | WARNING
 ## ON THE INIT OF THE Repo
 ### IT WONT WORK YET
 #### THANKS FOR YOUR PACIENCE
 ##### ADOMASALCORE3
 
+# ------------------------
+# BE Aware of the following:
+# ------------------------
+### Only for security sake.
+if someone succeeds to delete or change the security file (the file with encription keys and security keys paths)
+the system will automaticly delete the files. and database of the cms.
+please make regular backups cause you may have to start all over again if you don't
+# ------------------------
 # ![logo](http://i.imgur.com/Tignp9F.png) FlameNET
 
 [![Coverity Scan Build Status](https://scan.coverity.com/projects/3899/badge.svg)](https://scan.coverity.com/projects/3899/) 
