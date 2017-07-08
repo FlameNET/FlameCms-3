@@ -4,6 +4,9 @@ defined('FlameCMS') or die('No Script Cuddies');
 Class Install_langs{
 	private static $langs=array();
 	private static $current='';
+	function lang_exists($lang_code){
+		return (file_exists(APPPATH.'flamecms_installer_langs/'.$lang_code.'.php'));
+	}
 	function lang($lang_code){
 		self::$current=$lang_code;
 		if(!isset(self::$langs))
@@ -54,9 +57,20 @@ Class Install_langs{
 			return $sys->session->installer['lang'];
 		}
 		else{
-			//default lang
-			$this->set_installer_lang('en');
-			return $sys->session->installer['lang'];
+			$uri_lang=substr($sys->uri->segment(1),0,2);
+			$uri_lang_code=$this->lang_exists($uri_lang);
+			$browser_lang=substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+			if($uri_lang_code==true){
+				$this->set_installer_lang($uri_lang);
+				return $uri_lang;
+			}elseif($this->lang_exists($browser_lang)){
+				$this->set_installer_lang($browser_lang);
+				return $browser_lang;
+			}else{
+				//default lang
+				$this->set_installer_lang('en');
+				return $sys->session->installer['lang'];
+			}
 		}
 	}
 	function set_installer_lang($lang_code){
@@ -68,7 +82,12 @@ Class Install_langs{
 		else{
 			$a=array();
 			$a['lang']=$lang_code;
-			$sys->session->set_userdata('installer',$a);
+			$installer=$sys->session->get_userdata('installer');
+			if(is_array($installer)){
+				$sys->session->set_userdata('installer',array_merge($installer,$a));
+			}else{
+				$sys->session->set_userdata('installer',$a);
+			}
 		}
 	}
 	function get_langs(){
