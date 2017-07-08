@@ -69,7 +69,7 @@ if(!check_the_config_file_flamecms()){
 			$rdata=array();
 			$rdata['html']=$sys->page->load('ajax/admin/install/reserved/success',true);
 			$rdata['step']='';
-			$rdata['redirect']=$sys->config->item('base_url').'/admin';
+			$rdata['redirect']=base_url('admin');
 			print_r( json_encode($rdata));
 		}
 	}

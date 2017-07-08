@@ -41,6 +41,7 @@ Class Initiator{
 				));
 			/*Requires all files on a directory (this case will require all languages)*/
 			requireall(APPPATH.'/flamecms_installer_langs');
+			$sys->settings_cms=(object) array('cms_theme'=>'default');
 			get_inst()->trigger->install();
 		}
 		/*Ignore CodeIgnither Configs (the are still Called, but, not used)*/

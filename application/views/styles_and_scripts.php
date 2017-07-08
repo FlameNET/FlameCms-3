@@ -6,7 +6,12 @@ defined('FlameCMS') OR die('No script Cuddies');
 add_style('foundation/min','css/foundation/foundation.min.css',false,'0.0.1');
 add_style('foundation/icons','css/foundation/foundation-icons.css',false,'0.0.1');
 add_style('font-awesome/min','css/font-awesome/font-awesome.min.css',false,'0.0.1');
-add_style('flamecms/app','css/flamecms/app.css',false,'0.0.1');
+$sys=&get_inst();
+if($sys->settings_cms->cms_theme=='default'){
+	add_style('flamecms/app','css/flamecms/app.css',false,'0.0.1');
+}else{
+	add_style('flamecms/app','css/flamecms/app_'.$sys->settings_cms->cms_theme.'.css',false,'0.0.1');
+}
 /*main scripts*/
  
  /*header*/

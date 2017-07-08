@@ -4,16 +4,24 @@ defined('FlameCMS') OR die('No script Cuddies');
 Class Page{
 	function load($page,$tostring=false,$page_redirect=false)
 	{
+		$sys=&get_inst();
 		$this->args_to_string($page);
 		/*if triggered an redirect, cancel everything and go to page*/
 		$this->validade_page_redirect($page);
 		$ajax_check='';
 		$temp=explode('/',$page);
 		$ajax_check=$temp[0];
-		
-		if(!file_exists(APPPATH.'views/'.$page.'.php')){
-			if(is_dir(APPPATH.'views/'.$page.'')){
-				$page.='/index';
+		if(get_inst()->settings_cms->cms_theme=='default'){
+			if(!file_exists(APPPATH.'views/page/'.$page.'.php')){
+				if(is_dir(APPPATH.'views/page/'.$page.'')){
+					$page.='/index';
+				}
+			}
+		}else{
+			if(!file_exists(APPPATH.'views/page_'.get_inst()->settings_cms->cms_theme.'/'.$page.'.php')){
+				if(is_dir(APPPATH.'views/page_'.get_inst()->settings_cms->cms_theme.'/'.$page.'')){
+					$page.='/index';
+				}
 			}
 		}
 		if(($ajax_check!='ajax') && ($ajax_check!='assets')){
@@ -24,7 +32,6 @@ Class Page{
 			unset($temp);
 			/* Check to see if it is an language::: disabled because Languages Class don't exist yet*/
 			if(($this->exists($uri)==true)/* && ($sys->lang->is_language_code($ajax_check)==true)*/){
-				print_r('wrong load? (op 00.3)');
 				get_inst()->pps->init($uri);
 			}else{
 				/*here, it does not matter if is exists or not... the pps will automaticly see it*/

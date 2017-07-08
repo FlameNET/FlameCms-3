@@ -51,6 +51,11 @@ Class Pps{
  	}
 	/*Implementation 3: OK*/
 	function impl3($page){
+		if((get_inst()->settings_cms->cms_theme=='default')){
+			$uri='pages/'.$page;
+		}else{
+			$uri='pages_'.get_inst()->settings_cms->cms_theme.'/'.$page;
+		}
 		$uri='pages/'.$page;
 		get_inst()->page->convert_uri_string($uri);
 		if(get_inst()->page->exists($uri)){
