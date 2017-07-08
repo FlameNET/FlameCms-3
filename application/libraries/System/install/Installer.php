@@ -276,6 +276,7 @@ $encription['ek10']='<?=md5(uniqid('',true));?>';
 $encription['password_sequences']=(Array) json_decode('<?=json_encode($sys->sec->generate_password_sequence());?>');
 $encription['UDATA']=(Array) json_decode('<?=json_encode($sys->sec->generate_password_sequence());?>');
 $encription['plane_user']=(Array) json_decode('<?=json_encode($sys->sec->generate_password_sequence());?>');
+$encription['servers']=(Array) json_decode('<?=json_encode($sys->sec->generate_password_sequence());?>');
 $config['system_keys']=$encription;
 	<?php
 	return ob_get_clean();
