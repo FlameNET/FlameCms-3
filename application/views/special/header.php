@@ -40,11 +40,12 @@ if(defined('page_redirect') && (page_redirect=='admin/install'))
 }
 else
 {
+	$sys=&get_inst();
 ?>
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>/*the site title*/</title>
+		<title><?=$sys->settings_cms->cms_sitename; ?></title>
 		<!-- Enable Mobile View -->
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<?php head();?>
