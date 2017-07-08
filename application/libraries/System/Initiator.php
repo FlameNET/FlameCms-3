@@ -14,14 +14,18 @@ Class Initiator{
 			'System/helpers/Pps'=>'pps',
 			'System/helpers/Sas'=>'sas',
 			'System/helpers/Hfs'=>'hfs',
+			'System/security/Sec'=>'sec',
 			'System/admin/Updates/Update'=>'up'
 		));
+		$sys->page->pps =& $sys->pps;
+		$sys->page->sas =& $sys->sas;
+		$sys->page->hfs =& $sys->hfs;
 		$sys->up->get_releases();
 		/*If config File Does not exists, Trigger Installer*/
 		include(APPPATH.'/flamecms_config/config.php');
 		/*Temporary, until installer is completely finished*/
-		//if(!check_the_config_file_flamecms()){
-		if(true==false){
+		if(!check_the_config_file_flamecms()){
+		//if(true==false){
 			$sys->load->library(array(
 				'System/libraries/session/MY_Session'=>'session',
 				'System/admin/Install',
@@ -64,8 +68,6 @@ Class Initiator{
 		** The Realms Table
 		**************************************
 		*/
-		
-		
 		
 		System::$configuration=$confs;
 	}

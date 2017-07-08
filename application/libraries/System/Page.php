@@ -2,7 +2,7 @@
 /*FlameCMS CHECK*/
 defined('FlameCMS') OR die('No script Cuddies');
 Class Page{
-	function load($page)
+	function load($page,$tostring=false,$page_redirect=false)
 	{
 		$this->args_to_string($page);
 		/*if triggered an redirect, cancel everything and go to page*/
@@ -17,17 +17,19 @@ Class Page{
 			$uri=implode('/',$temp);
 			unset($temp);
 			/* Check to see if it is an language::: disabled because Languages Class don't exist yet*/
-			if(($this->exists($uri)==true)/* && ($sys->lang->is_language_code($ajax_check)==true)*/)
+			if(($this->exists($uri)==true)/* && ($sys->lang->is_language_code($ajax_check)==true)*/){
+				print_r('wrong load? (op 00.3)');
 				get_inst()->pps->init($uri);
-			else
+			}else{
 				/*here, it does not matter if is exists or not... the pps will automaticly see it*/
 				get_inst()->pps->init($page);
+			}
 		}
 		elseif($ajax_check!='assets'){
 			unset($temp[0]);
 			$page=implode('/',$temp);
 			unset($temp);
-			$this->__subload('ajax', $page);
+			return $this->__subload('ajax', $page, $tostring,$page_redirect);
 		}
 	}
 	function load_404($special_call=false){
@@ -48,14 +50,22 @@ Class Page{
 	 * Function __subload : This is only for ajax, header, footer, 404 and other special pages
 	 * **************************** 
 	 */
-	private function __subload($type,$page,$special_call=false){
+	private function __subload($type,$page,$special_call=false,$page_redirect=false){
 		if(($type=='ajax') || ($type=='special')){
 			
 			$load=$type.'/'.$page;
 			$this->convert_uri_string($load);
-			if($special_call==false)
+			if($special_call===false){
 				get_inst()->load->view($load);
-			else{
+			}
+			elseif(!is_bool($special_call) && is_array($special_call)){
+				/*ok, maybe we have vars to be loaded here.... so... let's try to load them*/
+				if($page_redirect==false){
+					return get_inst()->load->view($load, $special_call);
+				}else{
+					return get_inst()->load->view($load, $special_call,true);
+				}
+			}else{
 				return get_inst()->load->view($load, '', true);
 			}
 		}else{

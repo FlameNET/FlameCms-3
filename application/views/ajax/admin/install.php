@@ -1,33 +1,40 @@
 <?php
 defined('FlameCMS') or die('No Script Cuddies');
-define('installer',true,true);
-$sys=&get_inst();
-
-if($sys->input->is_ajax_request())
-{
-	$data=array();
-	$data=array_merge($data,$_POST);
-	if($data['step']=='step-1'){
-		define('ajaxload',true);
-		$sys->page->load('ajax/admin/install/reserved/step2');
+if(!check_the_config_file_flamecms()){
+	define('installer',true,true);
+	$sys=&get_inst();
+	
+	if($sys->input->is_ajax_request())
+	{
+		$data=array();
+		$data=array_merge($data,$_POST);
+		if($data['step']=='step-1'){
+			define('ajaxload',true);
+			$sys->page->load('ajax/admin/install/reserved/step2');
+		}
+		elseif($data['step']=='step-2'){
+			define('ajaxload',true);
+			$sys->page->load('ajax/admin/install/reserved/step3');
+		}
+		elseif($data['step']=='step-3'){
+			$sys->session->install_data=$data;
+			define('ajaxload',true);
+			$sys->installer->config_file($data['cms_mysql_con_host'],
+				$data['cms_mysql_con_user'],
+				$data['cms_mysql_con_pass'],
+				$data['cms_mysql_con_db'],
+				$data['cms_mysql_con_port'],
+				$data['cms_mysql_con_prefix']);
+			$sys->installer->initiate_root_account();
+			$sys->installer->initiate_owner_account($data);
+			$rdata=array();
+			$rdata['html']=$sys->page->load('ajax/admin/install/reserved/step4',true);
+			print_r( json_encode($rdata));
+		}
 	}
-	elseif($data['step']=='step-2'){
-		define('ajaxload',true);
-		$sys->page->load('ajax/admin/install/reserved/step3');
+	else{
+		die('Ups...');
 	}
-	elseif($data['step']=='step-3'){
-		$sys->session->install_data=$data;
-		define('ajaxload',true);
-		$sys->installer->config_file($data['cms_mysql_con_host'],
-			$data['cms_mysql_con_user'],
-			$data['cms_mysql_con_pass'],
-			$data['cms_mysql_con_db'],
-			$data['cms_mysql_con_port'],
-			$data['cms_mysql_con_prefix']);
-		$sys->installer->initiate_root_account();
-		$sys->page->load('ajax/admin/install/reserved/step4');
-	}
-}
-else{
-	die('Ups...');
+}else{
+	die('NO!');
 }

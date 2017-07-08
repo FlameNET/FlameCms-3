@@ -91,4 +91,23 @@ class Sec{
 		}
 		return $str;
 	}
+	function generate_password_sequence(){
+		$sequence=array(
+			'ek01',
+			'ek02',
+			'ek03',
+			'ek04',
+			'ek05',
+			'ek06',
+			'ek07',
+			'ek08',
+			'ek09',
+			'ek10');
+		$pass_sequence=array_rand ($sequence,4);
+		$rsequence=array();
+		foreach( $pass_sequence as $i){
+			$rsequence[]=$sequence[$i];
+		}
+		return $rsequence;
+	}
 }

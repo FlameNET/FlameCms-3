@@ -22,6 +22,8 @@ class Installer{
 			rmdir(APPPATH.'config/flamecms');
 			return false;
 		}
+		$this->config_file_system_keys();
+		$sys->config->load('flamecms/system_keys');
 		return true;
 	}
 	function end_install(){
@@ -29,13 +31,10 @@ class Installer{
 	}
 	function config_file_system_keys(){
 		$sys=&get_inst();
-		$myfile = fopen(APPPATH.'config/flamecms/system.php', "rw") or false;
+		$myfile = file_put_contents(APPPATH.'config/flamecms/system_keys.php', config_systemkeys_creator()) or false;
 		if($myfile==false){
 			return false;
 		}
-		$txt = config_systemkeys_creator();
-		fwrite($myfile, $txt);
-		fclose($myfile);
 		return true;
 	}
 	function initiate_db($prefix,$host,$user,$pass,$database,$port){
@@ -54,14 +53,18 @@ class Installer{
 		}
 	}
 	function initiate_root_account(){
+		$sys=&get_inst();
+		$uuid=''; $uuid.=md5(uniqid('',true)); $uuid.=md5(uniqid('',true)); $uuid.=md5(uniqid('',true));
+		$p_sequence=$sys->sec->generate_password_sequence();
 		$data_user=array(
+			'UUID'=>$uuid,
 			'username'=>'flamecms',
 			'activation'=>'',
 			/* the password will never match,
 			 * since it needs an specific combination and that is not made here.
 			 * */
 			'password'=>md5(''),
-			'enforcement'=>'',
+			'enforcement'=>json_encode($p_sequence),
 			'ek01'=>'',
 			'ek02'=>'',
 			'ek03'=>'',
@@ -74,37 +77,91 @@ class Installer{
 			'ek10'=>'',
 		);
 		$data_acco=array(
-			'fname'=>'FlameCMS',
-			'lname'=>'Root',
-			'email'=>'',
-			'permission_level'=>'12',
-			'about_text'=>'FlameCMS Root Control account',
-			'job'=>'',
-			'contact_info'=>'',
+			'UUID'=>'',
+			'permission_level'=>'11',
+			/*Encrypted*/
+			'UDATA'=>array(
+				'fname'=>'FlameCMS',
+				'lname'=>'Root',
+				'email'=>'',
+				'permission_level'=>'12',
+				'about_text'=>'FlameCMS Root Control account',
+				'job'=>'',
+				'contact_info'=>'',
+			)
 		);
 	}
-	function initiate_owner_account(){
+	function initiate_owner_account($data){
+		$sys=&get_inst();
+		$p_sequence=$sys->sec->generate_password_sequence();
+		$uuid=''; $uuid.=md5(uniqid('',true)); $uuid.=md5(uniqid('',true)); $uuid.=md5(uniqid('',true));
 		$data_user=array(
-			'username'=>'',
+			'UUID'=>$uuid,
+			'username'=>md5($data['cms_admin_account_username']),
+			'email'=>$sys->sec->sha512($data['cms_admin_account_email']),
+			'phone'=>$sys->sec->sha512(''),
 			'activation'=>'',
 			'password'=>'',
-			'enforcement'=>'',
+			'enforcement'=>json_encode($p_sequence),
+			'ek01'=>$sys->sec->sha512(uniqid(json_encode($p_sequence).'_',true)),
+			'ek02'=>$sys->sec->sha512(uniqid(json_encode($p_sequence).'_',true)),
+			'ek03'=>$sys->sec->sha512(uniqid(json_encode($p_sequence).'_',true)),
+			'ek04'=>$sys->sec->sha512(uniqid(json_encode($p_sequence).'_',true)),
+			'ek05'=>$sys->sec->sha512(uniqid(json_encode($p_sequence).'_',true)),
+			'ek06'=>$sys->sec->sha512(uniqid(json_encode($p_sequence).'_',true)),
+			'ek07'=>$sys->sec->sha512(uniqid(json_encode($p_sequence).'_',true)),
+			'ek08'=>$sys->sec->sha512(uniqid(json_encode($p_sequence).'_',true)),
+			'ek09'=>$sys->sec->sha512(uniqid(json_encode($p_sequence).'_',true)),
+			'ek10'=>$sys->sec->sha512(uniqid(json_encode($p_sequence).'_',true)),
+			/*attention this is encripted, so don't be alarmd about secutiry*/
+			'login_plane_data'=>array(
+				'username'=>$data['cms_admin_account_username'],
+				'email'=>$data['cms_admin_account_email'],
+				'phone'=>''
+			)
 		);
 		$data_acco=array(
-			'fname'=>'',
-			'lname'=>'',
-			'email'=>'',
+			'UUID'=>'',
 			'permission_level'=>'11',
-			'about_text'=>'',
-			'job'=>'',
-			'contact_info'=>'',
+			/*Encrypted*/
+			'UDATA'=>array(
+				'fname'=>$data['cms_admin_account_fname'],
+				'lname'=>$data['cms_admin_account_lname'],
+				'email'=>$data['cms_admin_account_email'],
+				'about_text'=>'',
+				'job'=>'',
+				'contact_info'=>'',
+			)
 		);
+		if($data['cms_admin_account_password'] == $data['cms_admin_account_confirm_password']){
+			/*password*/
+			$data_user['enforcement']=json_decode($data_user['enforcement']);
+			$pass_ec=md5($data_user[$data_user['enforcement'][0]].$data_user[$data_user['enforcement'][1]].$data_user[$data_user['enforcement'][2]].$data_user[$data_user['enforcement'][3]]);
+			$pass_value=$sys->sec->Encrypt($sys->sec->sha512($pass_ec), $data['cms_admin_account_password']);
+			$data_user['password']=$pass_value;
+			/* encrypt user personal password sequence */
+			$system_keys=$sys->config->item('system_keys');
+			$pass_ps_ec=md5($system_keys[$system_keys['password_sequences'][0]].$system_keys[$system_keys['password_sequences'][1]].$system_keys[$system_keys['password_sequences'][2]].$system_keys[$system_keys['password_sequences'][3]]);
+			$data_user['enforcement']=json_encode($data_user['enforcement']);
+			$pass_ps_value=$sys->sec->Encrypt($sys->sec->sha512($pass_ec), $data_user['enforcement']);
+			$data_user['enforcement']=$pass_ps_value;
+			
+			/*encrypt UDATA (USER DATA)*/
+			$pass_udata_ec=md5($system_keys[$system_keys['UDATA'][0]].$system_keys[$system_keys['UDATA'][1]].$system_keys[$system_keys['UDATA'][2]].$system_keys[$system_keys['UDATA'][3]]);
+			$pass_udata_value=$sys->sec->Encrypt($pass_ps_ec, json_encode($data_acco['UDATA']));
+			$data_acco['UDATA']=$pass_udata_value;
+			/*encrypt UDATA (USER DATA)*/
+			$pass_uplanedata_ec=md5($system_keys[$system_keys['plane_user'][0]].$system_keys[$system_keys['plane_user'][1]].$system_keys[$system_keys['plane_user'][2]].$system_keys[$system_keys['plane_user'][3]]);
+			$pass_uplanedata_value=$sys->sec->Encrypt($pass_ps_ec, json_encode($data_user['login_plane_data']));
+			$data_user['login_plane_data']=$pass_uplanedata_value;
+		}
 	}
 	function change_settings(){
 		
 	}
 }
 function config_systemkeys_creator(){
+	$sys=&get_inst();
 	ob_start();
 	echo '<?php ';
 	?>
@@ -127,17 +184,19 @@ defined('FlameCMS') or die('No Script Cuddies');
  * ***********************************
 */
 $encription=array();
-$encription['01']='<?=md5(uniqid('',true));?>';
-$encription['02']='<?=md5(uniqid('',true));?>';
-$encription['03']='<?=md5(uniqid('',true));?>';
-$encription['04']='<?=md5(uniqid('',true));?>';
-$encription['05']='<?=md5(uniqid('',true));?>';
-$encription['06']='<?=md5(uniqid('',true));?>';
-$encription['07']='<?=md5(uniqid('',true));?>';
-$encription['08']='<?=md5(uniqid('',true));?>';
-$encription['09']='<?=md5(uniqid('',true));?>';
-$encription['10']='<?=md5(uniqid('',true));?>';
-
+$encription['ek01']='<?=md5(uniqid('',true));?>';
+$encription['ek02']='<?=md5(uniqid('',true));?>';
+$encription['ek03']='<?=md5(uniqid('',true));?>';
+$encription['ek04']='<?=md5(uniqid('',true));?>';
+$encription['ek05']='<?=md5(uniqid('',true));?>';
+$encription['ek06']='<?=md5(uniqid('',true));?>';
+$encription['ek07']='<?=md5(uniqid('',true));?>';
+$encription['ek08']='<?=md5(uniqid('',true));?>';
+$encription['ek09']='<?=md5(uniqid('',true));?>';
+$encription['ek10']='<?=md5(uniqid('',true));?>';
+$encription['password_sequences']=(Array) json_decode('<?=json_encode($sys->sec->generate_password_sequence());?>');
+$encription['UDATA']=(Array) json_decode('<?=json_encode($sys->sec->generate_password_sequence());?>');
+$encription['plane_user']=(Array) json_decode('<?=json_encode($sys->sec->generate_password_sequence());?>');
 $config['system_keys']=$encription;
 	<?php
 	return ob_get_clean();
@@ -503,20 +562,14 @@ function sql($prefix){
 	-- ----------------------------
 	DROP TABLE IF EXISTS `<?=$prefix;?>user_data`;
 	CREATE TABLE `<?=$prefix;?>user_data` (
-	  `UUID` varchar(99) NOT NULL,
-	  `fname` text NOT NULL,
-	  `lname` text NOT NULL,
-	  `email` text NOT NULL,
-	  `permission_level` int(11) unsigned NOT NULL,
-	  `permission_clearance` text NOT NULL,
-	  `about_text` text NOT NULL,
-	  `job` text NOT NULL,
-	  `contact_info` text NOT NULL,
-	  PRIMARY KEY (`UUID`),
-	  UNIQUE KEY `UUID` (`UUID`) USING BTREE,
-	  KEY `permission_level` (`permission_level`),
-	  CONSTRAINT `<?=$prefix;?>user_data_ibfk_2` FOREIGN KEY (`permission_level`) REFERENCES `<?=$prefix;?>system_roles` (`role_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-	  CONSTRAINT `<?=$prefix;?>user_data_ibfk_3` FOREIGN KEY (`UUID`) REFERENCES `<?=$prefix;?>user_login` (`UUID`) ON DELETE CASCADE ON UPDATE CASCADE
+	  `UUID` varchar(99) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	  `permission_level` int(11) UNSIGNED NOT NULL,
+	  `UDATA` longtext CHARACTER SET utf8 COLLATE utf8_general_ci,
+	  PRIMARY KEY (`UUID`) USING BTREE,
+	  UNIQUE INDEX `UUID`(`UUID`) USING BTREE,
+	  INDEX `permission_level`(`permission_level`) USING BTREE,
+	  CONSTRAINT `flamecms_user_data_ibfk_2` FOREIGN KEY (`permission_level`) REFERENCES `flamenet_cmsv3`.`flamecms_system_roles` (`role_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+	  CONSTRAINT `flamecms_user_data_ibfk_3` FOREIGN KEY (`UUID`) REFERENCES `flamenet_cmsv3`.`flamecms_user_login` (`UUID`) ON DELETE CASCADE ON UPDATE CASCADE
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 	
 	-- ----------------------------
@@ -528,24 +581,26 @@ function sql($prefix){
 	-- ----------------------------
 	DROP TABLE IF EXISTS `<?=$prefix;?>user_login`;
 	CREATE TABLE `<?=$prefix;?>user_login` (
-	  `UUID` varchar(99) NOT NULL,
-	  `username` text NOT NULL,
-	  `password` text NOT NULL,
-	  `recovery_key` text NOT NULL,
-	  `activation` text NOT NULL,
-	  `enforcement` text NOT NULL,
-	  `ek01` varchar(255) NOT NULL,
-	  `ek02` varchar(255) NOT NULL,
-	  `ek03` varchar(255) NOT NULL,
-	  `ek04` varchar(255) NOT NULL,
-	  `ek05` varchar(255) NOT NULL,
-	  `ek06` varchar(255) NOT NULL,
-	  `ek07` varchar(255) NOT NULL,
-	  `ek08` varchar(255) NOT NULL,
-	  `ek09` varchar(255) NOT NULL,
-	  `ek10` varchar(255) NOT NULL,
-	  PRIMARY KEY (`UUID`),
-	  UNIQUE KEY `UUID` (`UUID`) USING BTREE
+	  `UUID` varchar(99) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	  `username` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	  `password` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	  `recovery_key` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	  `activation` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	  `enforcement` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	  `ek01` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	  `ek02` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	  `ek03` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	  `ek04` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	  `ek05` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	  `ek06` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	  `ek07` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	  `ek08` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	  `ek09` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	  `ek10` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	  `email` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	  `cellphone` text CHARACTER SET utf8 COLLATE utf8_general_ci,
+	  PRIMARY KEY (`UUID`) USING BTREE,
+	  UNIQUE INDEX `UUID`(`UUID`) USING BTREE
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 	
 	-- ----------------------------
