@@ -57,6 +57,27 @@ Class Initiator{
 	function configs(){
 		/*Initiate The Configurations*/
 		/*They will be in parent_child format, on the DB, so we can load "per parent" configuration*/
+		$sys=&get_inst();
+		$temp=$sys->settings->get_all();
+		$temp2=array();
+		foreach($temp as $data){
+			if($data['setting_type']=='j')/*json*/{
+				$val= (array) json_decode($data['setting_value']);
+			}elseif($data['setting_type']=='b'){
+				$val= ((json_decode($data['setting_value'])=='true') || (json_decode($data['setting_value'])==true))?true:false;
+			}elseif($data['setting_type']=='s'){
+				$val= $data['setting_value'];
+			}elseif($data['setting_type']=='i'){
+				$val= intval($data['setting_value']);
+			}elseif($data['setting_type']=='f'){
+				$val= floatval($data['setting_value']);
+			}elseif($data['setting_type']=='d'){
+				$val= doubleval($data['setting_value']);
+			}
+			$temp2[$data['setting_ind']]=$val;
+		}
+		/*settings of the cms*/
+		$sys->settings_cms=(object) $temp2;
 	}
 	private function wind_configuration($configs){
 		$confs=System::$configuration;

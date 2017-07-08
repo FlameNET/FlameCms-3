@@ -61,6 +61,14 @@ if(!check_the_config_file_flamecms()){
 			$rdata['html']=$sys->page->load('ajax/admin/install/reserved/step7',true);
 			$rdata['step']='step-7';
 			print_r( json_encode($rdata));
+		}elseif($data['step']=='step-7'){
+			$sys->load->database();
+			$sys->db->database();
+			$sys->installer->end_install();
+			$rdata=array();
+			$rdata['html']=$sys->page->load('ajax/admin/install/reserved/success',true);
+			$rdata['step']='';
+			$rdata['redirect']='';
 		}
 	}
 	else{

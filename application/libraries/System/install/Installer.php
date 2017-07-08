@@ -193,20 +193,6 @@ class Installer{
 	function setup_settings(){
 		$sys=&get_inst();
 		$data=array();
-		/*
-		 * multilanguage:true
-multilang-cn:false
-multilang-de:false
-multilang-es:false
-multilang-en:true
-multilang-fr:false
-multilang-gr:false
-multilang-it:false
-multilang-ko:false
-multilang-pt:true
-multilang-ru:false
-multilang-tw:false
-		 * */
 		$data['cms_sitename']=$sys->session->installer_data['cms_name'];
 		$data['cms_https']=$sys->session->installer_data['forcehttps'];
 		$data['cms_force_https']=$sys->session->installer_data['forcehttps'];
