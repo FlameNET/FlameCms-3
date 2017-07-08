@@ -110,4 +110,71 @@ class Sec{
 		}
 		return $rsequence;
 	}
+	function sequence_encode(array $holder,array $encription_keys, $data=null){
+		if(isset($holder[0]) && isset($holder[1]) && isset($holder[2]) && isset($holder[3])){
+			$h01=isset($holder[0])?$holder[0]:'';
+			$h02=isset($holder[1])?$holder[1]:'';
+			$h03=isset($holder[2])?$holder[2]:'';
+			$h04=isset($holder[3])?$holder[3]:'';
+			if(isset($encription_keys[$h01])
+				&& isset($encription_keys[$h02])
+				&& isset($encription_keys[$h03])
+				&& isset($encription_keys[$h04]))
+			{
+				$pass=md5($encription_keys[$h01].$encription_keys[$h02].$encription_keys[$h03].$encription_keys[$h04]);
+				if($data===null){
+					return $this->Encrypt($pass, json_encode($holder));
+				}else{
+					if(is_array($data) || is_object($data)){
+						return $this->Encrypt($pass, json_encode((Array) $data));
+					}elseif(is_string($data) && (is_json($data)==true)){
+						return $this->Encrypt($pass, $data);
+					}else{
+						return $this->Encrypt($pass, json_encode($data));
+					}
+				}
+			}
+		}
+		return false;
+	}
+	function sequence_decoder(array $holder,array $encription_keys,$data=null,bool $is_password=false){
+		if(isset($holder[0]) && isset($holder[1]) && isset($holder[2]) && isset($holder[3])){
+			$h01=isset($holder[0])?$holder[0]:'';
+			$h02=isset($holder[1])?$holder[1]:'';
+			$h03=isset($holder[2])?$holder[2]:'';
+			$h04=isset($holder[3])?$holder[3]:'';
+			if(isset($encription_keys[$h01])
+					&& isset($encription_keys[$h02])
+					&& isset($encription_keys[$h03])
+					&& isset($encription_keys[$h04]))
+			{
+				$pass=md5($encription_keys[$h01].$encription_keys[$h02].$encription_keys[$h03].$encription_keys[$h04]);
+				if(is_json($data)){
+					$decrypted=$this->Decrypt($pass, $data);
+					if($is_password===false){
+						if(is_json($decrypted)){
+							return (array) json_decode($decrypted);
+						}
+						return $decrypted;
+					}else{
+						if(is_json($decrypted)){
+							$data= (array) json_decode($decrypted);
+						}else{
+							$data= $decrypted;
+						}
+						return $data[0];
+					}
+				}else{
+					return false;
+				}
+			}
+		}
+		return false;
+	}
+}
+function sequence_encode(array $holder,array $encription_keys,$data=null){
+	return get_inst()->sec->sequence_encode($holder,$encription_keys,$data);
+}
+function sequence_decoder(array $holder,array $encription_keys,$data=null,bool $is_password=false){
+	return get_inst()->sec->sequence_decoder($holder,$encription_keys,$data,$is_password);
 }

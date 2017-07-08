@@ -54,30 +54,42 @@ class Installer{
 	}
 	function initiate_root_account(){
 		$sys=&get_inst();
-		$uuid=''; $uuid.=md5(uniqid('',true)); $uuid.=md5(uniqid('',true)); $uuid.=md5(uniqid('',true));
+		$uuid=''; 
+		$uuid.=md5(uniqid('',true)); 
+		$uuid.=md5(uniqid('',true)); 
+		$uuid.=md5(uniqid('',true));
 		$p_sequence=$sys->sec->generate_password_sequence();
 		$data_user=array(
 			'UUID'=>$uuid,
-			'username'=>'flamecms',
+			'username'=>$sys->sec->sha512('ROOT'),
 			'activation'=>'',
 			/* the password will never match,
 			 * since it needs an specific combination and that is not made here.
 			 * */
-			'password'=>md5(''),
+			'password'=>$sys->sec->sha512(''),/*all passwords are made by: md5 with an postencrypt of sha512, so.... it's impossible (or almost) to discover the empty string equivalent.*/
+			'email'=>$sys->sec->sha512(''),
 			'enforcement'=>json_encode($p_sequence),
-			'ek01'=>'',
-			'ek02'=>'',
-			'ek03'=>'',
-			'ek04'=>'',
-			'ek05'=>'',
-			'ek06'=>'',
-			'ek07'=>'',
-			'ek08'=>'',
-			'ek09'=>'',
-			'ek10'=>'',
+			'ek01'=>$sys->sec->sha512(uniqid(json_encode($p_sequence).'_',true)),
+			'ek02'=>$sys->sec->sha512(uniqid(json_encode($p_sequence).'_',true)),
+			'ek03'=>$sys->sec->sha512(uniqid(json_encode($p_sequence).'_',true)),
+			'ek04'=>$sys->sec->sha512(uniqid(json_encode($p_sequence).'_',true)),
+			'ek05'=>$sys->sec->sha512(uniqid(json_encode($p_sequence).'_',true)),
+			'ek06'=>$sys->sec->sha512(uniqid(json_encode($p_sequence).'_',true)),
+			'ek07'=>$sys->sec->sha512(uniqid(json_encode($p_sequence).'_',true)),
+			'ek08'=>$sys->sec->sha512(uniqid(json_encode($p_sequence).'_',true)),
+			'ek09'=>$sys->sec->sha512(uniqid(json_encode($p_sequence).'_',true)),
+			'ek10'=>$sys->sec->sha512(uniqid(json_encode($p_sequence).'_',true)),
+			/*attention this is encripted, so don't be alarmd about secutiry*/
+			'login_plane_data'=>array(
+				'username'=>'ROOT USER',
+				'email'=>'',
+				'phone'=>'',
+				'recovery_key'=>'',
+				'recovery_timeout'=>''
+			)
 		);
 		$data_acco=array(
-			'UUID'=>'',
+			'UUID'=>$uuid,
 			'permission_level'=>'11',
 			/*Encrypted*/
 			'UDATA'=>array(
@@ -90,14 +102,36 @@ class Installer{
 				'contact_info'=>'',
 			)
 		);
+		/*encrypt user password (It's WORKING! Yai!)*/
+		$system_keys=$sys->config->item('system_keys');
+		$data_user['password']=sequence_encode((array) json_decode($data_user['enforcement']),$data_user, $sys->sec->sha512($data_user['password']));
+		print_r(sequence_decoder((array) json_decode($data_user['enforcement']),$data_user, $data_user['password'],true));
+		//* encrypt user personal password sequence  (It's WORKING! Yai!)*/
+		
+		$data_user['enforcement']=sequence_encode($system_keys['password_sequences'],$system_keys,$data_user['enforcement']);
+		//print_r(sequence_decoder($system_keys['password_sequences'],$system_keys, $data_user['enforcement']));
+		
+		/*encrypt UDATA (USER DATA)  (It's WORKING! Yai!)*/
+		$data_acco['UDATA']=sequence_encode($system_keys['UDATA'],$system_keys, $data_acco['UDATA']);
+		//print_r(sequence_decoder($system_keys['UDATA'],$system_keys, $data_acco['UDATA']));
+		/*encrypt UDATA (USER DATA)  (It's WORKING! Yai!)*/
+		$data_user['login_plane_data']=sequence_encode($system_keys['plane_user'],$system_keys,$data_user['login_plane_data']);
+		//print_r(sequence_decoder($system_keys['plane_user'],$system_keys,$data_user['login_plane_data']));
+		$sys->db->set($data_user);
+		$sys->db->insert('user_login');
+		$sys->db->set($data_acco);
+		$sys->db->insert('user_data');
 	}
 	function initiate_owner_account($data){
 		$sys=&get_inst();
 		$p_sequence=$sys->sec->generate_password_sequence();
-		$uuid=''; $uuid.=md5(uniqid('',true)); $uuid.=md5(uniqid('',true)); $uuid.=md5(uniqid('',true));
+		$uuid=''; 
+		$uuid.=md5(uniqid('',true)); 
+		$uuid.=md5(uniqid('',true)); 
+		$uuid.=md5(uniqid('',true));
 		$data_user=array(
 			'UUID'=>$uuid,
-			'username'=>md5($data['cms_admin_account_username']),
+			'username'=>$sys->sec->sha512($data['cms_admin_account_username']),
 			'email'=>$sys->sec->sha512($data['cms_admin_account_email']),
 			'phone'=>$sys->sec->sha512(''),
 			'activation'=>'',
@@ -117,11 +151,13 @@ class Installer{
 			'login_plane_data'=>array(
 				'username'=>$data['cms_admin_account_username'],
 				'email'=>$data['cms_admin_account_email'],
-				'phone'=>''
+				'phone'=>'',
+				'recovery_key'=>'',
+				'recovery_timeout'=>''
 			)
 		);
 		$data_acco=array(
-			'UUID'=>'',
+			'UUID'=>$uuid,
 			'permission_level'=>'11',
 			/*Encrypted*/
 			'UDATA'=>array(
@@ -134,30 +170,90 @@ class Installer{
 			)
 		);
 		if($data['cms_admin_account_password'] == $data['cms_admin_account_confirm_password']){
-			/*password*/
-			$data_user['enforcement']=json_decode($data_user['enforcement']);
-			$pass_ec=md5($data_user[$data_user['enforcement'][0]].$data_user[$data_user['enforcement'][1]].$data_user[$data_user['enforcement'][2]].$data_user[$data_user['enforcement'][3]]);
-			$pass_value=$sys->sec->Encrypt($sys->sec->sha512($pass_ec), $data['cms_admin_account_password']);
-			$data_user['password']=$pass_value;
-			/* encrypt user personal password sequence */
+			/*encrypt user password (It's WORKING! Yai!)*/
 			$system_keys=$sys->config->item('system_keys');
-			$pass_ps_ec=md5($system_keys[$system_keys['password_sequences'][0]].$system_keys[$system_keys['password_sequences'][1]].$system_keys[$system_keys['password_sequences'][2]].$system_keys[$system_keys['password_sequences'][3]]);
-			$data_user['enforcement']=json_encode($data_user['enforcement']);
-			$pass_ps_value=$sys->sec->Encrypt($sys->sec->sha512($pass_ec), $data_user['enforcement']);
-			$data_user['enforcement']=$pass_ps_value;
+			$data_user['password']=sequence_encode((array) json_decode($data_user['enforcement']),$data_user, $sys->sec->sha512($data['cms_admin_account_password']));
+			print_r(sequence_decoder((array) json_decode($data_user['enforcement']),$data_user, $data_user['password'],true));
+			//* encrypt user personal password sequence  (It's WORKING! Yai!)*/
 			
-			/*encrypt UDATA (USER DATA)*/
-			$pass_udata_ec=md5($system_keys[$system_keys['UDATA'][0]].$system_keys[$system_keys['UDATA'][1]].$system_keys[$system_keys['UDATA'][2]].$system_keys[$system_keys['UDATA'][3]]);
-			$pass_udata_value=$sys->sec->Encrypt($pass_ps_ec, json_encode($data_acco['UDATA']));
-			$data_acco['UDATA']=$pass_udata_value;
-			/*encrypt UDATA (USER DATA)*/
-			$pass_uplanedata_ec=md5($system_keys[$system_keys['plane_user'][0]].$system_keys[$system_keys['plane_user'][1]].$system_keys[$system_keys['plane_user'][2]].$system_keys[$system_keys['plane_user'][3]]);
-			$pass_uplanedata_value=$sys->sec->Encrypt($pass_ps_ec, json_encode($data_user['login_plane_data']));
-			$data_user['login_plane_data']=$pass_uplanedata_value;
+			$data_user['enforcement']=sequence_encode($system_keys['password_sequences'],$system_keys,$data_user['enforcement']);
+			//print_r(sequence_decoder($system_keys['password_sequences'],$system_keys, $data_user['enforcement']));
+			
+			/*encrypt UDATA (USER DATA)  (It's WORKING! Yai!)*/
+			$data_acco['UDATA']=sequence_encode($system_keys['UDATA'],$system_keys, $data_acco['UDATA']);
+			//print_r(sequence_decoder($system_keys['UDATA'],$system_keys, $data_acco['UDATA']));
+			/*encrypt UDATA (USER DATA)  (It's WORKING! Yai!)*/
+			$data_user['login_plane_data']=sequence_encode($system_keys['plane_user'],$system_keys,$data_user['login_plane_data']);
+			//print_r(sequence_decoder($system_keys['plane_user'],$system_keys,$data_user['login_plane_data']));
 		}
+		/*direct insert (we don't need the prefix for it, CI handles it for us)*/
+		$sys->db->insert('user_data',$data_user);
+		$sys->db->insert('user_login',$data_acco);
 	}
-	function change_settings(){
-		
+	function setup_settings(){
+		$sys=&get_inst();
+		$data=array();
+		/*
+		 * multilanguage:true
+multilang-cn:false
+multilang-de:false
+multilang-es:false
+multilang-en:true
+multilang-fr:false
+multilang-gr:false
+multilang-it:false
+multilang-ko:false
+multilang-pt:true
+multilang-ru:false
+multilang-tw:false
+		 * */
+		$data['cms_sitename']=$sys->session->installer_data['cms_name'];
+		$data['cms_https']=$sys->session->installer_data['forcehttps'];
+		$data['cms_force_https']=$sys->session->installer_data['forcehttps'];
+		$data['cms_login_force_https']=$sys->session->installer_data['forcehttps_admin'];
+		$data['cms_baseurl']=$sys->session->installer_data['cms_domain'];
+		$data['cms_lang']=$sys->session->installer_data['cms_default_language_selection'];
+		$data['cms_multilang']=$sys->session->installer_data['multilanguage'];
+		if($sys->session->installer_data['multilanguage']){
+			
+		}else{
+			$data['cms_languages']=array();
+			foreach($sys->session->installer_data as $iid=>$item){
+				if(strpos($iid,'multilang-')!==false){
+					if(($item===true)||($item==='true')){
+						$data['cms_languages'][]=str_replace('multilang-', '', $iid);
+					}
+				}
+			}
+		}
+		foreach($data as $id=>$settings){
+			$new_data=array(
+				'setting_ind'=>$id,
+				'setting_value'=>$settings,
+			);
+			if(is_array($settings) || is_object($settings)){
+				$new_data['setting_value']=json_encode($settings);
+				$new_data['setting_type']='j';
+			}elseif(is_bool($settings)){
+				$new_data['setting_value']=json_encode($settings);
+				$new_data['setting_type']='b';
+			}elseif(is_string($settings)){
+				$new_data['setting_value']=''.$settings;
+				$new_data['setting_type']='s';
+			}elseif(is_int($settings)){
+				$new_data['setting_value']=''.$settings;
+				$new_data['setting_type']='i';
+			}elseif(is_float($settings)){
+				$new_data['setting_value']=''.$settings;
+				$new_data['setting_type']='f';
+			}elseif(is_double($settings)){
+				$new_data['setting_value']=''.$settings;
+				$new_data['setting_type']='d';
+			}
+			$sys->db->set($data);
+			$sys->db->update('settings');
+		}
+		$sys->db->insert('settings');
 	}
 }
 function config_systemkeys_creator(){
@@ -584,7 +680,7 @@ function sql($prefix){
 	  `UUID` varchar(99) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
 	  `username` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
 	  `password` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-	  `recovery_key` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	  `recovery_key` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
 	  `activation` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
 	  `enforcement` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
 	  `ek01` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
@@ -599,6 +695,7 @@ function sql($prefix){
 	  `ek10` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
 	  `email` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
 	  `cellphone` text CHARACTER SET utf8 COLLATE utf8_general_ci,
+	  `login_plane_data` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
 	  PRIMARY KEY (`UUID`) USING BTREE,
 	  UNIQUE INDEX `UUID`(`UUID`) USING BTREE
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8;

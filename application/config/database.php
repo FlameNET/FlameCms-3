@@ -76,11 +76,11 @@ include(APPPATH.'/flamecms_config/config.php');
 
 if(check_the_config_file_flamecms())
 {
-	include('flamecms/config.php');
+	include(APPPATH.'config/flamecms/config.php');
 }
 elseif(check_the_installer_config_file_flamecms())
 {
-	include('flamecms/installer_config.php');
+	include(APPPATH.'config/flamecms/installer_config.php');
 }
 else
 {

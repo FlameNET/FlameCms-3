@@ -59,6 +59,8 @@ __s('Default CMS Language','Lingua CMS predefinita');
 __s('Domain of this CMS','Dominio di questo CMS');
 __s('CMS Public Name','Nome pubblico CMS');
 __s('Multi Language?','Multi lingua?');
+__s('Force HTTPS?','Forza la connessione protetta (HTTPS)?');
+__s('Force HTTPS on Administration?','Forza la connessione protetta (HTTPS) all\'amministrazione?');
 __s('Yes','sì');
 __s('No','No');
 __s('Languages','Le lingue');

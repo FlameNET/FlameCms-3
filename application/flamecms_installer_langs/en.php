@@ -59,6 +59,8 @@ __s('Default CMS Language','');
 __s('Domain of this CMS','');
 __s('CMS Public Name','');
 __s('Multi Language?','');
+__s('Force HTTPS?','Force Secure Connection (HTTPS)?');
+__s('Force HTTPS on Administration?','Force Secure Connection (HTTPS) On Administration?');
 __s('Yes','');
 __s('No','');
 __s('Languages','');

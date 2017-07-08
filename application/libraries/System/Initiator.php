@@ -8,6 +8,7 @@ Class Initiator{
 	}
 	function setting_up(){
 		$sys=&get_inst();
+		$sys->load->helper('json');
 		$sys->load->library(array(
 			'System/Trigger'=>'trigger',
 			'System/page'=>'page',
