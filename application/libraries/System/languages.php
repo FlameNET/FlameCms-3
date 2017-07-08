@@ -2,23 +2,30 @@
 /*FlameCMS CHECK*/
 defined('FlameCMS') OR die('No script Cuddies');
 Class Languages{
-	
+	function set_language_code($code){
+		$sys=&get_inst();
+		if(is_lang_code($code)){
+			$sys->session->lang=$code;
+			return $code;
+		}
+		return false;
+	}
 	function current_lang_code(){
 		$sys=&get_inst();
 		$uri_lang_code=$this->is_lang_code($sys->uri->segment(1));
 		$browser_lang=substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
 		if($uri_lang_code==true){
-			$sys->session->current_language=$sys->uri->segment(1);
+			$sys->session->lang=$sys->uri->segment(1);
 			return $sys->uri->segment(1);
 		}
 		elseif($this->is_lang_code($browser_lang)){
 			return $browser_lang;
 		}
 		elseif(isset($sys->session->lang) && !empty($sys->session->lang) && $this->is_lang_code($sys->session->lang)){
-			return $sys->Session->current_language;
+			return $sys->session->lang;
 		}
 		else{
-			$sys->Session->current_language='en';
+			$sys->session->lang='en';
 			return 'en';
 		}
 	}
@@ -28,7 +35,7 @@ Class Languages{
 		 * $sys->uri->uri_string()
 		 * $this->is_lang_code($sys->uri->segment(0))
 		 * */
-		$q=$sys->db->get('sys_lang_list');
+		$q=$sys->db->get('lang_list');
 		if($q->num_rows()!=0){
 			$uri=$sys->uri->uri_string();
 			if($uri!=''){
@@ -99,8 +106,18 @@ Class Languages{
 	}
 }
 function __($str){
-	return get_inst()->Language->get($str);
+	return get_inst()->language->get($str);
 }
 function current_lang_code(){
-	return get_inst()->Language->current_lang_code();
+	return get_inst()->language->current_lang_code();
 }
+function language_alternatives(){
+	return get_inst()->language->language_alternatives();
+}
+function is_lang_code($lang){
+	return get_inst()->language->is_lang_code($lang);
+}
+function set_language_code($code){
+	return get_inst()->language->set_language_code($code);
+}
+

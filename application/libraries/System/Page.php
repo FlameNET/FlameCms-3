@@ -5,6 +5,12 @@ Class Page{
 	function load($page,$tostring=false,$page_redirect=false)
 	{
 		$sys=&get_inst();
+		$temp0=explode('/',$page);
+		if(isset($temp0[0]) && is_lang_code($temp0[0])){
+			set_language_code($temp0[0]);
+			unset($temp0[0]);
+			$page=implode('/',$temp0);
+		}
 		$this->args_to_string($page);
 		/*if triggered an redirect, cancel everything and go to page*/
 		$this->validade_page_redirect($page);

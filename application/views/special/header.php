@@ -41,13 +41,15 @@ if(defined('page_redirect') && (page_redirect=='admin/install'))
 else
 {
 	$sys=&get_inst();
+	global $page_title;
 ?>
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title><?=$sys->settings_cms->cms_sitename; ?></title>
+		<title><?=$sys->settings_cms->cms_sitename; ?> - <?=$page_title;?></title>
 		<!-- Enable Mobile View -->
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<?=language_alternatives();?>
 		<?php head();?>
 		<!--[if lt IE 9]>
 			<script src="<?=base_url('assets/js/maxcdn/html5.js');?>"></script>

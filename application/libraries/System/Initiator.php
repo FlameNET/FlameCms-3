@@ -50,7 +50,8 @@ Class Initiator{
 			//$sys->config->load('flamecms/config.php');
 			$sys->load->library(array(
 				'System/Settings'=>'settings',
-				'System/Languages'=>'language'
+				'System/Languages'=>'language',
+				'session'
 			));
 			$sys->load->database();
 			$this->configs();

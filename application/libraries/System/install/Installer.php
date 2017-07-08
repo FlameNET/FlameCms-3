@@ -731,8 +731,8 @@ function sql($prefix){
 	-- ----------------------------
 	-- Records of sys_lang_list
 	-- ----------------------------
-	INSERT INTO `<?=$prefix;?>lang_list` VALUES ('en-us', 'English (US)', 'en-us', null, null);
-	INSERT INTO `<?=$prefix;?>lang_list` VALUES ('pt-pt', 'Português (PT)', 'pt-pt', null, null);
+	INSERT INTO `<?=$prefix;?>lang_list` VALUES ('en', 'English', 'en', null, null);
+	INSERT INTO `<?=$prefix;?>lang_list` VALUES ('pt', 'Português', 'pt', null, null);
 	
 	-- ----------------------------
 	-- Table structure for `<?=$prefix;?>lang_str`
