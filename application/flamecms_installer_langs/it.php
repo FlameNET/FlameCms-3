@@ -104,12 +104,11 @@ __s('To continue, please fill all the information and submit the form.','Per con
 __s('With all done, you will be redirected to the administation page and you will be able to and the wow server.','Con tutto ciò, sarai reindirizzato alla pagina di amministrazione e sarai in grado di e il server wow.');
 /*Install End Fenching Current Status...*/
 __s('Feching Current Status...','Recupero dello stato corrente...');
-__s('','');
-__s('','');
-__s('','');
-__s('','');
-__s('','');
-__s('','');
+__s('Creating System Account...','Creazione dell\'account di sistema ...');
+__s('Creating Owner Account...','Creazione del titolare del conto ...');
+__s('Setting up Settings...','Caricamento Impostazioni');
+__s('Deleting and renaming unneded files...','L\'eliminazione e / o rinominare i file non necessari');
+__s('Done! Redirecting to admin area... please wait...','Tutto fatto! Reindirizzamento al settore dell\'amministrazione ... attendere prego ...');
 
 /*
 __s('','');

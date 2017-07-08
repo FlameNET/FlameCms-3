@@ -18,6 +18,9 @@ Class Initiator{
 			'System/security/Sec'=>'sec',
 			'System/admin/Updates/Update'=>'up'
 		));
+		if(file_exists(APPPATH.'config/flamecms/system_keys.php')){
+			$sys->config->load('flamecms/system_keys.php');
+		}
 		$sys->page->pps =& $sys->pps;
 		$sys->page->sas =& $sys->sas;
 		$sys->page->hfs =& $sys->hfs;
@@ -44,6 +47,10 @@ Class Initiator{
 		else{
 			//removed, this is loaded, on the database.php
 			//$sys->config->load('flamecms/config.php');
+			$sys->load->library(array(
+				'System/Settings'=>'settings'
+			));
+			$sys->load->database();
 			$this->configs();
 			/*END*/
 			set_inst($sys);
@@ -78,6 +85,18 @@ Class Initiator{
 		}
 		/*settings of the cms*/
 		$sys->settings_cms=(object) $temp2;
+		$sys->config->set_item('base_url', $sys->settings_cms->cms_baseurl);
+		if(substr($sys->settings_cms->cms_baseurl, -1)!='/'){
+			$sys->settings_cms->cms_baseurl=$sys->settings_cms->cms_baseurl.'/';
+		}
+		if($sys->settings_cms->cms_force_https==true){
+			if(!((isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS']=='on')) || ($_SERVER['SERVER_PORT']==443))){
+				if(strpos($sys->settings_cms->cms_baseurl,'http://')){
+					$sys->config->set_item('base_url', str_replace('http://', 'https://', $sys->settings_cms->cms_baseurl));
+				}
+				redirect($sys->config->item('base_url'));
+			}
+		}
 	}
 	private function wind_configuration($configs){
 		$confs=System::$configuration;

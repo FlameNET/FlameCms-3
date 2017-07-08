@@ -104,12 +104,11 @@ __s('To continue, please fill all the information and submit the form.','');
 __s('With all done, you will be redirected to the administation page and you will be able to and the wow server.','');
 /*Install End Fenching Current Status...*/
 __s('Feching Current Status...','');
-__s('','');
-__s('','');
-__s('','');
-__s('','');
-__s('','');
-__s('','');
+__s('Creating System Account...','');
+__s('Creating Owner Account...','');
+__s('Setting up Settings...','');
+__s('Deleting and renaming unneded files...','');
+__s('Done! Redirecting to admin area... please wait...','');
 
 /*
 __s('','');

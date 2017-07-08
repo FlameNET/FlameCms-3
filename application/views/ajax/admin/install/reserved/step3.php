@@ -4,6 +4,10 @@ defined('ajaxload') or die('No Script Cuddies');
 $sys=&get_inst();
 ?>
 <form method="POST" id="cms_server_configuration" data-abide novalidate>
+	
+	<div class="callout transparent" id="body_ajax_loader_spinner" style="display:none;" align="center">
+		<img src="<?=base_url('assets/imgs/spinner_wait.gif');?>" width="30px">
+	</div>
 	<div class="callout transparent">
 		<div class="row">
 			<div class="medium-3 columns">
@@ -101,26 +105,6 @@ $sys=&get_inst();
 											</label>
 										</div>
 									</div>
-									<div class="small-12 medium-6 columns">
-										<label for="forcehttps"><?=__('Force HTTPS?');?></p>
-										<div class="switch medium">
-											<input class="switch-input" id="forcehttps" type="checkbox" name="forcehttps">
-											<label class="switch-paddle" for="forcehttps">
-												<span class="switch-active" aria-hidden="true"><?=__('Yes');?></span>
-												<span class="switch-inactive" aria-hidden="true"><?=__('No')?></span>
-											</label>
-										</div>
-									</div>
-									<div class="small-12 medium-6 columns">
-										<label for="forcehttps_admin"><?=__('Force HTTPS on Administration?');?></p>
-										<div class="switch medium">
-											<input class="switch-input" id="forcehttps_admin" type="checkbox" name="forcehttps_admin">
-											<label class="switch-paddle" for="forcehttps_admin">
-												<span class="switch-active" aria-hidden="true"><?=__('Yes');?></span>
-												<span class="switch-inactive" aria-hidden="true"><?=__('No')?></span>
-											</label>
-										</div>
-									</div>
 									<div class="small-12 columns">
 										<div class="row" id="languages_selection" style="display:none;">
 											<div class="medium-12 columns">
@@ -185,6 +169,26 @@ $sys=&get_inst();
 												</label>
 											</div>
 										</div>	
+									</div>
+									<div class="small-12 medium-6 columns">
+										<label for="forcehttps"><?=__('Force HTTPS?');?></p>
+										<div class="switch medium">
+											<input class="switch-input" id="forcehttps" type="checkbox" name="forcehttps">
+											<label class="switch-paddle" for="forcehttps">
+												<span class="switch-active" aria-hidden="true"><?=__('Yes');?></span>
+												<span class="switch-inactive" aria-hidden="true"><?=__('No')?></span>
+											</label>
+										</div>
+									</div>
+									<div class="small-12 medium-6 columns">
+										<label for="forcehttps_admin"><?=__('Force HTTPS on Administration?');?></p>
+										<div class="switch medium">
+											<input class="switch-input" id="forcehttps_admin" type="checkbox" name="forcehttps_admin">
+											<label class="switch-paddle" for="forcehttps_admin">
+												<span class="switch-active" aria-hidden="true"><?=__('Yes');?></span>
+												<span class="switch-inactive" aria-hidden="true"><?=__('No')?></span>
+											</label>
+										</div>
 									</div>
 								</div>
 							</fieldset>
@@ -322,6 +326,7 @@ $sys=&get_inst();
 					<div class="row">
 						<div class="small-12 columns">
 							<button id="form_installer_submit" type="submit" data-installer="step-3" class="uk-button tm-button-download float-right" type="submit" disabled="disabled"><?=__('Send Data');?></button>
+							<div id="form_installer_submit_loader" class="installer_loader1" style="display:hidden;"></div>
 						</div>
 					</div>
 				</div>

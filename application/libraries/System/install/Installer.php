@@ -28,6 +28,7 @@ class Installer{
 	}
 	function end_install(){
 		rename(APPPATH.'config/flamecms/installer_config.php',APPPATH.'config/flamecms/config.php');
+		unlink(dirname(__file__)."/flamecmsinstaller.sql");
 	}
 	function config_file_system_keys(){
 		$sys=&get_inst();
@@ -45,7 +46,6 @@ class Installer{
 			$command="mysql -u{$user} -p{$pass} "
 				. "-h {$host} -D {$database} ";
 			shell_exec($command."< ".$temp_file);
-			unlink($temp_file);
 			return true;
 		}
 		else{
@@ -69,6 +69,7 @@ class Installer{
 			'password'=>$sys->sec->sha512(''),/*all passwords are made by: md5 with an postencrypt of sha512, so.... it's impossible (or almost) to discover the empty string equivalent.*/
 			'email'=>$sys->sec->sha512(''),
 			'enforcement'=>json_encode($p_sequence),
+			'phone'=>$sys->sec->sha512(''),
 			'ek01'=>$sys->sec->sha512(uniqid(json_encode($p_sequence).'_',true)),
 			'ek02'=>$sys->sec->sha512(uniqid(json_encode($p_sequence).'_',true)),
 			'ek03'=>$sys->sec->sha512(uniqid(json_encode($p_sequence).'_',true)),
@@ -105,7 +106,7 @@ class Installer{
 		/*encrypt user password (It's WORKING! Yai!)*/
 		$system_keys=$sys->config->item('system_keys');
 		$data_user['password']=sequence_encode((array) json_decode($data_user['enforcement']),$data_user, $sys->sec->sha512($data_user['password']));
-		print_r(sequence_decoder((array) json_decode($data_user['enforcement']),$data_user, $data_user['password'],true));
+		//print_r(sequence_decoder((array) json_decode($data_user['enforcement']),$data_user, $data_user['password'],true));
 		//* encrypt user personal password sequence  (It's WORKING! Yai!)*/
 		
 		$data_user['enforcement']=sequence_encode($system_keys['password_sequences'],$system_keys,$data_user['enforcement']);
@@ -173,7 +174,7 @@ class Installer{
 			/*encrypt user password (It's WORKING! Yai!)*/
 			$system_keys=$sys->config->item('system_keys');
 			$data_user['password']=sequence_encode((array) json_decode($data_user['enforcement']),$data_user, $sys->sec->sha512($data['cms_admin_account_password']));
-			print_r(sequence_decoder((array) json_decode($data_user['enforcement']),$data_user, $data_user['password'],true));
+			//print_r(sequence_decoder((array) json_decode($data_user['enforcement']),$data_user, $data_user['password'],true));
 			//* encrypt user personal password sequence  (It's WORKING! Yai!)*/
 			
 			$data_user['enforcement']=sequence_encode($system_keys['password_sequences'],$system_keys,$data_user['enforcement']);
@@ -187,8 +188,8 @@ class Installer{
 			//print_r(sequence_decoder($system_keys['plane_user'],$system_keys,$data_user['login_plane_data']));
 		}
 		/*direct insert (we don't need the prefix for it, CI handles it for us)*/
-		$sys->db->insert('user_data',$data_user);
-		$sys->db->insert('user_login',$data_acco);
+		$sys->db->insert('user_login',$data_user);
+		$sys->db->insert('user_data',$data_acco);
 	}
 	function setup_settings(){
 		$sys=&get_inst();
@@ -200,15 +201,11 @@ class Installer{
 		$data['cms_baseurl']=$sys->session->installer_data['cms_domain'];
 		$data['cms_lang']=$sys->session->installer_data['cms_default_language_selection'];
 		$data['cms_multilang']=$sys->session->installer_data['multilanguage'];
-		if($sys->session->installer_data['multilanguage']){
-			
-		}else{
-			$data['cms_languages']=array();
-			foreach($sys->session->installer_data as $iid=>$item){
-				if(strpos($iid,'multilang-')!==false){
-					if(($item===true)||($item==='true')){
-						$data['cms_languages'][]=str_replace('multilang-', '', $iid);
-					}
+		$data['cms_languages']=array();
+		foreach($sys->session->installer_data as $iid=>$item){
+			if(strpos($iid,'multilang-')!==false){
+				if(($item===true)||($item==='true')){
+					$data['cms_languages'][]=str_replace('multilang-', '', $iid);
 				}
 			}
 		}
@@ -236,10 +233,10 @@ class Installer{
 				$new_data['setting_value']=''.$settings;
 				$new_data['setting_type']='d';
 			}
-			$sys->db->set($data);
+			$sys->db->set($new_data);
+			$sys->db->where('setting_ind',$id);
 			$sys->db->update('settings');
 		}
-		$sys->db->insert('settings');
 	}
 }
 function config_systemkeys_creator(){
@@ -248,7 +245,7 @@ function config_systemkeys_creator(){
 	echo '<?php ';
 	?>
 defined('BASEPATH') OR exit('No direct script access allowed');
-defined('FlameCMS') or die('No Script Cuddies');
+//defined('FlameCMS') or die('No Script Cuddies');
 
 /* ***********************************
  * This system keys cannot be changed!
@@ -288,7 +285,7 @@ function config_creator_text($host,$user,$pass,$database,$port,$prefix){
 	echo '<?php ';
 	?>
 defined('BASEPATH') OR exit('No direct script access allowed');
-defined('FlameCMS') or die('No Script Cuddies');
+//defined('FlameCMS') or die('No Script Cuddies');
 
 $db['default'] = array(
 	'dsn'	=> '',
@@ -669,6 +666,7 @@ function sql($prefix){
 	  `recovery_key` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
 	  `activation` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
 	  `enforcement` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	  `phone` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
 	  `ek01` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
 	  `ek02` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
 	  `ek03` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,

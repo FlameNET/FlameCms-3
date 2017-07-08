@@ -103,12 +103,11 @@ __s('To continue, please fill all the information and submit the form.','para co
 __s('With all done, you will be redirected to the administation page and you will be able to and the wow server.','Com tudo feito, vai ser redirecionado para a pagina de administração, e poderá adicionar servidores de "World of Warcraft".');
 /*Install End Fenching Current Status...*/
 __s('Feching Current Status...','A obter o estado actual ...');
-__s('','');
-__s('','');
-__s('','');
-__s('','');
-__s('','');
-__s('','');
+__s('Creating System Account...','Criando a conta do sistema...');
+__s('Creating Owner Account...','Criando a conta do dono...');
+__s('Setting up Settings...','Carregando as Configurações');
+__s('Deleting and renaming unneded files...','Apagando e/ou Renomear ficheiros desnecessarios');
+__s('Done! Redirecting to admin area... please wait...','Tudo Feito! Redirecionando para a area de administração... por favor, aguarde...');
 /*
 __s('','');
  * */

@@ -32,43 +32,45 @@ if(!check_the_config_file_flamecms()){
 				$rdata['step']='step-4';
 				print_r( json_encode($rdata));
 		}elseif($data['step']=='step-3-reload'){
+			define('ajaxload',true);
 				$rdata=array();
 				$rdata['html']=$sys->page->load('ajax/admin/install/reserved/step4',true);
 				$rdata['step']='step-4';
 				print_r( json_encode($rdata));
 		}elseif($data['step']=='step-4'){
+			define('ajaxload',true);
 			//next step maybe?
 			$sys->load->database();
-			$sys->db->database();
 			$sys->installer->initiate_root_account();
 			$rdata=array();
 			$rdata['html']=$sys->page->load('ajax/admin/install/reserved/step5',true);
 			$rdata['step']='step-5';
 			print_r( json_encode($rdata));
 		}elseif($data['step']=='step-5'){
+			define('ajaxload',true);
 			$sys->load->database();
-			$sys->db->database();
 			$sys->installer->initiate_owner_account($sys->session->installer_data);
 			$rdata=array();
 			$rdata['html']=$sys->page->load('ajax/admin/install/reserved/step6',true);
 			$rdata['step']='step-6';
 			print_r( json_encode($rdata));
 		}elseif($data['step']=='step-6'){
+			define('ajaxload',true);
 			$sys->load->database();
-			$sys->db->database();
 			$sys->installer->setup_settings();
 			$rdata=array();
 			$rdata['html']=$sys->page->load('ajax/admin/install/reserved/step7',true);
 			$rdata['step']='step-7';
 			print_r( json_encode($rdata));
 		}elseif($data['step']=='step-7'){
+			define('ajaxload',true);
 			$sys->load->database();
-			$sys->db->database();
 			$sys->installer->end_install();
 			$rdata=array();
 			$rdata['html']=$sys->page->load('ajax/admin/install/reserved/success',true);
 			$rdata['step']='';
-			$rdata['redirect']='';
+			$rdata['redirect']=$sys->config->item('base_url').'/admin';
+			print_r( json_encode($rdata));
 		}
 	}
 	else{

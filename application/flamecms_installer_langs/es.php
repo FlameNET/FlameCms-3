@@ -107,12 +107,12 @@ __s('To continue, please fill all the information and submit the form.','Para co
 __s('With all done, you will be redirected to the administation page and you will be able to and the wow server.','Con todo hecho, usted será redirigido a la página de administración de el servidor wow.');
 
 __s('Feching Current Status...','Obteniendo estado actual ...');
-__s('','');
-__s('','');
-__s('','');
-__s('','');
-__s('','');
-__s('','');
+__s('Creating System Account...','Creación de cuenta de sistema ...');
+__s('Creating Owner Account...','Creando la cuenta del dueño ...');
+__s('Setting up Settings...','Cargando la configuración');
+__s('Deleting and renaming unneded files...','Borrar y / o Cambiar el nombre de archivos innecesarios');
+__s('Done! Redirecting to admin area... please wait...','¡Todo hecho! Redireccionando al área de administración ... por favor espere ...');
+
 /*
 __s('','');
  * */

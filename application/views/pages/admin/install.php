@@ -178,12 +178,73 @@ $sys=&get_inst();
 			    },
 			});
 		});
+		function behold_the_installer(rdata){
+			window.installer_next_time=1;
+			/*
+			 	$('#body_ajax_loader').html(r['html']);
+				behold_the_installer(r);
+			 */
+			if(rdata['step']!=''){
+				window.installer_next_timer=setInterval(function(){
+					if(window.installer_next_time>0){
+						window.installer_next_time--;
+					}else{
+						clearInterval(window.installer_next_timer);
+						var data={};
+						data['step']=rdata['step'];
+						$.ajax({
+						    url:'<?=base_url('ajax/admin/install');?>',
+						    data:data,
+						    method:'POST',
+						    success:function(result){
+						    	try{
+									var r=JSON.parse(result);
+									$('#body_ajax_loader').html(r['html']);
+									behold_the_installer(r);
+						    	}catch(e){
+						    		console.log(e);
+						    	}
+								$(document).foundation();
+						    },
+						});
+					}
+				},1000);
+			}else{
+				if(((typeof rdata['redirect'])!='undefined') && (rdata['redirect']!='')){
+					window.installer_redirect=rdata['redirect'];
+					window.installer_redirect_timer=5;
+					setInterval(function(){
+						if(window.installer_redirect_timer>0){
+							$('#').text(window.installer_redirect_timer);
+							window.installer_redirect_timer--;
+						}else{
+							window.location.href=window.installer_redirect;
+						}
+					},1000);
+				}
+			}
+		}
 		$('a[data-installer],input[data-installer],button[data-installer]').live('click',function(e) {
 			$ths=$(this);
 			console.log('click');
 			if($ths.is('input') || $ths.is('button')){
 				if(($ths.hasAttr('type')) && ($ths.attr('type')=='submit')){
+					if($ths.attr('id')=='form_installer_submit'){
+						/*just checking if is the submit button...*/
+						$ths.attr('disabled','disabled');
+						//$ths.remove();
+						$('#form_installer_submit_loader').attr('style','');
+						$('#body_ajax_loader_spinner').attr('style','');
+						$('#body_ajax_loader_spinner').next().hide();
+					}
 					$.keycript($(this).closest('form'),'<?=base_url('ajax/admin/install');?>',function(result){
+						try{
+							var r=JSON.parse(result);
+							$('#body_ajax_loader').html(r['html']);
+							behold_the_installer(r);
+				    	}catch(e){
+				    		console.log(e);
+				    	}
 						$(document).foundation();
 					});
 					e.preventDefault();

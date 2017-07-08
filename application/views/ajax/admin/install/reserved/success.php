@@ -7,13 +7,24 @@ $sys=&get_inst();
 ?>
 <div class="callout transparent">
 	<div class="row">
-		<div class="small-12 medium-6 medium-offset-3 large-4 large-offset-4 columns" align="center">
-			<div class="installer installing-loader"></div>
-			<div class="status" id="installer_status">
-				<?=__('Done! Redirecting to admin area... please wait..');?>
+		<div class="large-12 columns" align="center">
+			<div class="row">
+				<div class="small-12 medium-6 medium-offset-3 large-4 large-offset-4 columns" align="center">
+					<div class="installer installing-loader"></div>
+					<div class="status" id="installer_status">
+						<?=__('Done! Redirecting to admin area... please wait...');?>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="large-12 columns" align="center">
+			<div class="callout transparent" id="body_ajax_loader_spinner" align="center">
+				<img src="<?=base_url('assets/imgs/spinner_wait.gif');?>" width="30px">
 			</div>
 		</div>
 	</div>
+</div>
+<div class="callout transparent">
 	<script>
 		$(document).ready(function(){
 			$(document).on('formvalid.zf.abide',function(e){
