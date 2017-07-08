@@ -84,7 +84,7 @@ Class Languages{
 		$string1 = substr($text, 0, $middle);  // "The Quick : Brown Fox Jumped "
 		$string2 = substr($text, $middle);  // "Over The Lazy / Dog"
 		$strid=md5($string1).md5($string2);
-		$sys->db->insert('sys_lang_str',array(
+		$sys->db->insert('lang_str',array(
 				'lid'=>$strid,
 				'olan'=>$current,
 				'ostr'=>$text,
@@ -94,7 +94,7 @@ Class Languages{
 	}
 	function is_lang_code($lang){
 		$sys=&get_inst();
-		$q=$sys->db->get_where('sys_lang_list',array('langid'=>$lang));
+		$q=$sys->db->get_where('lang_list',array('langid'=>$lang));
 		return ($q->num_rows()>0)?true:false;
 	}
 }
