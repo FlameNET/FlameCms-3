@@ -48,6 +48,7 @@ Class Initiator{
 		else{
 			//removed, this is loaded, on the database.php
 			//$sys->config->load('flamecms/config.php');
+			$sys->sec->system_checker();
 			$sys->load->library(array(
 				'System/Settings'=>'settings',
 				'System/Languages'=>'language',
