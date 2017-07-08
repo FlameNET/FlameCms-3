@@ -709,8 +709,59 @@ function sql($prefix){
 	-- ----------------------------
 	-- Records of <?=$prefix;?>user_messages
 	-- ----------------------------
-	SET FOREIGN_KEY_CHECKS=1;
+	
+	
+	
+	-- ----------------------------
+	-- Table structure for `<?=$prefix;?>lang_list`
+	-- ----------------------------
+	DROP TABLE IF EXISTS `<?=$prefix;?>lang_list`;
+	CREATE TABLE `<?=$prefix;?>lang_list` (
+	  `langid` varchar(5) NOT NULL,
+	  `lang_name` text NOT NULL,
+	  `lang_flag_code` text NOT NULL,
+	  `lang_changed_timestamp` int(10) unsigned zerofill DEFAULT NULL,
+	  `lang_changed_by` varchar(99) DEFAULT NULL,
+	  PRIMARY KEY (`langid`),
+	  UNIQUE KEY `langid` (`langid`) USING BTREE,
+	  KEY `lang_changed_by` (`lang_changed_by`),
+	  CONSTRAINT `<?=$prefix;?>lang_list_ibfk_1` FOREIGN KEY (`lang_changed_by`) REFERENCES `<?=$prefix;?>user_login` (`UUID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+	
+	-- ----------------------------
+	-- Records of sys_lang_list
+	-- ----------------------------
+	INSERT INTO `<?=$prefix;?>lang_list` VALUES ('en-us', 'English (US)', 'en-us', null, null);
+	INSERT INTO `<?=$prefix;?>lang_list` VALUES ('pt-pt', 'Português (PT)', 'pt-pt', null, null);
+	
+	-- ----------------------------
+	-- Table structure for `<?=$prefix;?>lang_str`
+	-- ----------------------------
+	DROP TABLE IF EXISTS `<?=$prefix;?>lang_str`;
+	CREATE TABLE `<?=$prefix;?>lang_str` (
+	  `lid` varchar(64) NOT NULL,
+	  `ostr` text NOT NULL,
+	  `olan` varchar(5) NOT NULL,
+	  `nlan` varchar(5) NOT NULL,
+	  `nstr` text NOT NULL,
+	  `lang_changed_timestamp` int(10) unsigned zerofill DEFAULT NULL,
+	  `lang_changed_by` varchar(99) DEFAULT NULL,
+	  PRIMARY KEY (`lid`,`olan`,`nlan`),
+	  UNIQUE KEY `lid` (`lid`,`olan`,`nlan`) USING BTREE,
+	  KEY `sys_lang_str_ibfk_1` (`olan`),
+	  KEY `sys_lang_str_ibfk_2` (`nlan`),
+	  KEY `lang_changed_by` (`lang_changed_by`),
+	  CONSTRAINT `<?=$prefix;?>lang_str_ibfk_1` FOREIGN KEY (`olan`) REFERENCES `<?=$prefix;?>lang_list` (`langid`) ON DELETE NO ACTION ON UPDATE CASCADE,
+	  CONSTRAINT `<?=$prefix;?>lang_str_ibfk_2` FOREIGN KEY (`nlan`) REFERENCES `<?=$prefix;?>lang_list` (`langid`) ON DELETE NO ACTION ON UPDATE CASCADE,
+	  CONSTRAINT `<?=$prefix;?>lang_str_ibfk_3` FOREIGN KEY (`lang_changed_by`) REFERENCES `<?=$prefix;?>user_login` (`UUID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+	-- ----------------------------
+	-- Records of `<?=$prefix;?>_lang_str`
+	-- ----------------------------
+	
+	
+	SET FOREIGN_KEY_CHECKS=1;
 	<?php
 	$sql=ob_get_clean();
 	return $sql;
