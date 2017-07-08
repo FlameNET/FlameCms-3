@@ -15,7 +15,12 @@ class Installer{
 		$txt = config_creator_text($host,$user,$pass,$database,$port,$prefix);
 		write_file(APPPATH.'config/flamecms/config.php', $txt);
 		$sys->load->database();
-		$sys->db->query(sql($prefix));
+		$valid_db=$this->initiate_db($prefix, $host, $user, $pass, $database, $port);
+		if($valid_db==false){
+			unlink(APPPATH.'config/flamecms/config.php');
+			rmdir(APPPATH.'config/flamecms');
+			return false;
+		}
 		return true;
 	}
 	
@@ -30,10 +35,19 @@ class Installer{
 		fclose($myfile);
 		return true;
 	}
-	function initiate_db($prefix){
+	function initiate_db($prefix,$host,$user,$pass,$database,$port){
 		$sys=&get_inst();
 		$sql=sql($prefix);
-		$sys->db->query($sql);
+		if( ($f = mkstemp("flamecmsinstaller.sql")) ) {
+			fwrite($f, $sql);
+			fclose($f);
+			$command="mysql -u{$user} -p{$pass} "
+				. "-h {$host} -D {$database} ";
+			shell_exec($command."< ".$f);
+		}
+		else{
+			return false;
+		}
 	}
 	function initiate_root_account(){
 		$data_user=array(
@@ -88,7 +102,7 @@ class Installer{
 }
 function config_systemkeys_creator(){
 	ob_start();
-	echo '<?php';
+	echo '<?php ';
 	?>
 defined('BASEPATH') OR exit('No direct script access allowed');
 defined('FlameCMS') or die('No Script Cuddies');
@@ -126,7 +140,7 @@ $config['system_keys']=$encription;
 }
 function config_creator_text($host,$user,$pass,$database,$port,$prefix){
 	ob_start();
-	echo '<?php';
+	echo '<?php ';
 	?>
 defined('BASEPATH') OR exit('No direct script access allowed');
 defined('FlameCMS') or die('No Script Cuddies');
@@ -164,10 +178,11 @@ function sql($prefix){
 	-- ----------------------------
 	-- Table structure for <?=$prefix;?>auto_login
 	-- ----------------------------
+
 	DROP TABLE IF EXISTS `<?=$prefix;?>auto_login`;
 	CREATE TABLE `<?=$prefix;?>auto_login` (
 	  `UUID` varchar(99) NOT NULL,
-	  `timestamp` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+	  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 	  `data` blob NOT NULL,
 	  `ip_address` varchar(45) NOT NULL,
 	  `user_agent` text NOT NULL,
@@ -287,7 +302,7 @@ function sql($prefix){
 	CREATE TABLE `<?=$prefix;?>log_login` (
 	  `username` longtext NOT NULL,
 	  `id` int(99) NOT NULL,
-	  `timestamp` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+	  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 	  `ip` longtext NOT NULL,
 	  `useragent` longtext NOT NULL
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -303,7 +318,7 @@ function sql($prefix){
 	CREATE TABLE `<?=$prefix;?>sessions` (
 	  `session_id` varchar(128) NOT NULL,
 	  `UUID` varchar(99) DEFAULT NULL,
-	  `timestamp` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+	  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 	  `data` blob NOT NULL,
 	  `ip_address` varchar(45) NOT NULL,
 	  PRIMARY KEY (`session_id`),
@@ -425,7 +440,7 @@ function sql($prefix){
 	  `perm_id` int(11) unsigned zerofill NOT NULL,
 	  `perm_description` varchar(255) NOT NULL,
 	  `perm_data` longtext NOT NULL,
-	  `perm_addered_on` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+	  `perm_addered_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 	  `perm_addered_by` varchar(99) DEFAULT NULL,
 	  PRIMARY KEY (`perm_system_id`,`perm_id`),
 	  UNIQUE KEY `perm_system_id` (`perm_system_id`,`perm_id`) USING BTREE,
@@ -437,7 +452,7 @@ function sql($prefix){
 	-- ----------------------------
 	-- Records of <?=$prefix;?>system_perms
 	-- ----------------------------
-	INSERT INTO `<?=$prefix;?>system_perms` VALUES ('administrator', '00000000000', 'a', '', '0000-00-00 00:00:00', null);
+	INSERT INTO `<?=$prefix;?>system_perms` VALUES ('administrator', '00000000000', 'a', '', CURRENT_TIMESTAMP, null);
 	
 	-- ----------------------------
 	-- Table structure for <?=$prefix;?>system_roles
