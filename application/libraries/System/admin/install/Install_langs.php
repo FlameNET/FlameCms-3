@@ -110,3 +110,6 @@ function __($o){
 function __s($o,$t){
 	return get_inst()->ilang->add_line($o,$t);
 }
+if(!function_exists('is_lang_code')){
+	function is_lang_code($t){return false;}
+}
