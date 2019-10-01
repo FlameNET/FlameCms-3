@@ -4,7 +4,7 @@
 ### IT WONT WORK YET
 #### THANKS FOR YOUR PACIENCE
 ##### ADOMASALCORE3
-
+###### website removed due freenom not checking the domains as it should
 # ------------------------
 # BE Aware of the following:
 # ------------------------
